@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=5.1.0">
+<link rel="stylesheet" href="style.css?v=5.2.0">
 <!-- v5 2026-11-06. Maintenance notes, the qualification rule and the truth-lint rules: README.md in this folder (not published). -->
 </head>
 <body>
@@ -85,8 +85,8 @@
       </fieldset>
       <div class="hp" aria-hidden="true"><label for="f-hp">Leave this empty</label><input id="f-hp" name="hp" tabindex="-1" autocomplete="off"></div>
       <p class="status" id="fstatus" role="alert" aria-live="assertive"></p>
-      <button type="submit" class="btn" id="submit">Send me the free kit</button>
-      <p class="formnote">We email you the kit, then a few short emails about A2P from Smarter Flow. Every follow-up email has an unsubscribe link. We never sell your details. <a href="https://gosmarterflow.com/privacy-policy">Privacy notice</a>.</p>
+      <button type="submit" class="btn" id="submit">Email me the free kit + 6 A2P lessons</button>
+      <p class="formnote" id="consent"><strong>Send me the free A2P Approval Agent kit and the 6 short A2P lessons by email. Unsubscribe any time.</strong> Every email from Smarter Flow has an unsubscribe link. We never sell your details. <a href="https://gosmarterflow.com/privacy-policy">Privacy notice</a>.</p>
     </form>
     <noscript><p class="small" style="margin-top:10px">This form needs JavaScript. You can open the free A2P Approval Agent kit here: <a href="kit/?lane=nojs">kit/</a>.</p></noscript>
   </section>
@@ -99,7 +99,7 @@
   <p>&copy; 2026 Smarter Flow. <a href="https://gosmarterflow.com/privacy-policy">Privacy notice</a></p>
 </div></footer>
 
-<script src="config.js?v=5.1.0"></script>
+<script src="config.js?v=5.2.0"></script>
 <script>
 /* Country list: [code, name, continent]. Tier comes from QUALIFY_RULES, never from this list. */
 var COUNTRIES = [
@@ -177,11 +177,11 @@ var COUNTRIES = [
         go(localLane,a,sent); return;
       }
       if(j.status===400){
-        btn.disabled=false; btn.textContent='Send me the free kit';
+        btn.disabled=false; btn.textContent='Email me the free kit + 6 A2P lessons';
         var map={first_name:'Check your first name (letters only).',email:'That email looks off. Check it and try again.',website:'That website looks off. Use something like yourbusiness.com, or leave it empty.',country:'Choose your country.'};
         need(map[j.field]||'Something in the form looks off. Check it and try again.', j.field&&f.elements[j.field]?f.elements[j.field]:null); return;
       }
-      if(j.status===429){ btn.disabled=false; btn.textContent='Send me the free kit'; need('Too many tries in a minute. Wait a moment and press the button again.'); return; }
+      if(j.status===429){ btn.disabled=false; btn.textContent='Email me the free kit + 6 A2P lessons'; need('Too many tries in a minute. Wait a moment and press the button again.'); return; }
       /* server or network trouble: never pretend it was sent. Queue it in this browser and still open the kit. */
       var l=a2pQueueRead(); l.push(a); a2pQueueWrite(l);
       a2pEvent('a2p_optin',{lane:localLane,sent:'q'});

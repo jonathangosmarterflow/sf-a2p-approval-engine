@@ -7,7 +7,7 @@
    Revenue and the HighLevel account are FIELDS the consultant sees, not gates. Flip one line to make one a gate:
    gateOnRevenue / gateOnHighLevel. The worker (scripts/sf-estimate-kit/branded-host/optin.js OPTIN.qualify) recomputes
    the same rule for the HighLevel tags; review-screens.mjs fails when the two differ, so change both together. */
-var A2P_SITE_VERSION = "a2p-site 5.1.0 (2026-11-06, red team r3)";
+var A2P_SITE_VERSION = "a2p-site 5.2.0 (2026-11-06, consent wording, E0 kit email)";
 
 var QUALIFY_RULES = {
   tier1: ["US","CA"],
