@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=5.0.0">
+<link rel="stylesheet" href="style.css?v=5.1.0">
 <!-- v5 2026-11-06. Maintenance notes, the qualification rule and the truth-lint rules: README.md in this folder (not published). -->
 </head>
 <body>
@@ -20,7 +20,7 @@
 <header class="hero"><div class="wrap">
   <p class="eyebrow">From the video: HighLevel A2P, the 7 checks</p>
   <h1>Get your HighLevel A2P registration right before you click submit</h1>
-  <p class="sub">The free A2P Approval Agent kit: the 7 checks that get registrations rejected, the fix for each one, and an AI agent that writes your answers. Tell us where to send it.</p>
+  <p class="sub">The free A2P Approval Agent kit: the 7 checks we see behind most rejected registrations, the fix for each one, and an AI agent that drafts your answers for you to review. Tell us where to send it.</p>
   <a class="btn compact" id="start-top" href="#get">Send me the free kit</a>
 
   <!-- VIDEO: replace this block with the YouTube embed once the video is published (README.md, "Video id").
@@ -30,8 +30,8 @@
 
   <ul class="three">
     <li><strong>The 7 checks.</strong> Legal name, business email, privacy clause, no data-sharing wording, an SMS terms page, a clean opt-in, and a campaign story that matches.</li>
-    <li><strong>An AI agent that does the writing.</strong> Your business details in, every Trust Center answer, two sample messages and your SMS policy wording out (carrier-published templates only, not legal advice).</li>
-    <li><strong>You click submit.</strong> Nothing is ever submitted for you, and nobody can promise a carrier decision or a review time. The kit helps you send a complete, correct registration.</li>
+    <li><strong>An AI agent that drafts the writing.</strong> Your business details in, draft Trust Center answers, two sample messages and SMS policy wording out, built from carrier-published templates. You check every line; it is not legal advice.</li>
+    <li><strong>You click submit.</strong> Nothing is ever submitted for you, and nobody can promise a carrier decision or a review time. You review everything and click submit yourself.</li>
   </ul>
 </div></header>
 
@@ -41,7 +41,7 @@
     <h2>Get the free kit</h2>
     <p>Free for everyone who fills this in. We email it to you, and it opens on the next page too.</p>
     <ul class="list">
-      <li><strong>Want it done for you instead?</strong> Some people also get a free 30-minute call. A Smarter Flow consultant reviews your setup with you and quotes the done-for-you work in hours, at $55/hour.</li>
+      <li><strong>Want it done for you instead?</strong> You may also get a free 30-minute call. A Smarter Flow consultant reviews your setup with you and quotes the done-for-you work in hours, at $55/hour. Free calls are open to businesses in the US, Canada, the UK, Ireland, the EU, Switzerland, Australia and New Zealand.</li>
       <li>That's why the last question asks about paying for help. The call only makes sense if that's on the table. Answer no and you still get the full kit, same as everyone.</li>
       <li>We never ask for passwords, account logins or your EIN letter.</li>
     </ul>
@@ -86,7 +86,7 @@
       <div class="hp" aria-hidden="true"><label for="f-hp">Leave this empty</label><input id="f-hp" name="hp" tabindex="-1" autocomplete="off"></div>
       <p class="status" id="fstatus" role="alert" aria-live="assertive"></p>
       <button type="submit" class="btn" id="submit">Send me the free kit</button>
-      <p class="formnote">We email you the kit, then a few short emails about A2P. Unsubscribe any time with one click. We never sell your details. <a href="https://gosmarterflow.com/privacy-policy">Privacy notice</a>.</p>
+      <p class="formnote">We email you the kit, then a few short emails about A2P from Smarter Flow. Every follow-up email has an unsubscribe link. We never sell your details. <a href="https://gosmarterflow.com/privacy-policy">Privacy notice</a>.</p>
     </form>
     <noscript><p class="small" style="margin-top:10px">This form needs JavaScript. You can open the free A2P Approval Agent kit here: <a href="kit/?lane=nojs">kit/</a>.</p></noscript>
   </section>
@@ -99,7 +99,7 @@
   <p>&copy; 2026 Smarter Flow. <a href="https://gosmarterflow.com/privacy-policy">Privacy notice</a></p>
 </div></footer>
 
-<script src="config.js?v=5.0.0"></script>
+<script src="config.js?v=5.1.0"></script>
 <script>
 /* Country list: [code, name, continent]. Tier comes from QUALIFY_RULES, never from this list. */
 var COUNTRIES = [
@@ -124,14 +124,19 @@ var COUNTRIES = [
   function country(code){for(var i=0;i<COUNTRIES.length;i++){if(COUNTRIES[i][0]===code)return COUNTRIES[i];}return [code,code,'Other'];}
   var started=false;
   f.addEventListener('focusin',function(){ if(!started){started=true;a2pEvent('a2p_form_start',{});} });
+  var home=btn;   /* the message lives right under the field it is about, so a phone keyboard never hides it */
   function need(msg, el){
+    [].forEach.call(f.querySelectorAll('[aria-invalid]'),function(x){x.removeAttribute('aria-invalid');x.removeAttribute('aria-describedby');});
+    var box=el&&el.closest?el.closest('.field'):null;
+    if(box) box.appendChild(st); else f.insertBefore(st,home);
     st.textContent=msg; st.className='status show';
-    [].forEach.call(f.querySelectorAll('[aria-invalid]'),function(x){x.removeAttribute('aria-invalid');});
-    if(el){ el.setAttribute('aria-invalid','true'); try{el.focus({preventScroll:false});}catch(e){el.focus();} }
+    if(el){ el.setAttribute('aria-invalid','true'); el.setAttribute('aria-describedby','fstatus'); try{el.focus({preventScroll:true});}catch(e){el.focus();} }
+    try{ (box||st).scrollIntoView({block:'center'}); }catch(e){}
     return false;
   }
   function check(){
     if(!val('first_name')) return need('Add your first name.', f.elements.first_name);
+    if(/https?:|www\.|@/i.test(val('first_name'))) return need('Just your first name, please.', f.elements.first_name);
     var e=val('email');
     if(!e) return need('Add your email. That is where the kit goes.', f.elements.email);
     if(!/^[^\s@<>]+@[^\s@<>]+\.[a-z]{2,}$/i.test(e)) return need('That email looks off. Check it and try again.', f.elements.email);
@@ -141,7 +146,7 @@ var COUNTRIES = [
     if(!val('revenue')) return need('Pick your rough monthly revenue.', f.querySelector('input[name=revenue]'));
     if(!val('hl')) return need('Tell us if you have a HighLevel account.', f.querySelector('input[name=hl]'));
     if(!val('gate')) return need('Answer the last question, yes or no. Either way you get the kit.', f.querySelector('input[name=gate]'));
-    st.className='status'; return true;
+    st.className='status'; f.insertBefore(st,home); return true;
   }
   function go(lane, a, sent){
     var q=new URLSearchParams();

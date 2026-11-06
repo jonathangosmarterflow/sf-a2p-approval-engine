@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
@@ -11,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=5.0.0">
+<link rel="stylesheet" href="style.css?v=5.1.0">
 </head>
 <body>
 <nav class="top"><div class="wrap"><a class="wordmark" href="https://gosmarterflow.com">Smarter<b>Flow</b></a></div></nav>
@@ -36,7 +37,7 @@
   <p>Registry compliance help from carrier-published templates, not legal advice. Nobody can promise a carrier decision or a review time; you click submit.</p>
   <p>&copy; 2026 Smarter Flow. <a href="https://gosmarterflow.com/privacy-policy">Privacy notice</a></p>
 </div></footer>
-<script src="config.js?v=5.0.0"></script>
+<script src="config.js?v=5.1.0"></script>
 <script>
 (function(){
   /* Re-checks the answers with the same rule as index.html (config.js). A visit without qualifying answers goes to
@@ -49,6 +50,8 @@
   a2pQueueFlush('');
   var sent=q.get('sent');
   var kl=document.getElementById('kitline');
+  if(sent==='t') kl.textContent='Test address: no email was sent. The A2P Approval Agent kit is right here.';
+  if(sent!=='1'&&sent!=='t'&&sent!=='0'&&sent!=='q') kl.textContent='The A2P Approval Agent kit (instructions, knowledge files, install steps) is yours either way, right here.';
   if(sent==='0'||sent==='q') kl.textContent="We couldn't send the email just now, so here it is: the A2P Approval Agent kit (instructions, knowledge files, install steps), free, nothing else needed.";
   if(QUALIFY_RULES.capacityFull) document.getElementById('capacity').hidden=false;
   var b=new URLSearchParams();
@@ -56,7 +59,7 @@
   var url=QUALIFY_RULES.bookingUrl+'?'+b.toString();
   var go=document.getElementById('go'), line=document.getElementById('auto'), n=3, stop=false;
   go.href=url;
-  function halt(){ if(!stop){stop=true; line.textContent='';} }
+  function halt(){ if(!stop){stop=true; line.textContent='Auto-open stopped. Tap "Pick my time now" when you are ready.';} }
   ['click','keydown','touchstart','scroll'].forEach(function(ev){ window.addEventListener(ev,halt,{once:true,passive:true}); });
   function tick(){ if(stop)return; if(n<=0){ location.href=url; return; }
     line.textContent='Opening your calendar in '+n+'...'; n--; setTimeout(tick,1000); }
