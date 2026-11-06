@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<title>Your free kit | Smarter Flow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="top"><div class="wrap"><a class="wordmark" href="https://gosmarterflow.com">Smarter<b>Flow</b></a></div></nav>
+<main><div class="wrap">
+  <section class="card primary kitcard" style="margin-top:32px">
+    <p class="eyebrow">Your free kit</p>
+    <h1 style="font-size:28px" id="head">Your kit is on its way</h1>
+    <p class="okline" id="sentline">Check your inbox in a few minutes. If it's not there, look in spam or promotions.</p>
+    <p>You don't have to wait for the email. The A2P Approval Agent kit (instructions, knowledge files, install steps) is right here, free, nothing else needed.</p>
+    <a class="btn" id="kit" href="kit/?utm_source=youtube&amp;utm_medium=video&amp;utm_campaign=j1-a2p&amp;utm_content=kit-lane">Open the free kit</a>
+    <p class="small" id="why" style="margin-top:14px"></p>
+  </section>
+  <section class="card">
+    <h2>Start here</h2>
+    <ol class="steps">
+      <li>Open the kit and copy the instructions into your own Claude or ChatGPT.</li>
+      <li>Run the website check on your own site and fix what it flags.</li>
+      <li>Let the agent write your Trust Center answers, then you click submit.</li>
+    </ol>
+    <p class="small">Stuck on something? Reply to the kit email, or use the contact link at the bottom of the kit page.</p>
+  </section>
+</div></main>
+<footer class="bottom"><div class="wrap">
+  <p>Registry compliance help from carrier-published templates, not legal advice. Nobody can promise a carrier decision or a review time; you click submit.</p>
+  <p>&copy; 2026 Smarter Flow. <a href="https://gosmarterflow.com/privacy-policy">Privacy notice</a></p>
+</div></footer>
+<script src="config.js"></script>
+<script>
+(function(){
+  /* The nurture path: the kit by email + on this page. No booking link here, ever. */
+  var q=new URLSearchParams(location.search), sent=q.get('sent'), why=q.get('why');
+  a2pQueueFlush('');
+  if(sent==='0'||sent==='q'){
+    document.getElementById('head').textContent='Your kit is ready';
+    document.getElementById('sentline').textContent="We couldn't send the email just now. Your kit is below, and it's the same kit.";
+  }
+  if(sent==='t') document.getElementById('sentline').textContent='Test address: no email was sent. The kit is below.';
+  if(why==='region') document.getElementById('why').textContent='Free calls are only open in some countries right now, so for you the kit is the best next step.';
+  a2pEvent('a2p_thanks_view',{sent:sent||'',lane:'nurture'});
+})();
+</script>
+</body>
+</html>

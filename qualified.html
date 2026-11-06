@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<title>Pick your time | Smarter Flow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="top"><div class="wrap"><a class="wordmark" href="https://gosmarterflow.com">Smarter<b>Flow</b></a></div></nav>
+<main><div class="wrap">
+  <section class="card primary" style="margin-top:32px">
+    <p class="eyebrow">You can book a free call</p>
+    <h1 style="font-size:28px">Pick a time with a Smarter Flow consultant</h1>
+    <p>30 minutes, free. Your consultant reviews your A2P setup with you. If you want it done for you, he quotes the work in hours at $55/hour. No pressure to buy on the call.</p>
+    <p class="capacity" id="capacity" hidden>This week's A2P call slots are full. Pick a time from next week.</p>
+    <!-- The calendar link is set by the script below ONLY when the answers qualify; the served HTML carries no booking link. -->
+    <a class="btn" id="go" href="index.html#get" style="margin-top:14px">Pick my time now</a>
+    <p class="small" style="margin-top:12px">Use the same email you just gave us, so your consultant sees your answers. Bring your website and your legal business name exactly as it is on your EIN letter (or run the kit's website check first). Never send passwords or the EIN letter itself.</p>
+    <p class="small quiet" id="auto" aria-live="polite"></p>
+  </section>
+  <section class="card kitcard">
+    <h2>Your free kit</h2>
+    <p id="kitline">The A2P Approval Agent kit (instructions, knowledge files, install steps) is yours either way. It is on its way to your inbox, and it is right here too.</p>
+    <a class="btn ghost" id="kit" href="kit/?utm_source=youtube&amp;utm_medium=video&amp;utm_campaign=j1-a2p&amp;utm_content=qualified-lane">Open the free kit</a>
+  </section>
+</div></main>
+<footer class="bottom"><div class="wrap">
+  <p>Registry compliance help from carrier-published templates, not legal advice. Nobody can promise a carrier decision or a review time; you click submit.</p>
+  <p>&copy; 2026 Smarter Flow. <a href="https://gosmarterflow.com/privacy-policy">Privacy notice</a></p>
+</div></footer>
+<script src="config.js"></script>
+<script>
+(function(){
+  /* Re-checks the answers with the same rule as index.html (config.js). A visit without qualifying answers goes to
+     thanks.html (no calendar on that path). Otherwise the non-PII params ride on to the shared booking page
+     ai.gosmarterflow.com/book (source, utm_*, q_*). No name, email or website is ever put in this URL.
+     Auto-open after 3 seconds, announced only by one quiet small-text line; any click, key, touch or scroll stops it. */
+  var q=new URLSearchParams(location.search);
+  var a={country:q.get('q_country')||'', gate:q.get('q_gate')||'', revenue:q.get('q_revenue')||'', hl:q.get('q_hl')||''};
+  if(!a2pQualified(a)){ q.set('why', a.gate!=='yes'?'gate':'region'); location.replace('thanks.html?'+q.toString()); return; }
+  a2pQueueFlush('');
+  var sent=q.get('sent');
+  var kl=document.getElementById('kitline');
+  if(sent==='0'||sent==='q') kl.textContent="We couldn't send the email just now, so here it is: the A2P Approval Agent kit (instructions, knowledge files, install steps), free, nothing else needed.";
+  if(QUALIFY_RULES.capacityFull) document.getElementById('capacity').hidden=false;
+  var b=new URLSearchParams();
+  ['source','utm_source','utm_medium','utm_campaign','utm_content','utm_term','q_country','q_continent','q_tier','q_revenue','q_hl','q_gate'].forEach(function(k){ if(q.get(k)) b.set(k,q.get(k).slice(0,80)); });
+  var url=QUALIFY_RULES.bookingUrl+'?'+b.toString();
+  var go=document.getElementById('go'), line=document.getElementById('auto'), n=3, stop=false;
+  go.href=url;
+  function halt(){ if(!stop){stop=true; line.textContent='';} }
+  ['click','keydown','touchstart','scroll'].forEach(function(ev){ window.addEventListener(ev,halt,{once:true,passive:true}); });
+  function tick(){ if(stop)return; if(n<=0){ location.href=url; return; }
+    line.textContent='Opening your calendar in '+n+'...'; n--; setTimeout(tick,1000); }
+  tick();
+})();
+</script>
+</body>
+</html>
