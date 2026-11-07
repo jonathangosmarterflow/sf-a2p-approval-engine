@@ -60,7 +60,9 @@
   document.getElementById('dfy').href='index.html?'+a2pUtm('buy').toString()+'#dfy';
   a2pEvent('a2p_buy_view',{why:why||''});
 
-  var MAX_TRIES=3, state='idle', tries=0, attempt=0, timer=null, instance=null, stripe=null, stripeReady=null, lastStatus=0;
+  /* Real Stripe.js resolves initEmbeddedCheckout and mounts BEFORE it has the client secret (live walk 2026-11-07), so the
+     state is "mounted" only when BOTH the mount and the session succeeded; a failed session fetch is the failure signal. */
+  var MAX_TRIES=3, state='idle', tries=0, attempt=0, timer=null, instance=null, stripe=null, stripeReady=null, lastStatus=0, gotSecret=false, didMount=false;
   function loadStripe(){
     if(stripeReady) return stripeReady;
     var p=new Promise(function(resolve,reject){
@@ -84,6 +86,11 @@
     status.innerHTML='The checkout is not open yet. Please check back soon, or email '+MAIL+' with any question.';
     a2pEvent('a2p_checkout',{state:'not-open'});
   }
+  function done(my){
+    if(my!==attempt||state!=='loading'||!gotSecret||!didMount) return;
+    clearTimeout(timer); state='mounted'; status.hidden=true;
+    a2pEvent('a2p_checkout',{state:'mounted'});
+  }
   function fail(my){
     if(my!==attempt||state!=='loading') return;
     if(lastStatus===503) return notOpen();
@@ -99,7 +106,7 @@
   }
   function init(){
     if(state==='loading'||state==='mounted'||tries>=MAX_TRIES) return;
-    destroyInstance(); tries++; attempt++; lastStatus=0;
+    destroyInstance(); tries++; attempt++; lastStatus=0; gotSecret=false; didMount=false;
     var my=attempt; state='loading';
     mountEl.hidden=false; status.hidden=false; status.className='pay-status'; status.textContent='Loading secure checkout...';
     timer=setTimeout(function(){ fail(my); }, O.checkoutTimeoutMs);
@@ -107,11 +114,14 @@
     loadStripe().then(function(){
       if(my!==attempt||state!=='loading') return;
       if(!stripe){ stripe=window.Stripe(O.stripePk); }
-      return stripe.initEmbeddedCheckout({fetchClientSecret:fetchClientSecret}).then(function(co){
+      var secret=function(){
+        return fetchClientSecret().then(function(cs){ if(my===attempt){ gotSecret=true; setTimeout(function(){ done(my); },0); } return cs; },
+          function(e){ fail(my); throw e; });
+      };
+      return stripe.initEmbeddedCheckout({fetchClientSecret:secret}).then(function(co){
         if(my!==attempt||state!=='loading'){ try{co.destroy();}catch(e){} return; }
-        instance=co; co.mount('#checkout');
-        clearTimeout(timer); state='mounted'; status.hidden=true;
-        a2pEvent('a2p_checkout',{state:'mounted'});
+        instance=co; co.mount('#checkout'); didMount=true;
+        done(my);
       });
     })['catch'](function(){ fail(my); });
   }
