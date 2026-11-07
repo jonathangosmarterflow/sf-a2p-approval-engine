@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<title>Thank you, your kit is on its way | Smarter Flow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=6.0.0">
+<!-- v6 2026-11-07: Stripe returns here (worker return_url thank-you.html?session_id=...). The kit is delivered by EMAIL
+     (his decision: he wants the email list); this page never shows the download link. -->
+</head>
+<body>
+<nav class="top"><div class="wrap"><a class="wordmark" href="https://gosmarterflow.com">Smarter<b>Flow</b></a></div></nav>
+<main><div class="wrap">
+  <section class="card primary" style="margin-top:32px" id="done">
+    <p class="eyebrow">Thank you</p>
+    <h1 style="font-size:28px">Your kit is on its way</h1>
+    <p class="okline" id="arrives">Your A2P Approval Agent kit arrives by email within the next few minutes.</p>
+    <p id="issues">If you have any issues, email <a href="mailto:jonathan@gosmarterflow.com">jonathan@gosmarterflow.com</a>.</p>
+    <p class="small">Not in your inbox? Look in spam or promotions, and check the email you typed at checkout.</p>
+  </section>
+  <section class="card">
+    <h2>When it arrives</h2>
+    <ol class="steps">
+      <li>Open the link in the email and download the zip.</li>
+      <li>Copy the instructions into your own Claude Project or ChatGPT Custom GPT, and upload the knowledge files.</li>
+      <li>Let the agent draft your Trust Center answers, check every line, then you click submit.</li>
+    </ol>
+  </section>
+  <section class="card" id="dfycard">
+    <h2>Want it done for you instead?</h2>
+    <p>A Smarter Flow consultant can review your setup with you on a free 30-minute call and quote the done-for-you work. Answer two quick questions to see if a call fits.</p>
+    <a class="btn ghost" id="dfy" href="index.html#dfy">See if a free call fits</a>
+  </section>
+</div></main>
+<footer class="bottom"><div class="wrap">
+  <p>Registry compliance help from carrier-published templates, not legal advice. Nobody can promise a carrier decision or a review time; you click submit.</p>
+  <p>&copy; 2026 Smarter Flow. <a href="https://gosmarterflow.com/privacy-policy">Privacy notice</a></p>
+</div></footer>
+<script src="config.js?v=6.0.0"></script>
+<script>
+(function(){
+  /* The session id stays out of every event and link. Only a "came from checkout" flag is recorded. */
+  var q=new URLSearchParams(location.search);
+  document.getElementById('dfy').href='index.html?'+a2pUtm('thank-you').toString()+'#dfy';
+  a2pEvent('a2p_thankyou_view',{state:q.get('session_id')?'checkout':'direct'});
+})();
+</script>
+</body>
+</html>

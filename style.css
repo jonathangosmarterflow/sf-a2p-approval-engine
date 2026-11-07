@@ -105,3 +105,32 @@ footer.bottom p{margin-bottom:8px}
 .btn:disabled{opacity:.7;cursor:progress}
 .kitcard .btn{margin-top:14px}
 .okline{font-size:15px;font-weight:600;color:var(--ink);background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 14px}
+/* v6 two lanes, DIY vs DFY (2026-11-07). Phone first: stacked cards; side by side from 760px. */
+.lanes{display:grid;gap:14px;margin:4px 0 26px}
+.lane{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 18px 20px;box-shadow:0 10px 30px rgba(79,70,229,.08)}
+.lane.diy{border-color:#d9d1f7}
+.lane h2{font-size:20px;margin-bottom:6px}
+.lanetag{font-family:var(--head);font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--pk);margin-bottom:6px}
+.lanewhat{font-size:15px;color:var(--muted);margin-bottom:14px}
+.price{font-size:16px;margin-bottom:8px}
+.price strong{font-family:var(--head);font-size:22px;color:var(--ink)}
+.lane .btn{font-size:17px;padding:15px 18px;min-height:52px}
+.center{text-align:center;margin-top:10px}
+.payslot{margin:14px 0 4px;min-height:60px}
+.pay-status{font-size:15px;color:var(--muted);padding:12px 0}
+.pay-status.fallback{color:var(--ink);background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.pay-status[hidden],#checkout[hidden]{display:none}
+.btn.sm{display:inline-block;width:auto;font-size:15px;padding:10px 16px;min-height:44px;margin-top:10px;box-shadow:none}
+#diy ul.three{margin-top:6px}
+@media (min-width:760px){
+  .lanes{grid-template-columns:1fr 1fr}
+  .lane{display:flex;flex-direction:column}
+  .lane .btn{margin-top:auto}
+}
+.hero .sub{margin-bottom:14px}
+@media (max-width:759px){
+  header.hero{padding-top:22px}
+  .lane{padding:14px 16px 16px}
+  .lane .price{margin-bottom:4px}
+  .lanes{gap:12px}
+}

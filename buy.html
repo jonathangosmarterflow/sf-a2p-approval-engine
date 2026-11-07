@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<title>The A2P Approval Agent kit, USD $1 | Smarter Flow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=6.0.0">
+<!-- v6 2026-11-07: the ONE checkout page (Stripe Embedded Checkout, worker api/checkout-session). DIY buttons and every
+     DFY answer that is not a fit land here. Never a price other than the USD $1 kit. -->
+</head>
+<body>
+<nav class="top"><div class="wrap"><a class="wordmark" href="https://gosmarterflow.com">Smarter<b>Flow</b></a></div></nav>
+<main><div class="wrap">
+  <section class="card primary" style="margin-top:28px" id="get">
+    <p class="lanetag">Do it yourself</p>
+    <h1 style="font-size:28px">The A2P Approval Agent kit</h1>
+    <p class="okline" id="why" hidden></p>
+    <p class="price"><strong>USD $1</strong> today. One payment, no subscription.</p>
+    <ul class="list">
+      <li>The AI agent for your own Claude or ChatGPT: it drafts your Trust Center answers, two sample messages and SMS policy wording from carrier-published templates.</li>
+      <li>The 7 checks, 7 knowledge files, the intake form and install steps. One zip, plus each file on its own.</li>
+      <li>Sent to the email you enter at checkout, a few minutes after you pay.</li>
+    </ul>
+    <div class="payslot">
+      <p class="pay-status" id="payStatus" role="status" aria-live="polite">Loading secure checkout...</p>
+      <div id="checkout"></div>
+    </div>
+    <p class="small" style="margin-top:12px">Secure checkout by Stripe. You review everything the agent writes and click submit yourself; nobody can promise a carrier decision or a review time.</p>
+  </section>
+  <section class="card">
+    <h2>Rather have it done for you?</h2>
+    <p>A Smarter Flow consultant can do it with you. Answer two quick questions to see if a free 30-minute call fits.</p>
+    <a class="btn ghost" id="dfy" href="index.html#dfy">See if a free call fits</a>
+  </section>
+</div></main>
+<footer class="bottom"><div class="wrap">
+  <p>Registry compliance help from carrier-published templates, not legal advice. For TCPA or state-law questions, ask your own lawyer.</p>
+  <p>&copy; 2026 Smarter Flow. <a href="https://gosmarterflow.com/privacy-policy">Privacy notice</a></p>
+</div></footer>
+<script src="config.js?v=6.0.0"></script>
+<script>
+(function(){
+  /* Stripe Embedded Checkout, module 1's pattern (scripts/sf-estimate-kit/site/index.html): explicit states loading ->
+     mounted or failed (retryable, up to 3 tries), never a spinner forever. The visitor clicked a buy button (or answered
+     the DFY check) to get here, so the session is created on load. The worker sets the amount; this page never does. */
+  var O=A2P_OFFER, q=new URLSearchParams(location.search), why=q.get('why');
+  var status=document.getElementById('payStatus'), mountEl=document.getElementById('checkout');
+  var MAIL='<a href="mailto:'+O.supportEmail+'">'+O.supportEmail+'</a>';
+  var wl=document.getElementById('why');
+  if(why==='gate'){ wl.textContent='No problem. The kit is the do-it-yourself path, and it has everything we use.'; wl.hidden=false; }
+  if(why==='region'){ wl.textContent='Free calls are only open in some countries right now, so for you the kit is the best next step.'; wl.hidden=false; }
+  document.getElementById('dfy').href='index.html?'+a2pUtm('buy').toString()+'#dfy';
+  a2pEvent('a2p_buy_view',{why:why||''});
+
+  var MAX_TRIES=3, state='idle', tries=0, attempt=0, timer=null, instance=null, stripe=null, stripeReady=null, lastStatus=0;
+  function loadStripe(){
+    if(stripeReady) return stripeReady;
+    var p=new Promise(function(resolve,reject){
+      var s=document.createElement('script'); s.src='https://js.stripe.com/v3/';
+      s.onload=function(){ if(typeof window.Stripe==='function'){ resolve(); } else { reject(new Error('no Stripe')); } };
+      s.onerror=function(){ reject(new Error('stripe.js failed')); };
+      document.head.appendChild(s);
+    });
+    stripeReady=p; p['catch'](function(){ if(stripeReady===p){ stripeReady=null; } });
+    return p;
+  }
+  function fetchClientSecret(){
+    return fetch('./'+O.checkoutUrl,{method:'POST',credentials:'same-origin'})
+      .then(function(r){ lastStatus=r.status; if(!r.ok) throw new Error('session '+r.status); return r.json(); })
+      .then(function(d){ if(!d||!d.clientSecret) throw new Error('no client secret'); return d.clientSecret; });
+  }
+  function destroyInstance(){ if(instance){ try{instance.destroy();}catch(e){} instance=null; } mountEl.innerHTML=''; }
+  function notOpen(){
+    state='failed'; clearTimeout(timer); destroyInstance(); mountEl.hidden=true; status.hidden=false;
+    status.className='pay-status fallback';
+    status.innerHTML='The checkout is not open yet. Please check back soon, or email '+MAIL+' with any question.';
+    a2pEvent('a2p_checkout',{state:'not-open'});
+  }
+  function fail(my){
+    if(my!==attempt||state!=='loading') return;
+    if(lastStatus===503) return notOpen();
+    state='failed'; clearTimeout(timer); destroyInstance(); mountEl.hidden=true; status.hidden=false;
+    status.className='pay-status fallback';
+    a2pEvent('a2p_checkout',{state:'failed'});
+    if(tries<MAX_TRIES){
+      status.innerHTML='The secure checkout did not load. Try again, or email '+MAIL+' and we will help.<br><button type="button" class="btn sm" id="payRetry">Try again</button>';
+      var b=document.getElementById('payRetry'); if(b){ b.addEventListener('click',init); }
+    } else {
+      status.innerHTML='The secure checkout did not load. Email '+MAIL+' and we will help.';
+    }
+  }
+  function init(){
+    if(state==='loading'||state==='mounted'||tries>=MAX_TRIES) return;
+    destroyInstance(); tries++; attempt++; lastStatus=0;
+    var my=attempt; state='loading';
+    mountEl.hidden=false; status.hidden=false; status.className='pay-status'; status.textContent='Loading secure checkout...';
+    timer=setTimeout(function(){ fail(my); }, O.checkoutTimeoutMs);
+    if(!O.stripePk){ lastStatus=503; return fail(my); }
+    loadStripe().then(function(){
+      if(my!==attempt||state!=='loading') return;
+      if(!stripe){ stripe=window.Stripe(O.stripePk); }
+      return stripe.initEmbeddedCheckout({fetchClientSecret:fetchClientSecret}).then(function(co){
+        if(my!==attempt||state!=='loading'){ try{co.destroy();}catch(e){} return; }
+        instance=co; co.mount('#checkout');
+        clearTimeout(timer); state='mounted'; status.hidden=true;
+        a2pEvent('a2p_checkout',{state:'mounted'});
+      });
+    })['catch'](function(){ fail(my); });
+  }
+  init();
+  window.__a2pCheckout={state:function(){return state;}, lastStatus:function(){return lastStatus;}};
+})();
+</script>
+</body>
+</html>
