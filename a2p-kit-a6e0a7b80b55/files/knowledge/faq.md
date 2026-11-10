@@ -1,8 +1,8 @@
-<!-- a2p-kit 1.0.1 | questions from the 2026-10-28 YouTube corpus (310 transcripts), answers from official sources | sources last verified 2026-10-28 -->
-> **a2p-kit 1.0.1** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
+<!-- a2p-kit 1.1.0 | questions from the 2026-10-28 YouTube corpus (310 transcripts), answers from official sources | sources last verified 2026-10-28 -->
+> **a2p-kit 1.1.0** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
 > HL nnnn = https://help.gohighlevel.com/support/solutions/articles/nnnn · Twilio nnnn = https://support.twilio.com/hc/en-us/articles/nnnn
 
-# FAQ: the 25 questions people ask most about A2P in HighLevel (plus the form vs widget question)
+# FAQ: the 25 questions people ask most about A2P in HighLevel (plus the form vs widget, subdomain and typical-path questions)
 
 The questions are the most repeated ones across 310 A2P videos (ranked by how many videos raise them). Every answer comes from an official source, never from a video.
 
@@ -87,4 +87,17 @@ Approved brand data can only be changed through HighLevel Support. Changing a ca
 - **Using HighLevel: start with Chat Widget Setup.** It is HighLevel's default, "recommended" path. HighLevel generates the consent widget, the samples, the opt-in description and the opt-in message, and locks the STOP/HELP, frequency and rates disclosures so the live widget matches the submission. You paste one snippet into your site's body or footer. Rules: it must be the only form collecting SMS consent on the submitted page, and the site still needs a privacy policy and terms with the SMS clauses. Choose Marketing, Informational, or Mixed (two independent unchecked boxes). Source: HL 155000008307 (modified 2026-09-11), HL 155000004539, HL 155000008722.
 - **Use a form (Manual Setup) when:** your site is not where consent happens (paper, QR code, kiosk, verbal, a lead form), your site runs a non-HighLevel form you keep, or the widget flow does not fit the program. Then the checkbox rules in `templates.md` section 3 apply in full, with the privacy and terms links in the form footer. Source: HL 155000007237.
 
-<!-- MAINTAINER NOTE, not for buyers: a free competitor tool, "A2P Wizard" (a2pwizard.com, shown by Clay Lawrence in video SPNlFZQxhRE, 2026-01-27), generates a site, form, privacy, terms, use-case text and samples from a business name and address. Positioning only: this kit differs by sourcing every line to HighLevel/Twilio text, the gap report, the SHAFT screen first and a human team for edge cases. The agent never mentions competitors. -->
+**27. My opt-in, privacy or terms page is missing. Can it live on a subdomain (like sms.mybusiness.com), or must it be on my main domain?**
+- **Opt-in page on a subdomain: allowed, with three conditions.** HighLevel: "Phone carriers allow subdomains (e.g. form.website.com) for A2P registration", when (1) the subdomain matches your brand (name, logo, look, feel), (2) it is obvious how people get to it (email, social posts, ads, or navigation from the main site), and (3) the page has the right CTIA disclosures and the right use case. Without a visible path "it can look like the subdomain exists only as a compliance front, which leads to rejections." Source: HL 155000007237, section "Using a Subdomain for A2P Registration" (modified 2026-07-30).
+- **The Website URL is still your MAIN business site,** on the same domain as your brand registration, "not just the page with your form" (code 30891). Source: HL 155000004746 (modified 2026-10-12).
+- **Chat Widget Setup:** the widget must load "on the website URL on your brand registration, not only on a subpage" (code 30896), so on that path the widget goes on the main site, not on a separate subdomain page. Source: HL 155000004746.
+- **Privacy policy and terms:** "a live, direct link on your own domain. A pop-up does not count", linked from the page the widget sits on (code 30908) or from your form footer (HL 155000007237). Whether a privacy or terms page on a subdomain counts as "your own domain" is not stated in HighLevel's help center: not covered by my sources. Safest: publish privacy and terms on the main domain (for example mybusiness.com/privacy-policy) and link them from the subdomain page.
+
+**28. What do most businesses pick? (the typical path)**
+A small local US business with an EIN that sends reminders and updates plus an occasional offer, well under 6,000 message segments a day, usually lands here:
+- **Brand:** Standard (an EIN means Standard, never sole proprietor), volume **Low Volume Standard** (up to 6,000 segments a day). Sources: HL 155000008140, HL 155000004539.
+- **Campaign:** Chat Widget Setup ("recommended") with the **Mixed** message type, which HighLevel turns into the **Low Volume Mixed** use case with two separate unchecked consent boxes. Sources: HL 155000008722, HL 155000004539, HL 155000008307.
+- **The rule that decides it:** pick Mixed only if your program really sends both promotional and informational texts; register what you actually send. Low Volume Mixed has the lowest throughput tier; pick something else if speed or scale matters. Sources: HL 155000008722, HL 155000000235.
+- Context, not a rule: in our review of 234 HighLevel A2P tutorials on YouTube (2026-10-28), 31 of the 38 that name a use-case pick chose Mixed (Low Volume Mixed), and 44 of the 45 that name a volume pick chose low volume.
+
+---

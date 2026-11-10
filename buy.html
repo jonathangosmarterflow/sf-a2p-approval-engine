@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=6.0.0">
+<link rel="stylesheet" href="style.css?v=6.0.3">
 <!-- v6 2026-11-07: the ONE checkout page (Stripe Embedded Checkout, worker api/checkout-session). DIY buttons and every
      DFY answer that is not a fit land here. Never a price other than the USD $1 kit. -->
 </head>
@@ -32,6 +32,7 @@
     <div class="payslot">
       <p class="pay-status" id="payStatus" role="status" aria-live="polite">Loading secure checkout...</p>
       <div id="checkout"></div>
+      <noscript><style>#payStatus{display:none}</style><p class="pay-status fallback">Checkout needs JavaScript. Turn it on and reload this page, or email <a href="mailto:jonathan@gosmarterflow.com">jonathan@gosmarterflow.com</a> with any question.</p></noscript>
     </div>
     <p class="small" style="margin-top:12px">Secure checkout by Stripe. You review everything the agent writes and click submit yourself; nobody can promise a carrier decision or a review time.</p>
   </section>

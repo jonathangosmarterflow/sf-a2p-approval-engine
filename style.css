@@ -134,3 +134,11 @@ footer.bottom p{margin-bottom:8px}
   .lane .price{margin-bottom:4px}
   .lanes{gap:12px}
 }
+
+/* 2026-11-09 design pass (REVIEW.md): spacing, line wraps and tap areas only. No copy, color or rule change. */
+h1,h2{text-wrap:balance}
+p,li,.price{text-wrap:pretty}
+.card p + .btn{margin-top:14px}
+.wordmark{display:inline-flex;align-items:center;min-height:44px}
+nav.top .wrap{padding-top:3px;padding-bottom:3px}
+footer.bottom a,.channel a{display:inline-block;padding:13px 0;margin:-13px 0}

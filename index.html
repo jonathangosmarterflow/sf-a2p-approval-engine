@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=6.0.0">
+<link rel="stylesheet" href="style.css?v=6.0.3">
 <!-- v6 2026-11-07: DIY (the USD $1 kit) vs DFY (the free call behind the $55/hour gate). Maintenance notes, the rule and the truth lint: README.md here (not published). -->
 </head>
 <body>
@@ -72,7 +72,7 @@
     <form id="gate" class="qualify" novalidate>
       <div class="field">
         <label for="f-country">Where is your business based?</label>
-        <select id="f-country" name="country" required></select>
+        <select id="f-country" name="country" required><option value="">Choose your country</option></select>
       </div>
       <fieldset class="field gate">
         <legend>If you were to work with us, are you willing to pay $55/hour for consulting?</legend>

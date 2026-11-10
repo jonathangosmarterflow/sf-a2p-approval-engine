@@ -1,5 +1,5 @@
-<!-- a2p-kit 1.0.1 | hand-built from official sources | sources last verified 2026-10-28 -->
-> **a2p-kit 1.0.1** (sources last verified 2026-10-28). Registry compliance information, not legal advice. For TCPA and state-law questions, ask your own lawyer.
+<!-- a2p-kit 1.1.0 | hand-built from official sources | sources last verified 2026-10-28 -->
+> **a2p-kit 1.1.0** (sources last verified 2026-10-28). Registry compliance information, not legal advice. For TCPA and state-law questions, ask your own lawyer.
 
 # After registration: staying compliant once you can text
 

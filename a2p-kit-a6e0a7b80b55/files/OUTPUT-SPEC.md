@@ -1,15 +1,15 @@
-# OUTPUT-SPEC: the exact package the A2P Approval Agent emits (a2p-kit 1.0.1)
+# OUTPUT-SPEC: the exact package the A2P Approval Agent emits (a2p-kit 1.1.0)
 
-The page builder (`../pages/build.py`) and any later automation parse this. The agent emits the human-readable package first (sections 1 to 12 below, in this order, with these exact headings) and ends with ONE fenced ```json block. The builder always reads the LAST ```json fence in the output.
+The Smarter Flow page builder and any later automation parse this; the buyer can ignore the JSON block. The agent emits the human-readable package first (sections 1 to 12 below, in this order, with these exact headings) and ends with ONE fenced ```json block. The builder always reads the LAST ```json fence in the output.
 
 ## A. The human-readable package (headings, in order)
 
 ```
 # A2P package for <business_name>
-Kit: a2p-kit 1.0.1 | sources last verified 2026-10-28 | Registry compliance, not legal advice.
+Kit: a2p-kit 1.1.0 | sources last verified 2026-10-28 | Registry compliance, not legal advice.
 ## 1. Eligibility screen            (clear / restricted / uncertain -> human review / prohibited -> STOP)
 ## 2. Brand path                    (decided, or CONDITIONAL with prerequisites + unknowns, or STOP)
-## 3. Website gap audit             (one row per check: ✅ verified / ❌ gap / ⚠️ could-not-verify + fix)
+## 3. Website gap audit             (one row per check: ✅ verified / ❌ gap / ⚠️ could-not-verify + fix; "Live, public, HTTPS, own domain" is its own row, ⚠️ unless a tool opened the URL)
 ## 4. Opt-in path and consent model (chat widget primary for HighLevel; or form; marketing_only / transactional_only / mixed)
 ## 5. Privacy Policy clause         (verbatim template; plus the "never mention selling or buying leads" check)
 ## 6. Terms SMS block               (filled template clauses 2a to 2e)
@@ -19,9 +19,10 @@ Kit: a2p-kit 1.0.1 | sources last verified 2026-10-28 | Registry compliance, not
 ## 10. Trust Center field sheet     (every field in screen order per hl-flow.md, with the value to type)
 ## 11. HighLevel Ask AI prompt      (one code block)
 ## 12. Before you click Submit      (pre-submit checklist incl. Business Profile name; toll-free note only if it fits; post-registration checklist offer)
+## 13. Pages I created for you     (only pages the buyer did not have: each in full, its source, where to publish it; omit when none)
 ```
 
-The package ends with the disclaimer line, then the JSON block. If the eligibility screen says STOP, the package is only sections 1 and 2 and the JSON carries `"eligibility": {"status": "prohibited", ...}` with every template field set to "".
+Before the package, the agent runs THE WALK in SYSTEM-PROMPT.md (one question per message). The package ends with the disclaimer line, then the JSON block. If the eligibility screen says STOP, the package is only sections 1 and 2 and the JSON carries `"eligibility": {"status": "prohibited", ...}` with every template field set to "".
 
 ## B. The JSON block (schema)
 
@@ -29,7 +30,7 @@ Required fields (always present; use "" or [] when not applicable, never omit):
 
 | Field | Type | Meaning |
 |---|---|---|
-| `kit_version` | string | "a2p-kit 1.0.1" |
+| `kit_version` | string | "a2p-kit 1.1.0" |
 | `last_verified` | string | "2026-10-28" |
 | `synthetic` | bool | true only for a fictional/demo business |
 | `business_name` | string | the name shown to texters (the DBA if one is declared, else the legal name) |
@@ -54,7 +55,7 @@ Required fields (always present; use "" or [] when not applicable, never omit):
 | `gaps` | array | `[{"item": str, "status": "verified" / "gap" / "could_not_verify", "note": str, "fix": str}]` |
 
 Optional fields (include when known; the page builder degrades gracefully without them):
-`dba_name`, `website` (https URL of the main site), `services_summary`, `contact` (`{"email", "phone", "address"}`, business contact only, never personal ID numbers), `sms_number`, `message_frequency`, `marketing_types`, `toll_free_privacy_clause` (only on a toll-free path), `disclaimer`.
+`dba_name`, `website` (https URL of the main site), `services_summary`, `contact` (`{"email", "phone", "address"}`, business contact only, never personal ID numbers), `sms_number`, `message_frequency`, `marketing_types`, `toll_free_privacy_clause` (only on a toll-free path), `disclaimer`, `pages_created` (`[{"page": "website" / "privacy" / "terms" / "optin", "source": "HighLevel sample 155000007237" / "templates.md" / "business copy", "publish_at": "https://..."}]`).
 
 Rules the JSON must obey:
 - **Never** include an EIN, SSN, date of birth, ID number, or the content of an uploaded document. `ein_present` is a boolean only.

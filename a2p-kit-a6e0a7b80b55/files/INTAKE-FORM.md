@@ -1,6 +1,6 @@
-# A2P intake form (a2p-kit 1.0.1, sources last verified 2026-10-28)
+# A2P intake form (a2p-kit 1.1.0, sources last verified 2026-10-28)
 
-Fill this in and paste it into your A2P Approval Agent chat, or just start chatting and the agent asks only for what is missing. Registry compliance help, not legal advice.
+Optional. Fill this in and paste it into your A2P Approval Agent chat, or just start chatting: the agent asks one thing at a time and skips what you already gave it. Registry compliance help, not legal advice.
 
 > **Protect your private data before you upload anything.**
 > - **Redact (black out) any SSN and the EIN digits on a document before you upload it.** The agent only needs to know that an EIN exists and the exact legal name and address as printed. You type the EIN yourself into HighLevel.
@@ -25,11 +25,11 @@ Fill this in and paste it into your A2P Approval Agent chat, or just start chatt
 - Business email for the registration (Standard brands: on your own domain):
 - Support phone or email customers can use:
 
-## 3. Your website
-- Main website URL (https://...):
-- Does it have a Privacy Policy page? URL:
-- Does it have a Terms page? URL:
-- Do you collect phone numbers on any website form today? Which page?
+## 3. Your website (no page yet? write "none" and the agent creates it)
+- Main website URL (https://...), or "none":
+- Privacy Policy page URL, or "none":
+- Terms & Conditions page URL, or "none":
+- Opt-in: how do people agree to get your texts today (website form, opt-in page, HighLevel chat widget, paper, verbal)? Form or page URL, or "none":
 
 ## 4. HighLevel
 - Do you use HighLevel (or a HighLevel-based platform)? (yes / no)

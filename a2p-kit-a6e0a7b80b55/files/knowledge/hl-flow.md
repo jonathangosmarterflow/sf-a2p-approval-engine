@@ -1,5 +1,5 @@
-<!-- a2p-kit 1.0.1 | hand-built from the HighLevel help-article corpus | sources last verified 2026-10-28 -->
-> **a2p-kit 1.0.1** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
+<!-- a2p-kit 1.1.0 | hand-built from the HighLevel help-article corpus | sources last verified 2026-10-28 -->
+> **a2p-kit 1.1.0** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
 
 # HighLevel A2P flow, screen by screen (the human clicks every button)
 
@@ -67,7 +67,7 @@ Why primary: it is HighLevel's default and recommended flow; HighLevel writes th
 Use it when consent is collected another way (an existing website form, paper form, Facebook lead form, QR code, kiosk, verbal), for a non-HighLevel form, or when the widget flow does not fit the program.
 - Campaign fields: **Campaign Use Case**, **Website URL**, **Use Case Description** (who sends, who receives, what, how they opt in; DBA sentence if needed), **Sample Messages**, **Additional Message Details** (links, phone numbers, age-gated, financial).
 - User consent fields: **Opt-In Method**, **Opt-in Form URL** (public, or a hosted image), **Description of Opt-In Flow** (where the number is given, what text is shown, that consent is optional, which messages are agreed to), **Opt-in Message**, **Privacy Policy URL**, **Terms & Conditions URL**.
-- Form placement rules (155000007237): consent checkboxes per message purpose, never pre-checked, never required to submit (even when the phone field is required); checkbox wording names the same message types as the description; Privacy Policy and Terms links in the FORM FOOTER, visible, not in a pop-up, not inside the checkbox text; a subdomain opt-in page is fine when it clearly matches the brand and the main site links to it.
+- Form placement rules (155000007237): consent checkboxes per message purpose, never pre-checked, never required to submit (even when the phone field is required); checkbox wording names the same message types as the description; Privacy Policy and Terms links in the FORM FOOTER, visible, not in a pop-up, not inside the checkbox text; a subdomain opt-in page is fine when it clearly matches the brand, the path to it is visible (email, social, ads or navigation from the main site) and it carries the CTIA disclosures; the Website URL stays the main business site, and the chat widget goes on the main site (see `faq.md` question 27).
 
 ## 3. AI Compliance Review and submit
 1. Click **Review Application**. HighLevel's AI compliance review checks the campaign and website data.
