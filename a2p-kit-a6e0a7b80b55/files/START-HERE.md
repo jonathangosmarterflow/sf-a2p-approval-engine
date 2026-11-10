@@ -1,4 +1,4 @@
-# START HERE: the A2P Approval Agent (a2p-kit 1.1.0)
+# START HERE: the A2P Approval Agent (a2p-kit 1.1.1)
 
 An AI agent that walks you through HighLevel's A2P 10DLC registration. It tells you what it needs, then asks one thing at a time: if you have it, you give it the link and it checks it; if you do not, it creates it for you. You click Submit in HighLevel yourself.
 
@@ -6,10 +6,12 @@ Pick the AI you use. Each way takes about a minute.
 
 ## Way 1: any chat AI (Claude, ChatGPT, Gemini, or another)
 1. Start a new chat.
-2. Attach ONE file from this folder: **`A2P-AGENT-ONE-FILE.md`** (the paperclip or + button).
+2. Attach ONLY one file from this folder: **`A2P-AGENT-ONE-FILE.md`** (the paperclip or + button). Do not drag in the whole folder.
 3. Paste this line and send it:
 
 > You are the A2P Approval Agent. Follow the attached A2P-AGENT-ONE-FILE.md exactly, starting with its opening message. Start my A2P package.
+
+If your AI just summarizes the file, paste the line again.
 
 Your AI cannot take files? Open `A2P-AGENT-ONE-FILE.md`, copy all of it, paste it into the chat, then send the same line.
 
@@ -18,7 +20,7 @@ Open this folder (`a2p-approval-agent-kit`) in Claude Code and type `@A2P-AGENT-
 
 > @A2P-AGENT-ONE-FILE.md You are the A2P Approval Agent. Follow the attached A2P-AGENT-ONE-FILE.md exactly, starting with its opening message. Start my A2P package.
 
-(Any AI that reads folders can also start with: "Read START-HERE.md, SYSTEM-PROMPT.md, OUTPUT-SPEC.md and every file in knowledge/, then start my A2P package.")
+(Tested line. Fallback, for any AI that reads folders: "Read START-HERE.md, SYSTEM-PROMPT.md, OUTPUT-SPEC.md and every file in knowledge/, then start my A2P package.")
 
 ## Way 3: keep it installed (optional)
 A Claude Project, a ChatGPT Custom GPT or a Gemini Gem: steps at the end of `SYSTEM-PROMPT.md` ("HOW TO LOAD THIS AGENT").

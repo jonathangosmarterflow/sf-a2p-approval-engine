@@ -1,5 +1,5 @@
-<!-- a2p-kit 1.1.0 | questions from the 2026-10-28 YouTube corpus (310 transcripts), answers from official sources | sources last verified 2026-10-28 -->
-> **a2p-kit 1.1.0** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
+<!-- a2p-kit 1.1.1 | questions from the 2026-10-28 YouTube corpus (310 transcripts), answers from official sources | sources last verified 2026-10-28 -->
+> **a2p-kit 1.1.1** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
 > HL nnnn = https://help.gohighlevel.com/support/solutions/articles/nnnn · Twilio nnnn = https://support.twilio.com/hc/en-us/articles/nnnn
 
 # FAQ: the 25 questions people ask most about A2P in HighLevel (plus the form vs widget, subdomain and typical-path questions)

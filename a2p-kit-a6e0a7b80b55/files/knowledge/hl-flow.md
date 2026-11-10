@@ -1,5 +1,5 @@
-<!-- a2p-kit 1.1.0 | hand-built from the HighLevel help-article corpus | sources last verified 2026-10-28 -->
-> **a2p-kit 1.1.0** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
+<!-- a2p-kit 1.1.1 | hand-built from the HighLevel help-article corpus | sources last verified 2026-10-28 -->
+> **a2p-kit 1.1.1** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
 
 # HighLevel A2P flow, screen by screen (the human clicks every button)
 

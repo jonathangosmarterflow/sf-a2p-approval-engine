@@ -1,4 +1,4 @@
-# OUTPUT-SPEC: the exact package the A2P Approval Agent emits (a2p-kit 1.1.0)
+# OUTPUT-SPEC: the exact package the A2P Approval Agent emits (a2p-kit 1.1.1)
 
 The Smarter Flow page builder and any later automation parse this; the buyer can ignore the JSON block. The agent emits the human-readable package first (sections 1 to 12 below, in this order, with these exact headings) and ends with ONE fenced ```json block. The builder always reads the LAST ```json fence in the output.
 
@@ -6,7 +6,7 @@ The Smarter Flow page builder and any later automation parse this; the buyer can
 
 ```
 # A2P package for <business_name>
-Kit: a2p-kit 1.1.0 | sources last verified 2026-10-28 | Registry compliance, not legal advice.
+Kit: a2p-kit 1.1.1 | sources last verified 2026-10-28 | Registry compliance, not legal advice.
 ## 1. Eligibility screen            (clear / restricted / uncertain -> human review / prohibited -> STOP)
 ## 2. Brand path                    (decided, or CONDITIONAL with prerequisites + unknowns, or STOP)
 ## 3. Website gap audit             (one row per check: ✅ verified / ❌ gap / ⚠️ could-not-verify + fix; "Live, public, HTTPS, own domain" is its own row, ⚠️ unless a tool opened the URL)
@@ -22,7 +22,7 @@ Kit: a2p-kit 1.1.0 | sources last verified 2026-10-28 | Registry compliance, not
 ## 13. Pages I created for you     (only pages the buyer did not have: each in full, its source, where to publish it; omit when none)
 ```
 
-Before the package, the agent runs THE WALK in SYSTEM-PROMPT.md (one question per message). The package ends with the disclaimer line, then the JSON block. If the eligibility screen says STOP, the package is only sections 1 and 2 and the JSON carries `"eligibility": {"status": "prohibited", ...}` with every template field set to "".
+Before the package, the agent runs THE WALK in SYSTEM-PROMPT.md (one question per message). While any field is "NOT PROVIDED", the Kit line ends with "| NOT READY TO SUBMIT" and a "Still needed before you submit" block listing each missing item sits between it and section 1. The package ends with the disclaimer line, then the JSON block. If the eligibility screen says STOP, the package is only sections 1 and 2 and the JSON carries `"eligibility": {"status": "prohibited", ...}` with every template field set to "".
 
 ## B. The JSON block (schema)
 
@@ -30,7 +30,7 @@ Required fields (always present; use "" or [] when not applicable, never omit):
 
 | Field | Type | Meaning |
 |---|---|---|
-| `kit_version` | string | "a2p-kit 1.1.0" |
+| `kit_version` | string | "a2p-kit 1.1.1" |
 | `last_verified` | string | "2026-10-28" |
 | `synthetic` | bool | true only for a fictional/demo business |
 | `business_name` | string | the name shown to texters (the DBA if one is declared, else the legal name) |
