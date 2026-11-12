@@ -6,54 +6,290 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
-<title>HighLevel A2P: do it yourself or done for you | Smarter Flow</title>
-<meta name="description" content="Get your HighLevel A2P registration right before you click submit. Do it yourself with the A2P Approval Agent kit (USD $1), or see if a free 30-minute call about doing it for you fits.">
+<title>The A2P Approval Agent for HighLevel, USD $1 | Smarter Flow</title>
+<meta name="description" content="One file for your own Claude, ChatGPT or Gemini. Paste your four links and it checks them against the top reasons A2P gets rejected in HighLevel, with the rejection code and the exact fix for each gap it finds. The kit is USD $1 today. Or see if a free 30-minute call about doing it for you fits.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=6.0.3">
-<!-- v6 2026-11-07: DIY (the USD $1 kit) vs DFY (the free call behind the $55/hour gate). Maintenance notes, the rule and the truth lint: README.md here (not published). -->
+<link rel="stylesheet" href="style.css?v=7.0.0">
+<!-- v7 2026-11-12: the lead magnet page. The USD $1 asset is SHOWN (one file, four links, one table, the package), then
+     the top rejection reasons, then DIY (the USD $1 kit) vs DFY (the free call behind the $55/hour gate, unchanged).
+     Maintenance notes, the rule and the truth lint: README.md here (not published). -->
 </head>
 <body>
-<nav class="top"><div class="wrap"><a class="wordmark" href="https://gosmarterflow.com">Smarter<b>Flow</b></a></div></nav>
+<!-- icon sprite: inline, no external asset, renders with images off -->
+<svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.6l4.4 4.4L19 7.4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z M14 3v5h5 M9 13h6 M9 17h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18z M3 12h18 M12 3c2.6 2.4 4 5.6 4 9s-1.4 6.600-4 9c-2.6-2.4-4-5.600-4-9s1.400-6.600 4-9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.600-3 8.300-7 10c-4-1.700-7-5.400-7-10V6l7-3z M9 12l2.200 2.200L15 10.400" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 4h12a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z M8.500 9h7 M8.500 12.500h7 M8.500 16h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M5 5h14a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z M8 12.400l2.600 2.600L16 9.600" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-clip" viewBox="0 0 24 24"><path d="M20 11.500l-8.200 8.200a5 5 0 0 1-7.100-7.100l8.500-8.500a3.400 3.400 0 0 1 4.800 4.800l-8.400 8.400a1.800 1.800 0 0 1-2.500-2.500l7.600-7.600" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V6 M6.500 11.500L12 6l5.500 5.500" fill="none" stroke="currentColor" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
 
-<header class="hero"><div class="wrap">
-  <p class="eyebrow">From the video: the 8 A2P questions</p>
-  <h1>Get your HighLevel A2P registration right before you click submit</h1>
-  <p class="sub">Two ways to do it. Pick yours.</p>
+<nav class="top"><div class="wrap wide"><a class="wordmark" href="https://gosmarterflow.com">Smarter<b>Flow</b></a></div></nav>
 
-  <div class="lanes">
-    <section class="lane diy" id="lane-diy">
+<header class="hero"><div class="wrap wide"><div class="hero-grid">
+  <div class="hero-copy">
+    <p class="eyebrow">HighLevel A2P texting registration</p>
+    <h1>Paste four links. See what could get your A2P rejected.</h1>
+    <p class="sub">The A2P Approval Agent is one file for your own Claude, ChatGPT or Gemini. It reads your pages, then names the rejection code and the exact fix for each gap it finds.</p>
+  </div>
+
+  <figure class="shot" id="shot">
+    <div class="shot-bar">
+      <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="chip file"><svg aria-hidden="true"><use href="#i-file"/></svg>A2P-AGENT-ONE-FILE.md</span>
+      <span class="chip plain">+ 4 links</span>
+    </div>
+    <ul class="shot-rows">
+      <li class="pass"><span class="ic" aria-hidden="true"><svg><use href="#i-check"/></svg></span><span class="sr">Pass:</span><span class="what">Website has more than one page</span></li>
+      <li class="gap"><span class="ic" aria-hidden="true"><svg><use href="#i-x"/></svg></span><span class="sr">Gap:</span><span class="what">Privacy policy shares your data</span><code>30932</code></li>
+      <li class="gap"><span class="ic" aria-hidden="true"><svg><use href="#i-x"/></svg></span><span class="sr">Gap:</span><span class="what">No SMS consent checkbox</span><code>30925</code></li>
+      <li class="gap roomy"><span class="ic" aria-hidden="true"><svg><use href="#i-x"/></svg></span><span class="sr">Gap:</span><span class="what">Terms page not found</span><code>30896</code></li>
+      <li class="unk"><span class="ic" aria-hidden="true">?</span><span class="sr">Could not check:</span><span class="what">Could not open your own domain</span></li>
+    </ul>
+    <figcaption class="shot-count"><span><b>9</b> pass</span><span><b>13</b> gaps</span><span><b>3</b> could not check</span><em>Fictional demo business</em></figcaption>
+  </figure>
+
+  <div class="hero-cta">
+    <section class="pick diy" id="lane-diy">
       <p class="lanetag">Do it yourself</p>
-      <h2>The A2P Approval Agent kit</h2>
-      <p class="price"><strong>USD $1</strong> today. One payment, no subscription.</p>
-      <p class="lanewhat">An AI agent for your own Claude, ChatGPT or Gemini. Attach one file, paste one line. Sent to your email.</p>
       <a class="btn" id="go-diy" href="buy.html">Get the kit for USD $1</a>
+      <p class="price"><strong>USD $1</strong> today. One payment, no subscription.</p>
     </section>
-    <section class="lane dfy" id="lane-dfy">
+    <section class="pick dfy" id="lane-dfy">
       <p class="lanetag">Done for you</p>
-      <h2>A free 30-minute call</h2>
-      <p class="lanewhat">A Smarter Flow consultant reviews your setup with you and estimates the hours for the done-for-you work. Two quick questions first.</p>
       <a class="btn ghost" id="go-dfy" href="#dfy">See if a free call fits</a>
+      <p class="pickwhat">A free 30-minute call with a Smarter Flow consultant. Two quick questions first.</p>
     </section>
   </div>
-</div></header>
+</div></div></header>
 
-<main><div class="wrap">
+<main>
 
-  <!-- VIDEO: replace this block with the YouTube embed once the video is published (README.md, "Video id").
-       Embed shape: <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" title="HighLevel A2P: the 8 questions" allow="encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe> -->
-  <div class="video" id="video">The video goes here</div>
+<section class="see" id="see"><div class="wrap wide">
+  <p class="eyebrow">See it work</p>
+  <h2 class="big">What you get for a dollar, in four steps</h2>
+  <p class="lead">Real output from our rehearsed run of the kit on a fictional demo business, Ridgeline Demo Heating &amp; Air LLC. Its demo site sits on our test address; the domain ridgeline-demo.example is made up.</p>
+
+  <ol class="steps4">
+
+    <li class="step s1" id="step-1">
+      <div class="step-head"><span class="num" aria-hidden="true">1</span><div>
+        <h3>One file, one line</h3>
+        <p>Attach the file (plain text) to a new chat. Paste the line. That is the whole install.</p>
+      </div></div>
+      <div class="mock chat">
+        <div class="mock-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="mock-title">New chat</span><span class="ais"><b>Claude</b><b>ChatGPT</b><b>Gemini</b></span></div>
+        <div class="composer">
+          <span class="chip file"><svg aria-hidden="true"><use href="#i-file"/></svg>A2P-AGENT-ONE-FILE.md</span>
+          <p class="typed">You are the A2P Approval Agent. Follow the attached A2P-AGENT-ONE-FILE.md exactly, starting with its opening message. Start my A2P package.<span class="caret" aria-hidden="true"></span></p>
+          <div class="composer-row" aria-hidden="true"><span class="clip"><svg><use href="#i-clip"/></svg></span><span class="send"><svg><use href="#i-up"/></svg></span></div>
+        </div>
+        <div class="reply">
+          <p class="pkg-k">Its first reply</p>
+          <p>It lists the 8 things it needs, then asks only the first one.</p>
+          <p class="bubble"><b>1 of 8:</b> What will your texts be about, and who receives them?</p>
+        </div>
+      </div>
+    </li>
+
+    <li class="step s2" id="step-2">
+      <div class="step-head"><span class="num" aria-hidden="true">2</span><div>
+        <h3>Your four links</h3>
+        <p>It asks what you text and your legal name first. Then paste all four links at once.</p>
+      </div></div>
+      <div class="mock links">
+        <div class="mock-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="mock-title">Here are my links</span><span class="demo-tag">Fictional demo business</span></div>
+        <ul class="linkrows">
+          <li><span class="lic" aria-hidden="true"><svg><use href="#i-globe"/></svg></span><span class="ll"><b>Website</b><span>ridgeline-demo.example</span></span></li>
+          <li><span class="lic" aria-hidden="true"><svg><use href="#i-shield"/></svg></span><span class="ll"><b>Privacy policy</b><span>ridgeline-demo.example/privacy-policy.html</span></span></li>
+          <li><span class="lic" aria-hidden="true"><svg><use href="#i-doc"/></svg></span><span class="ll"><b>Terms</b><span>ridgeline-demo.example/terms.html</span></span></li>
+          <li><span class="lic" aria-hidden="true"><svg><use href="#i-box"/></svg></span><span class="ll"><b>Opt-in page</b><span>ridgeline-demo.example/contact.html</span></span></li>
+        </ul>
+        <p class="mock-note"><b>Missing a page?</b> Say so. It drafts it from HighLevel's sample pages and carrier-published templates.<br><b>Your AI cannot open links?</b> Paste the page text when it asks. What it cannot read stays "Could not check".</p>
+      </div>
+    </li>
+
+    <li class="step s3" id="step-3">
+      <div class="step-head"><span class="num" aria-hidden="true">3</span><div>
+        <h3>One table</h3>
+        <p>One row per check: what it saw on your page, the HighLevel rejection code for that gap, and the exact fix.</p>
+      </div></div>
+      <div class="mock result">
+        <div class="mock-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="mock-title">A2P Approval Agent</span><span class="demo-tag">Fictional demo business</span></div>
+        <table class="rt">
+          <thead><tr><th scope="col">Check</th><th scope="col">Status</th><th scope="col">What I saw</th><th scope="col">Rejection code</th><th scope="col">Exact fix</th></tr></thead>
+          <tbody>
+            <tr class="pass">
+              <th scope="row"><small>Website</small>More than one page</th>
+              <td class="st" data-l="Status"><span class="ic" aria-hidden="true"><svg><use href="#i-check"/></svg></span>Pass</td>
+              <td data-l="What I saw">Home, Services, About and Contact pages</td>
+              <td class="code none" data-l="Rejection code"></td>
+              <td class="fix none" data-l="Exact fix"></td>
+            </tr>
+            <tr class="gap">
+              <th scope="row"><small>Website, all pages</small>Legal name matches the EIN letter</th>
+              <td class="st" data-l="Status"><span class="ic" aria-hidden="true"><svg><use href="#i-x"/></svg></span>Gap</td>
+              <td data-l="What I saw">The header says "Ridgeline Heating and Air" and the footer says "&copy; 2026 Ridgeline Heating and Air". "Demo" and "LLC" are missing, and it says "and" where the letter has "&amp;".</td>
+              <td class="code" data-l="Rejection code"><code>30907</code> Brand rejection "business name does not match"</td>
+              <td class="fix" data-l="Exact fix">On every page, change the header to <b>Ridgeline Demo Heating &amp; Air LLC</b> and the footer to <b>&copy; 2026 Ridgeline Demo Heating &amp; Air LLC</b>.</td>
+            </tr>
+            <tr class="gap">
+              <th scope="row"><small>Privacy policy</small>No sentence about sharing or selling data for marketing</th>
+              <td class="st" data-l="Status"><span class="ic" aria-hidden="true"><svg><use href="#i-x"/></svg></span>Gap</td>
+              <td data-l="What I saw">"We may share your information with trusted partners for their marketing."</td>
+              <td class="code" data-l="Rejection code"><code>30932</code></td>
+              <td class="fix" data-l="Exact fix">Delete that sentence. Don't reword it yourself; if you want different wording, ask your own counsel.</td>
+            </tr>
+            <tr class="gap roomy">
+              <th scope="row"><small>Terms</small>Terms page exists</th>
+              <td class="st" data-l="Status"><span class="ic" aria-hidden="true"><svg><use href="#i-x"/></svg></span>Gap</td>
+              <td data-l="What I saw">Page not found (HTTP 404)</td>
+              <td class="code" data-l="Rejection code"><code>30896</code></td>
+              <td class="fix" data-l="Exact fix">I create it at item 6 (your terms).</td>
+            </tr>
+            <tr class="gap roomy">
+              <th scope="row"><small>Opt-in, contact form</small>SMS consent checkbox, never pre-checked</th>
+              <td class="st" data-l="Status"><span class="ic" aria-hidden="true"><svg><use href="#i-x"/></svg></span>Gap</td>
+              <td data-l="What I saw">Name, Phone, Email, Message and a "Send" button. There's no checkbox.</td>
+              <td class="code" data-l="Rejection code"><code>30925</code></td>
+              <td class="fix" data-l="Exact fix">Fixed at item 7 (your opt-in), with the Chat Widget or a form with checkboxes.</td>
+            </tr>
+            <tr class="unk">
+              <th scope="row"><small>Website</small>Live, public, HTTPS, on your own domain</th>
+              <td class="st" data-l="Status"><span class="ic" aria-hidden="true">?</span>Could not check</td>
+              <td data-l="What I saw">The pages opened over HTTPS on the test address. I couldn't open ridgeline-demo.example.</td>
+              <td class="code none" data-l="Rejection code"></td>
+              <td class="fix" data-l="Exact fix">Publish on your own domain and open it in a private window before you submit.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="rt-count"><span class="pass"><b>9</b> pass</span><span class="gap"><b>13</b> gaps</span><span class="unk"><b>3</b> could not check</span><em>Totals of the full run, 25 checks. A few rows shown, shortened.</em></p>
+        <p class="mock-note">The codes come from HighLevel's published rejection list. A code names the rule a gap falls under, not a carrier's decision.</p>
+      </div>
+    </li>
+
+    <li class="step s4" id="step-4">
+      <div class="step-head"><span class="num" aria-hidden="true">4</span><div>
+        <h3>Your package</h3>
+        <p>The drafted answers for the Trust Center, plus one prompt for HighLevel's Ask AI. You read it. You approve it.</p>
+      </div></div>
+      <div class="mock pkg">
+        <div class="mock-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="mock-title">A2P package for Ridgeline Demo Heating &amp; Air LLC</span><span class="demo-tag">Fictional demo business</span></div>
+        <div class="pkg-grid">
+          <div class="pkg-part">
+            <p class="pkg-h">Campaign answers</p>
+            <p class="pkg-k">Sample message</p>
+            <p class="bubble">Ridgeline Demo Heating &amp; Air LLC: Hi [First Name], your appointment is scheduled for [Date] at [Time]. Reply STOP to unsubscribe.</p>
+          </div>
+          <div class="pkg-part">
+            <p class="pkg-h">Trust Center field sheet</p>
+            <dl class="fields">
+              <div><dt>Legal business name</dt><dd>Ridgeline Demo Heating &amp; Air LLC</dd></div>
+              <div><dt>Setup method</dt><dd>Chat Widget Setup</dd></div>
+              <div><dt>Messaging use case</dt><dd>Mixed</dd></div>
+            </dl>
+          </div>
+          <div class="pkg-part span">
+            <p class="pkg-h">The prompt for HighLevel's Ask AI</p>
+            <p class="prompt">Help me register A2P 10DLC for Ridgeline Demo Heating &amp; Air LLC. Brand path: Low Volume Standard. <span class="dim">[the drafted answers]</span> Before you save anything, show me every answer you will enter, so I can check it against my EIN letter and my website. Do not submit anything for me; I click Submit myself.</p>
+          </div>
+        </div>
+        <p class="pkg-also"><b>Also inside:</b> the privacy policy clause, the terms SMS block, the consent checkbox text, the opt-in, HELP and STOP replies, and a checklist to tick before you submit.</p>
+        <p class="stamp"><span class="ic" aria-hidden="true"><svg><use href="#i-check"/></svg></span><span><b>You approve it.</b> Our agent never submits anything and never works inside HighLevel.</span></p>
+      </div>
+    </li>
+
+  </ol>
+
+  <div class="midcta">
+    <a class="btn" id="go-diy-3" href="buy.html">Get the kit for USD $1</a>
+    <p class="small">It's a dollar today. That may change. Sent to your email a few minutes after you pay.</p>
+  </div>
+</div></section>
+
+<section class="why" id="reasons"><div class="wrap wide">
+  <p class="eyebrow">Why it checks these</p>
+  <h2 class="big">The top reasons A2P gets rejected</h2>
+  <p class="lead">From HighLevel's own rejection codes, in five groups.</p>
+  <ul class="legend">
+    <li><span class="mk ai" aria-hidden="true"></span>The agent checks it from your links</li>
+    <li><span class="mk both" aria-hidden="true"></span>The agent checks part, you confirm the rest</li>
+    <li><span class="mk you" aria-hidden="true"></span>You check it (the agent asks you)</li>
+  </ul>
+  <p class="legend-note">What the agent cannot open or see, it marks "Could not check" and asks you.</p>
+  <div class="groups">
+    <section class="group">
+      <h3>Name</h3>
+      <ul>
+        <li><span class="mk both" aria-hidden="true"></span>Name doesn't match IRS letter<span class="sr"> (the agent checks part, you confirm the rest)</span></li>
+        <li><span class="mk both" aria-hidden="true"></span>Gmail as the business email<span class="sr"> (the agent checks part, you confirm the rest)</span></li>
+        <li><span class="mk you" aria-hidden="true"></span>Sole prop while you have an EIN<span class="sr"> (you check it)</span></li>
+      </ul>
+    </section>
+    <aside class="downfall">
+      <p class="lanetag">A common downfall</p>
+      <p class="downfall-h">Many owners do not know their exact legal name.</p>
+      <p>It is on your IRS letter (CP 575 or 147C). Copy it letter for letter, "LLC" or not, into the registration and your Business Profile. Type it for the agent; you do not need to upload the letter.</p>
+    </aside>
+    <section class="group">
+      <h3>Website</h3>
+      <ul>
+        <li><span class="mk ai" aria-hidden="true"></span>Form page, not your main site<span class="sr"> (the agent checks it from your links)</span></li>
+        <li><span class="mk ai" aria-hidden="true"></span>Thin site, no text program<span class="sr"> (the agent checks it from your links)</span></li>
+      </ul>
+    </section>
+    <section class="group">
+      <h3>Privacy + terms</h3>
+      <ul>
+        <li><span class="mk ai" aria-hidden="true"></span>Privacy policy shares your data<span class="sr"> (the agent checks it from your links)</span></li>
+        <li><span class="mk ai" aria-hidden="true"></span>Terms missing SMS rules<span class="sr"> (the agent checks it from your links)</span></li>
+      </ul>
+    </section>
+    <section class="group">
+      <h3>Opt-in</h3>
+      <ul>
+        <li><span class="mk ai" aria-hidden="true"></span>Opt-in consent can't be seen<span class="sr"> (the agent checks it from your links)</span></li>
+        <li><span class="mk ai" aria-hidden="true"></span>No STOP, rates or frequency wording<span class="sr"> (the agent checks it from your links)</span></li>
+        <li><span class="mk ai" aria-hidden="true"></span>Other forms on the page<span class="sr"> (the agent checks it from your links)</span></li>
+        <li><span class="mk both" aria-hidden="true"></span>Box required or bundled<span class="sr"> (the agent checks part, you confirm the rest)</span></li>
+      </ul>
+    </section>
+    <section class="group">
+      <h3>Campaign</h3>
+      <ul>
+        <li><span class="mk both" aria-hidden="true"></span>Description doesn't match what you send<span class="sr"> (the agent checks part, you confirm the rest)</span></li>
+        <li><span class="mk you" aria-hidden="true"></span>Samples missing brand or STOP<span class="sr"> (you check it)</span></li>
+        <li><span class="mk both" aria-hidden="true"></span>Business type not allowed<span class="sr"> (the agent checks part, you confirm the rest)</span></li>
+      </ul>
+    </section>
+  </div>
+</div></section>
+
+<div class="wrap">
+
+  <!-- VIDEO: replace this block with the YouTube embed once the video is published (README.md, "Video id"), and drop
+       the hidden attribute. v7: the empty placeholder is hidden until the video id exists.
+       Embed shape: <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" title="HighLevel A2P with AI: the fast way, then the checks" allow="encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe> -->
+  <div class="video" id="video" hidden>The video goes here</div>
   <p class="channel">More on the <a href="https://www.youtube.com/@JonnyTheNomad">Jonny the Nomad</a> channel</p>
+
+  <h2 class="big choose" id="choose">Two ways to do it. Pick yours.</h2>
 
   <section class="card" id="diy">
     <p class="lanetag">Do it yourself</p>
     <h2>What is in the USD $1 kit</h2>
     <ul class="three">
-      <li><strong>The 8 questions.</strong> Your texts, legal name, contact details, website, privacy policy, terms, opt-in and Business Profile name.</li>
-      <li><strong>An AI agent that drafts the writing.</strong> It asks one thing at a time, checks what you have and drafts what is missing from carrier-published templates. You check every line; it is not legal advice.</li>
-      <li><strong>Every file, easy to download.</strong> One file to start in any AI, plus the knowledge files and the intake form. One zip, plus each file on its own.</li>
-      <li><strong>You click submit.</strong> Nothing is ever submitted for you, and nobody can promise a carrier decision or a review time.</li>
+      <li><strong>One file is all you need.</strong> A2P-AGENT-ONE-FILE.md is plain text. Attach it in Claude, ChatGPT, Gemini or another chat AI, paste one line.</li>
+      <li><strong>It checks what you have.</strong> It asks for 8 things, one at a time. Paste your links and it checks them in one table, with the rejection code for each gap.</li>
+      <li><strong>It drafts what is missing.</strong> Your campaign description, two sample messages, policy wording and Trust Center answers, from carrier-published templates. You check every line; it is not legal advice.</li>
+      <li><strong>One zip, by email.</strong> The one file, plus the same agent as separate files if you want to keep it installed. You do not need those to start.</li>
+      <li><strong>You approve it.</strong> Our agent never submits anything, and nobody can promise a carrier decision or a review time.</li>
     </ul>
     <a class="btn" id="go-diy-2" href="buy.html">Get the kit for USD $1</a>
     <p class="small center">Secure checkout. The download link arrives by email a few minutes after you pay.</p>
@@ -87,11 +323,12 @@
     <noscript><p class="small" style="margin-top:10px">This check needs JavaScript. The do-it-yourself kit is here: <a href="buy.html">USD $1 kit</a>.</p></noscript>
   </section>
 
-</div></main>
+</div>
+</main>
 
 <footer class="bottom"><div class="wrap">
   <p>Registry compliance help from carrier-published templates, not legal advice. For TCPA or state-law questions, ask your own lawyer.</p>
-  <p>The demo business in the video (Ridgeline Demo Heating &amp; Air LLC) is fictional. Nothing in the video was submitted to any carrier.</p>
+  <p>The demo business on this page and in the video (Ridgeline Demo Heating &amp; Air LLC) is fictional. Nothing shown was submitted to any carrier.</p>
   <p>&copy; 2026 Smarter Flow. <a href="https://gosmarterflow.com/privacy-policy">Privacy notice</a></p>
 </div></footer>
 
@@ -117,9 +354,10 @@ var COUNTRIES = [
   sel.innerHTML='<option value="">Choose your country</option>'+COUNTRIES.map(function(c){return '<option value="'+c[0]+'">'+c[1]+'</option>';}).join('');
   function val(name){var el=f.querySelector('[name="'+name+'"]:checked')||f.elements[name];return el&&el.value!=null?String(el.value).trim():'';}
   function country(code){for(var i=0;i<COUNTRIES.length;i++){if(COUNTRIES[i][0]===code)return COUNTRIES[i];}return [code,code,'Other'];}
-  /* DIY buttons keep this visit's utm_* on the way to the checkout page */
-  ['go-diy','go-diy-2'].forEach(function(id){
-    var a=document.getElementById(id); a.href='buy.html?'+a2pUtm(id==='go-diy'?'diy-top':'diy-card').toString();
+  /* DIY buttons keep this visit's utm_* on the way to the checkout page (v7: a third button under the four steps) */
+  var DIY={'go-diy':'diy-top','go-diy-3':'diy-steps','go-diy-2':'diy-card'};
+  Object.keys(DIY).forEach(function(id){
+    var a=document.getElementById(id); if(!a) return; a.href='buy.html?'+a2pUtm(DIY[id]).toString();
     a.addEventListener('click',function(){ a2pEvent('a2p_lane_click',{lane:'diy'}); });
   });
   document.getElementById('go-dfy').addEventListener('click',function(e){
