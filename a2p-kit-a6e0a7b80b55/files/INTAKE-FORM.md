@@ -1,4 +1,4 @@
-# A2P intake form (a2p-kit 1.1.1, sources last verified 2026-10-28)
+# A2P intake form (a2p-kit 1.2.0, sources last verified 2026-10-28)
 
 Optional. Fill this in and paste it into your A2P Approval Agent chat, or just start chatting: the agent asks one thing at a time and skips what you already gave it. Registry compliance help, not legal advice.
 

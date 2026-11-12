@@ -1,5 +1,5 @@
-<!-- a2p-kit 1.1.1 | built from the Smarter Flow a2p knowledge base | sources last verified 2026-10-28 -->
-> **a2p-kit 1.1.1** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
+<!-- a2p-kit 1.2.0 | built from the Smarter Flow a2p knowledge base | sources last verified 2026-10-28 -->
+> **a2p-kit 1.2.0** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
 > A bare article number like 155000005200 means https://help.gohighlevel.com/support/solutions/articles/155000005200 .
 
 # A2P 10DLC Requirements: living knowledge base (v1.1)
@@ -195,7 +195,13 @@ Review time varies and is outside anyone's control. This kit never quotes a numb
 ---
 
 ## Automation reality (why the human submits)
-- No public HighLevel help article documents an A2P API (not re-verifiable either way, 2026-10-28). The Trust Center is a UI flow (Chat Widget Setup or Manual Setup + AI Compliance Review). So the automation layer is compliance PREP (audit the site, prefill every answer, fill the templates) plus an Ask AI prompt; **the human clicks submit**. Never automate inside the HighLevel UI.
+- **HighLevel's own Ask AI now runs A2P registration** (HL "Ask AI Assistant" 155000005327, modified 2026-11-10, last verified 2026-11-12). Its Phone & Messaging list says: "A2P Registration: Full A2P Trust Center registration workflow, brand submission, TCR polling, and resubmission on rejection". So Ask AI can enter the answers and submit the brand and campaign inside your sub-account.
+- **Confirmation before every write** (155000005327, last verified 2026-11-12): "For any write, update, or delete action, Ask AI will present a confirmation screen and require your approval before executing the change." Read every answer before you approve; what is submitted is still your responsibility.
+- **Ask AI cannot install the chat widget** (155000005327, last verified 2026-11-12): "Chat Widget: No standalone configuration, cannot deploy or configure chat widgets directly"; Website Builder (Sites): "No direct access, only Funnels are available". You paste the widget code into your website yourself, and it "should be live and publicly accessible on the submitted page before you run the compliance review and complete final submission" (155000008307, last verified 2026-11-12).
+- **Who has Ask AI** (155000005327, last verified 2026-11-12): "included for agency admins and agency users on HighLevel agency plans, subject to fair-use limits. Sub-account admins and users can access Ask AI through pay-per-use billing or an eligible AI Employee subscription." What it costs you: check your own HighLevel account.
+- **Campaigns auto-submit after brand approval** (HighLevel changelog "A2P campaigns now auto submitted after brand approval", https://ideas.gohighlevel.com/changelog/a2p-campaigns-now-auto-submitted-after-brand-approval , no date on the page, last verified 2026-11-12): "As soon as your A2P brand is approved, your campaign will now be submitted automatically, no manual action required." So every page, the opt-in and every campaign answer must be ready BEFORE you submit the brand.
+- **This kit's agent never submits and never works inside HighLevel.** It prepares and checks; you enter the answers (or let Ask AI enter them, approving each save yourself) and you approve the submission. Never give anyone your HighLevel login.
+- No public HighLevel help article documents an A2P API (not re-verifiable either way, 2026-10-28). The Trust Center is a UI flow (Chat Widget Setup or Manual Setup + AI Compliance Review); Ask AI is HighLevel's own assistant inside that UI, not an API.
 - Twilio's own APIs (BrandRegistration with failure reasons, mock mode) need direct Twilio access, not HighLevel's managed path. The TCR CSP API is gated to onboarded CSPs.
 
 ## In this KB before and NOT re-verifiable from public sources (2026-10-28)

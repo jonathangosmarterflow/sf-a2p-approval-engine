@@ -1,9 +1,9 @@
-<!-- a2p-kit 1.1.1 | hand-built from the HighLevel help-article corpus | sources last verified 2026-10-28 -->
-> **a2p-kit 1.1.1** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
+<!-- a2p-kit 1.2.0 | hand-built from the HighLevel help-article corpus | sources last verified 2026-10-28 -->
+> **a2p-kit 1.2.0** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
 
 # HighLevel A2P flow, screen by screen (the human clicks every button)
 
-Every step comes from the public HighLevel help center. Where the help center shows only a screenshot or names no field, this file says so instead of guessing (section 8). Nothing here is automated inside HighLevel: the AI prefills the answers, you type or paste them and click Submit.
+Every step comes from the public HighLevel help center. Where the help center shows only a screenshot or names no field, this file says so instead of guessing (section 8). This kit automates nothing inside HighLevel: the agent prefills the answers, you type or paste them (or let HighLevel's own Ask AI enter them, section 9) and you click Submit.
 
 Primary sources (open these if the screen looks different):
 - Brand: https://help.gohighlevel.com/support/solutions/articles/155000008140 (modified 2026-09-29)
@@ -107,3 +107,14 @@ Help (?) button (top right) > **Start Chat** > **Agent Chat**. Include brand and
 - The fee amounts shown in-app at submission (the in-app amount wins).
 - Dropdown options for Business type, Industry, Job position.
 - Whether the Chat Widget path lets you edit the auto-generated description (help text says read-only).
+- The exact confirmation screen Ask AI shows for an A2P save or submit, whether Ask AI runs Review Application before it submits, and the date Ask AI gained A2P (not found, 2026-11-12).
+
+## 9. HighLevel's Ask AI and A2P (last verified 2026-11-12)
+Source: HL "Ask AI Assistant" https://help.gohighlevel.com/support/solutions/articles/155000005327 (modified 2026-11-10), unless noted.
+1. **What it does:** "A2P Registration: Full A2P Trust Center registration workflow, brand submission, TCR polling, and resubmission on rejection". Example prompt in the article: "Walk me through registering for A2P messaging."
+2. **Confirmation:** "For any write, update, or delete action, Ask AI will present a confirmation screen and require your approval before executing the change." Read every answer it shows against your EIN letter and your website before you approve.
+3. **It can submit.** A2P brand submission is on its list. This kit's Ask AI prompt (package section 11) asks it to show every answer before saving and to submit nothing; you click Submit yourself.
+4. **It cannot install the chat widget:** "Chat Widget: No standalone configuration, cannot deploy or configure chat widgets directly"; Website Builder (Sites): "No direct access, only Funnels are available". You paste the widget code (section 2A step 4); it must be live and public on the submitted page before the compliance review and final submission (155000008307).
+5. **Who has it:** "included for agency admins and agency users on HighLevel agency plans, subject to fair-use limits. Sub-account admins and users can access Ask AI through pay-per-use billing or an eligible AI Employee subscription." No price is stated here; check your account.
+6. **Campaigns auto-submit after brand approval** (HighLevel changelog https://ideas.gohighlevel.com/changelog/a2p-campaigns-now-auto-submitted-after-brand-approval , no date on the page): "As soon as your A2P brand is approved, your campaign will now be submitted automatically, no manual action required." Have every page, the opt-in and the campaign answers ready before you submit the brand.
+7. **Email code:** brand registration asks for an email code when Persona identity verification is not required and the email domain is over 45 days old (155000008140, section 1 step 9). Whoever runs the registration needs access to that inbox.

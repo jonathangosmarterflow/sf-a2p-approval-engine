@@ -1,5 +1,5 @@
-<!-- a2p-kit 1.1.1 | questions from the 2026-10-28 YouTube corpus (310 transcripts), answers from official sources | sources last verified 2026-10-28 -->
-> **a2p-kit 1.1.1** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
+<!-- a2p-kit 1.2.0 | questions from the 2026-10-28 YouTube corpus (310 transcripts), answers from official sources | sources last verified 2026-10-28 -->
+> **a2p-kit 1.2.0** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
 > HL nnnn = https://help.gohighlevel.com/support/solutions/articles/nnnn · Twilio nnnn = https://support.twilio.com/hc/en-us/articles/nnnn
 
 # FAQ: the 25 questions people ask most about A2P in HighLevel (plus the form vs widget, subdomain and typical-path questions)
@@ -99,5 +99,12 @@ A small local US business with an EIN that sends reminders and updates plus an o
 - **Campaign:** Chat Widget Setup ("recommended") with the **Mixed** message type, which HighLevel turns into the **Low Volume Mixed** use case with two separate unchecked consent boxes. Sources: HL 155000008722, HL 155000004539, HL 155000008307.
 - **The rule that decides it:** pick Mixed only if your program really sends both promotional and informational texts; register what you actually send. Low Volume Mixed has the lowest throughput tier; pick something else if speed or scale matters. Sources: HL 155000008722, HL 155000000235.
 - Context, not a rule: in our review of 234 HighLevel A2P tutorials on YouTube (2026-10-28), 31 of the 38 that name a use-case pick chose Mixed (Low Volume Mixed), and 44 of the 45 that name a volume pick chose low volume.
+
+**29. Can HighLevel's Ask AI register A2P for me?** (last verified 2026-11-12)
+- **Yes, it can run the registration.** HighLevel's Ask AI lists "A2P Registration: Full A2P Trust Center registration workflow, brand submission, TCR polling, and resubmission on rejection". Before any save, update or delete it shows a confirmation screen and needs your approval. Source: HL 155000005327 (modified 2026-11-10).
+- **It cannot install the chat widget** ("cannot deploy or configure chat widgets directly", and no direct access to Website Builder sites). You paste the widget code into your site yourself; the widget must be live and public on the submitted page before the compliance review and final submission. Sources: HL 155000005327, HL 155000008307.
+- **After the brand is approved, the campaign is submitted automatically** (HighLevel changelog "A2P campaigns now auto submitted after brand approval"). So have your pages, opt-in and campaign answers ready before you submit the brand.
+- **Who has it:** included for agency admins and agency users on HighLevel agency plans (fair-use limits); sub-account users through pay-per-use billing or an eligible AI Employee subscription. Check what it costs in your own account. Source: HL 155000005327.
+- **Ask AI uses what you give it.** Wrong legal name, a privacy policy that shares data or a form with no consent box still get rejected. Check your pages first (this agent does that), read every answer Ask AI shows you, and approve the submission yourself. This agent never submits anything.
 
 ---

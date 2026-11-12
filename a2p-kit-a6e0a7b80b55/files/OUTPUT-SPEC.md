@@ -1,4 +1,4 @@
-# OUTPUT-SPEC: the exact package the A2P Approval Agent emits (a2p-kit 1.1.1)
+# OUTPUT-SPEC: the exact package the A2P Approval Agent emits (a2p-kit 1.2.0)
 
 The Smarter Flow page builder and any later automation parse this; the buyer can ignore the JSON block. The agent emits the human-readable package first (sections 1 to 12 below, in this order, with these exact headings) and ends with ONE fenced ```json block. The builder always reads the LAST ```json fence in the output.
 
@@ -6,10 +6,10 @@ The Smarter Flow page builder and any later automation parse this; the buyer can
 
 ```
 # A2P package for <business_name>
-Kit: a2p-kit 1.1.1 | sources last verified 2026-10-28 | Registry compliance, not legal advice.
+Kit: a2p-kit 1.2.0 | sources last verified 2026-10-28 | Registry compliance, not legal advice.
 ## 1. Eligibility screen            (clear / restricted / uncertain -> human review / prohibited -> STOP)
 ## 2. Brand path                    (decided, or CONDITIONAL with prerequisites + unknowns, or STOP)
-## 3. Website gap audit             (one row per check: ✅ verified / ❌ gap / ⚠️ could-not-verify + fix; "Live, public, HTTPS, own domain" is its own row, ⚠️ unless a tool opened the URL)
+## 3. Website gap audit             (one row per check: ✅ verified / ❌ gap / ⚠️ could-not-verify + the rejection code each ❌ would trigger + fix; "Live, public, HTTPS, own domain" is its own row, ⚠️ unless a tool opened the URL)
 ## 4. Opt-in path and consent model (chat widget primary for HighLevel; or form; marketing_only / transactional_only / mixed)
 ## 5. Privacy Policy clause         (verbatim template; plus the "never mention selling or buying leads" check)
 ## 6. Terms SMS block               (filled template clauses 2a to 2e)
@@ -30,7 +30,7 @@ Required fields (always present; use "" or [] when not applicable, never omit):
 
 | Field | Type | Meaning |
 |---|---|---|
-| `kit_version` | string | "a2p-kit 1.1.1" |
+| `kit_version` | string | "a2p-kit 1.2.0" |
 | `last_verified` | string | "2026-10-28" |
 | `synthetic` | bool | true only for a fictional/demo business |
 | `business_name` | string | the name shown to texters (the DBA if one is declared, else the legal name) |
@@ -52,7 +52,7 @@ Required fields (always present; use "" or [] when not applicable, never omit):
 | `help_reply` | string | filled template 5 |
 | `stop_reply` | string | filled template 6 |
 | `domain` | string | the main site's domain, no scheme (e.g. "example.com"), or "" if no site |
-| `gaps` | array | `[{"item": str, "status": "verified" / "gap" / "could_not_verify", "note": str, "fix": str}]` |
+| `gaps` | array | `[{"item": str, "status": "verified" / "gap" / "could_not_verify", "note": str, "fix": str, "code": str}]`; `code` = the rejection code(s) the gap would trigger (SYSTEM-PROMPT.md "Checks and the rejection code each gap triggers"), "" unless status is "gap" |
 
 Optional fields (include when known; the page builder degrades gracefully without them):
 `dba_name`, `website` (https URL of the main site), `services_summary`, `contact` (`{"email", "phone", "address"}`, business contact only, never personal ID numbers), `sms_number`, `message_frequency`, `marketing_types`, `toll_free_privacy_clause` (only on a toll-free path), `disclaimer`, `pages_created` (`[{"page": "website" / "privacy" / "terms" / "optin", "source": "HighLevel sample 155000007237" / "templates.md" / "business copy", "publish_at": "https://..."}]`).

@@ -1,5 +1,5 @@
-<!-- a2p-kit 1.1.1 | built from the Smarter Flow a2p knowledge base | sources last verified 2026-10-28 -->
-> **a2p-kit 1.1.1** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
+<!-- a2p-kit 1.2.0 | built from the Smarter Flow a2p knowledge base | sources last verified 2026-10-28 -->
+> **a2p-kit 1.2.0** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
 > A bare article number like 155000005200 means https://help.gohighlevel.com/support/solutions/articles/155000005200 .
 
 # Fees (re-verify the amount shown in your Trust Center before you pay)
