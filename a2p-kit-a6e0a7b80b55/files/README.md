@@ -1,4 +1,4 @@
-# The A2P Approval Agent kit (a2p-kit 1.2.0, sources last verified 2026-10-28)
+# The A2P Approval Agent kit (a2p-kit 1.3.0, sources last verified 2026-10-28)
 
 **Start with `START-HERE.md`.** The fastest way: attach `A2P-AGENT-ONE-FILE.md` to a new chat in Claude, ChatGPT or Gemini and paste the one line from START-HERE.md.
 

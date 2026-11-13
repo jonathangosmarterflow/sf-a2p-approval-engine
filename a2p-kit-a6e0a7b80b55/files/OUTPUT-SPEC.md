@@ -1,4 +1,4 @@
-# OUTPUT-SPEC: the exact package the A2P Approval Agent emits (a2p-kit 1.2.0)
+# OUTPUT-SPEC: the exact package the A2P Approval Agent emits (a2p-kit 1.3.0)
 
 The Smarter Flow page builder and any later automation parse this; the buyer can ignore the JSON block. The agent emits the human-readable package first (sections 1 to 12 below, in this order, with these exact headings) and ends with ONE fenced ```json block. The builder always reads the LAST ```json fence in the output.
 
@@ -6,23 +6,23 @@ The Smarter Flow page builder and any later automation parse this; the buyer can
 
 ```
 # A2P package for <business_name>
-Kit: a2p-kit 1.2.0 | sources last verified 2026-10-28 | Registry compliance, not legal advice.
+Kit: a2p-kit 1.3.0 | sources last verified 2026-10-28 | Registry compliance, not legal advice.
 ## 1. Eligibility screen            (clear / restricted / uncertain -> human review / prohibited -> STOP)
 ## 2. Brand path                    (decided, or CONDITIONAL with prerequisites + unknowns, or STOP)
-## 3. Website gap audit             (one row per check: ✅ verified / ❌ gap / ⚠️ could-not-verify + the rejection code each ❌ would trigger + fix; "Live, public, HTTPS, own domain" is its own row, ⚠️ unless a tool opened the URL)
+## 3. Website gap audit             (one row per check: ✅ FOUND / ❌ GAP / ⚠️ UNCHECKED + the rejection code each ❌ would trigger + fix; "Live, public, HTTPS, own domain" is its own row, ⚠️ UNCHECKED unless a tool opened the URL; widget path: the website checklist items + the identity facts; ends "This is what I saw on your pages, not an approval.")
 ## 4. Opt-in path and consent model (chat widget primary for HighLevel; or form; marketing_only / transactional_only / mixed)
 ## 5. Privacy Policy clause         (verbatim template; plus the "never mention selling or buying leads" check)
 ## 6. Terms SMS block               (filled template clauses 2a to 2e)
 ## 7. Consent checkbox text         (only the box(es) the consent model needs; skipped text explained on the widget path)
 ## 8. Opt-in confirmation, HELP reply, STOP reply
 ## 9. Campaign answers              (use case, description, sample 1, sample 2, opt-in flow description)
-## 10. Trust Center field sheet     (every field in screen order per hl-flow.md, with the value to type)
-## 11. HighLevel Ask AI prompt      (one code block)
+## 10. Finish B, by hand          (every answer in screen order: Brand, then Chat Widget Setup per hl-flow.md 1 and 2A, with the value to type)
+## 11. Finish A, Ask AI           (the short prompt, one code block, same values as section 10, fill only, stops before save or submit)
 ## 12. Before you click Submit      (pre-submit checklist incl. Business Profile name; toll-free note only if it fits; post-registration checklist offer)
 ## 13. Pages I created for you     (only pages the buyer did not have: each in full, its source, where to publish it; omit when none)
 ```
 
-Before the package, the agent runs THE WALK in SYSTEM-PROMPT.md (one question per message). While any field is "NOT PROVIDED", the Kit line ends with "| NOT READY TO SUBMIT" and a "Still needed before you submit" block listing each missing item sits between it and section 1. The package ends with the disclaimer line, then the JSON block. If the eligibility screen says STOP, the package is only sections 1 and 2 and the JSON carries `"eligibility": {"status": "prohibited", ...}` with every template field set to "".
+Before the package, the agent runs THE WALK in SYSTEM-PROMPT.md (one question per message). While any field is "NOT PROVIDED", the Kit line ends with "| NOT READY TO SUBMIT" and a "Still needed before you submit" block listing each missing item sits between it and section 1. The package ends with the disclaimer line, then the JSON block, then one question: which finish (Ask AI or by hand). If the eligibility screen says STOP, the package is only sections 1 and 2 and the JSON carries `"eligibility": {"status": "prohibited", ...}` with every template field set to "".
 
 ## B. The JSON block (schema)
 
@@ -30,7 +30,7 @@ Required fields (always present; use "" or [] when not applicable, never omit):
 
 | Field | Type | Meaning |
 |---|---|---|
-| `kit_version` | string | "a2p-kit 1.2.0" |
+| `kit_version` | string | "a2p-kit 1.3.0" |
 | `last_verified` | string | "2026-10-28" |
 | `synthetic` | bool | true only for a fictional/demo business |
 | `business_name` | string | the name shown to texters (the DBA if one is declared, else the legal name) |
@@ -52,7 +52,7 @@ Required fields (always present; use "" or [] when not applicable, never omit):
 | `help_reply` | string | filled template 5 |
 | `stop_reply` | string | filled template 6 |
 | `domain` | string | the main site's domain, no scheme (e.g. "example.com"), or "" if no site |
-| `gaps` | array | `[{"item": str, "status": "verified" / "gap" / "could_not_verify", "note": str, "fix": str, "code": str}]`; `code` = the rejection code(s) the gap would trigger (SYSTEM-PROMPT.md "Checks and the rejection code each gap triggers"), "" unless status is "gap" |
+| `gaps` | array | `[{"item": str, "status": "verified" / "gap" / "could_not_verify", "note": str, "fix": str, "code": str}]` (`verified` = FOUND, `gap` = GAP, `could_not_verify` = UNCHECKED; `verified` means seen, never approved); `code` = the rejection code(s) the gap would trigger (SYSTEM-PROMPT.md "Checks and the rejection code each gap triggers"), "" unless status is "gap" |
 
 Optional fields (include when known; the page builder degrades gracefully without them):
 `dba_name`, `website` (https URL of the main site), `services_summary`, `contact` (`{"email", "phone", "address"}`, business contact only, never personal ID numbers), `sms_number`, `message_frequency`, `marketing_types`, `toll_free_privacy_clause` (only on a toll-free path), `disclaimer`, `pages_created` (`[{"page": "website" / "privacy" / "terms" / "optin", "source": "HighLevel sample 155000007237" / "templates.md" / "business copy", "publish_at": "https://..."}]`).

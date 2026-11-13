@@ -1,8 +1,8 @@
-<!-- a2p-kit 1.2.0 | questions from the 2026-10-28 YouTube corpus (310 transcripts), answers from official sources | sources last verified 2026-10-28 -->
-> **a2p-kit 1.2.0** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
+<!-- a2p-kit 1.3.0 | questions from the 2026-10-28 YouTube corpus (310 transcripts), answers from official sources | sources last verified 2026-10-28 -->
+> **a2p-kit 1.3.0** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
 > HL nnnn = https://help.gohighlevel.com/support/solutions/articles/nnnn · Twilio nnnn = https://support.twilio.com/hc/en-us/articles/nnnn
 
-# FAQ: the 25 questions people ask most about A2P in HighLevel (plus the form vs widget, subdomain and typical-path questions)
+# FAQ: the 25 questions people ask most about A2P in HighLevel (plus the form vs widget, subdomain, typical-path, Ask AI and forms-after-approval questions)
 
 The questions are the most repeated ones across 310 A2P videos (ranked by how many videos raise them). Every answer comes from an official source, never from a video.
 
@@ -60,8 +60,12 @@ A number sends only once it is linked to an approved campaign and shows A2P Veri
 **18. What exact consent wording is required?**
 HighLevel publishes exact checkbox wording (`templates.md` section 3); the message types in it must match your campaign description. On Chat Widget Setup the wording is generated and locked for you. Sources: HL 155000007237, HL 155000008307.
 
-**19. Do I have to remove forms and calendars from the site?**
-For Chat Widget Setup, HighLevel says the widget must be the only form collecting SMS consent on the submitted page. Many creators remove every form and calendar from the whole site until approval; that is stricter than the help center and is their claim, not HighLevel's rule. Sources: HL 155000008307, HL 155000004539.
+**19. Do I have to remove forms and calendars from the site?** (last verified 2026-11-13)
+On the Chat Widget path, three cases (sources: HL 155000008725 and 155000008590, modified 2026-09-11; HL 155000004746, modified 2026-10-12):
+- **No phone field and no SMS consent** (for example name, email, message): can stay.
+- **A phone field without SMS consent wording:** not a texting opt-in. The widget articles' rule names only forms "collecting SMS consent" on the submitted page; the rejection article says "Remove any other form on the site that collects phone numbers or SMS consent" (codes 30896, 30909). This kit takes the stricter reading: remove the phone field (or the form) from the site you submit.
+- **A form with an SMS consent box:** a second opt-in method. Register it as its own campaign through Manual Setup, or choose Manual Setup ("keep your forms") from the start (question 30).
+Removing every calendar or calculator from the whole site is a creator claim, not in HighLevel's articles. Whatever you remove is a permanent choice, not a trick for the review.
 
 **20. Persona photo ID when buying a number: whose ID?**
 Persona is a one-time identity check per sub-account when buying a +1 number on LC Phone; it does not replace A2P. The business's own authorized person completes it. Sources: HL 155000005798.
@@ -106,5 +110,14 @@ A small local US business with an EIN that sends reminders and updates plus an o
 - **After the brand is approved, the campaign is submitted automatically** (HighLevel changelog "A2P campaigns now auto submitted after brand approval"). So have your pages, opt-in and campaign answers ready before you submit the brand.
 - **Who has it:** included for agency admins and agency users on HighLevel agency plans (fair-use limits); sub-account users through pay-per-use billing or an eligible AI Employee subscription. Check what it costs in your own account. Source: HL 155000005327.
 - **Ask AI uses what you give it.** Wrong legal name, a privacy policy that shares data or a form with no consent box still get rejected. Check your pages first (this agent does that), read every answer Ask AI shows you, and approve the submission yourself. This agent never submits anything.
+
+---
+
+**30. Can I put my forms back after approval?** (last verified 2026-11-13)
+- **No. This kit will not tell you to pull your forms to pass review and put them back after. Keep what's live matching what you registered. If your forms are how people opt in to texts, register the forms through Manual Setup.**
+- Every opt-in method must be listed in the registration: HL 155000004746 code 30896 ("All methods of opt-in need to be listed", modified 2026-10-12); Twilio error 30917 (the opt-in description must name every opt-in method actually used).
+- An approved campaign is not edited to add one. Twilio: once a campaign is approved, "there is currently no way to make updates to that campaign" (Twilio help article 4402888955163, updated 2026-11-05). HighLevel: the opt-in message and use case cannot be changed on a resubmission; a new campaign is needed (HighLevel changelog "A2P campaign resubmissions are now free", no date on the page).
+- HighLevel's widget guides stop at approval and never say you may add a form later (HL 155000008725, 155000008590, modified 2026-09-11).
+- **The written path for a form with an SMS consent box next to an approved widget campaign:** its own campaign for the same brand. Campaigns > Create Campaign > choose the Brand, then Manual Setup (HL 155000008590). Never while a campaign is Pending (same article). A sole proprietor brand has one campaign (question 7 above and `requirements.md`). A new campaign carries its own fees (`fees.md`, confirm in your Trust Center).
 
 ---

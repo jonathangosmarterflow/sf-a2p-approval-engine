@@ -1,5 +1,5 @@
-<!-- a2p-kit 1.2.0 | built from the Smarter Flow a2p knowledge base | sources last verified 2026-10-28 -->
-> **a2p-kit 1.2.0** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
+<!-- a2p-kit 1.3.0 | built from the Smarter Flow a2p knowledge base | sources last verified 2026-10-28 -->
+> **a2p-kit 1.3.0** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
 > A bare article number like 155000005200 means https://help.gohighlevel.com/support/solutions/articles/155000005200 .
 
 # A2P compliance templates: carrier-published fill-in wording ONLY (v1.1)
@@ -76,11 +76,13 @@ For toll-free, the Terms must be a live embedded page (not a pop-up) with its ow
 ## 3. Consent checkboxes (Manual Setup or non-HighLevel forms)
 Never pre-checked; never required to submit, even when the phone field is required. The [BUSINESS NAME] matches the CP 575 / 147C (or "[Legal Name] DBA [DBA Name]"). The message types must match the campaign description.
 
-**Marketing checkbox (HighLevel exact wording):**
-> ☐ I consent to receive marketing text messages, about special offers, discounts, and service updates, from [BUSINESS NAME] at the phone number provided. Message frequency may vary. Message & data rates may apply. Text HELP for assistance, reply STOP to opt out.
+**Marketing checkbox (HighLevel exact wording, HL 155000007240, modified 2026-08-31):**
+> ☐ I consent to receive marketing text messages from [BUSINESS NAME] at the phone number provided. Frequency may vary. Message & data rates may apply. Text HELP for assistance, reply STOP to opt out.
 
-**Non-marketing checkbox (HighLevel exact wording):**
-> ☐ I consent to receive non-marketing text messages from [BUSINESS NAME] about [USE_CASE_FROM_CAMPAIGN_DESCRIPTION]. Message frequency may vary, message & data rates may apply. Text HELP for assistance, reply STOP to opt out.
+**Non-marketing checkbox (HighLevel exact wording, HL 155000007240, modified 2026-08-31):**
+> ☐ I consent to receive non-marketing text messages from [BUSINESS NAME] about [USE_CASE_FROM_CAMPAIGN_DESCRIPTION] Message & data rates may apply. Text HELP for assistance, reply STOP to opt out.
+
+An older copy of the same HighLevel article (155000007237, modified 2026-07-30) words both boxes slightly longer (the marketing box adds "about special offers, discounts, and service updates"; both add "Message frequency may vary"). This kit uses the newer 2026-08-31 wording. [BUSINESS NAME] matches the CP 575 / 147C (155000007240).
 
 Marketing-only program: show only the marketing box. Transactional-only program: show only the non-marketing box. Mixed: both, separate.
 

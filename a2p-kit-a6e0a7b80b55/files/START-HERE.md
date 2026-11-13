@@ -1,4 +1,4 @@
-# START HERE: the A2P Approval Agent (a2p-kit 1.2.0)
+# START HERE: the A2P Approval Agent (a2p-kit 1.3.0)
 
 An AI agent that walks you through HighLevel's A2P 10DLC registration. It tells you what it needs, then asks one thing at a time: if you have it, you give it the link and it checks it; if you do not, it creates it for you. Have several links (website, privacy policy, terms, opt-in page)? Paste them together: after the first two questions it checks them all in one table, and names the HighLevel rejection code each gap would trigger. You click Submit in HighLevel yourself.
 
@@ -32,6 +32,6 @@ The first reply lists the 8 things it needs and asks only the first one: what yo
 - **Black out (redact) the SSN and the EIN digits** on any document before you upload it. The agent only needs your legal name and address exactly as printed on your EIN letter.
 - Prefer typing your details over uploading whole documents (`INTAKE-FORM.md` lists them, if you like a form).
 - Turn off chat history or model training in your AI's settings first (ChatGPT: Settings > Data Controls, or a Temporary Chat; Claude: Settings > Privacy).
-- Turn on web search or browsing if your AI has it, so the agent can open your links. Without it, paste the page text when it asks.
+- Turn on web search or browsing if your AI has it, so the agent can open your links. Without it, paste the page text or a screenshot when it asks. Any website builder works.
 
 You click Submit in HighLevel. The agent never submits anything, and nobody can promise an approval or a review time. Registry compliance information from carrier-published templates, not legal advice. For TCPA or state-law questions, ask your own lawyer.
