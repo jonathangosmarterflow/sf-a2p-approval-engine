@@ -1,4 +1,4 @@
-# START HERE: the A2P Approval Agent (a2p-kit 1.3.0)
+# START HERE: the A2P Approval Agent (a2p-kit 1.3.1)
 
 An AI agent that walks you through HighLevel's A2P 10DLC registration. It tells you what it needs, then asks one thing at a time: if you have it, you give it the link and it checks it; if you do not, it creates it for you. Have several links (website, privacy policy, terms, opt-in page)? Paste them together: after the first two questions it checks them all in one table, and names the HighLevel rejection code each gap would trigger. You click Submit in HighLevel yourself.
 

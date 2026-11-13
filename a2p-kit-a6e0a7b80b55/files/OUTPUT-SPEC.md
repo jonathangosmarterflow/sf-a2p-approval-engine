@@ -1,4 +1,4 @@
-# OUTPUT-SPEC: the exact package the A2P Approval Agent emits (a2p-kit 1.3.0)
+# OUTPUT-SPEC: the exact package the A2P Approval Agent emits (a2p-kit 1.3.1)
 
 The Smarter Flow page builder and any later automation parse this; the buyer can ignore the JSON block. The agent emits the human-readable package first (sections 1 to 12 below, in this order, with these exact headings) and ends with ONE fenced ```json block. The builder always reads the LAST ```json fence in the output.
 
@@ -6,7 +6,7 @@ The Smarter Flow page builder and any later automation parse this; the buyer can
 
 ```
 # A2P package for <business_name>
-Kit: a2p-kit 1.3.0 | sources last verified 2026-10-28 | Registry compliance, not legal advice.
+Kit: a2p-kit 1.3.1 | sources last verified 2026-10-28 | Registry compliance, not legal advice.
 ## 1. Eligibility screen            (clear / restricted / uncertain -> human review / prohibited -> STOP)
 ## 2. Brand path                    (decided, or CONDITIONAL with prerequisites + unknowns, or STOP)
 ## 3. Website gap audit             (one row per check: ✅ FOUND / ❌ GAP / ⚠️ UNCHECKED + the rejection code each ❌ would trigger + fix; "Live, public, HTTPS, own domain" is its own row, ⚠️ UNCHECKED unless a tool opened the URL; widget path: the website checklist items + the identity facts; ends "This is what I saw on your pages, not an approval.")
@@ -30,7 +30,7 @@ Required fields (always present; use "" or [] when not applicable, never omit):
 
 | Field | Type | Meaning |
 |---|---|---|
-| `kit_version` | string | "a2p-kit 1.3.0" |
+| `kit_version` | string | "a2p-kit 1.3.1" |
 | `last_verified` | string | "2026-10-28" |
 | `synthetic` | bool | true only for a fictional/demo business |
 | `business_name` | string | the name shown to texters (the DBA if one is declared, else the legal name) |

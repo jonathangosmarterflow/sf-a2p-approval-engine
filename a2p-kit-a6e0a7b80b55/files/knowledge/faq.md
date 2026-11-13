@@ -1,5 +1,5 @@
-<!-- a2p-kit 1.3.0 | questions from the 2026-10-28 YouTube corpus (310 transcripts), answers from official sources | sources last verified 2026-10-28 -->
-> **a2p-kit 1.3.0** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
+<!-- a2p-kit 1.3.1 | questions from the 2026-10-28 YouTube corpus (310 transcripts), answers from official sources | sources last verified 2026-10-28 -->
+> **a2p-kit 1.3.1** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
 > HL nnnn = https://help.gohighlevel.com/support/solutions/articles/nnnn · Twilio nnnn = https://support.twilio.com/hc/en-us/articles/nnnn
 
 # FAQ: the 25 questions people ask most about A2P in HighLevel (plus the form vs widget, subdomain, typical-path, Ask AI and forms-after-approval questions)
@@ -63,9 +63,9 @@ HighLevel publishes exact checkbox wording (`templates.md` section 3); the messa
 **19. Do I have to remove forms and calendars from the site?** (last verified 2026-11-13)
 On the Chat Widget path, three cases (sources: HL 155000008725 and 155000008590, modified 2026-09-11; HL 155000004746, modified 2026-10-12):
 - **No phone field and no SMS consent** (for example name, email, message): can stay.
-- **A phone field without SMS consent wording:** not a texting opt-in. The widget articles' rule names only forms "collecting SMS consent" on the submitted page; the rejection article says "Remove any other form on the site that collects phone numbers or SMS consent" (codes 30896, 30909). This kit takes the stricter reading: remove the phone field (or the form) from the site you submit.
-- **A form with an SMS consent box:** a second opt-in method. Register it as its own campaign through Manual Setup, or choose Manual Setup ("keep your forms") from the start (question 30).
-Removing every calendar or calculator from the whole site is a creator claim, not in HighLevel's articles. Whatever you remove is a permanent choice, not a trick for the review.
+- **A phone field without SMS consent wording:** not a texting opt-in. The widget articles' rule names only forms "collecting SMS consent" on the submitted page; the rejection article says "Remove any other form on the site that collects phone numbers or SMS consent" (codes 30896, 30909). This kit takes the stricter reading: take the phone field (or the form) off the site you submit while you are in review.
+- **A form with an SMS consent box:** its own opt-in method. Take it off the site you submit while you are in review, or choose Manual Setup ("keep your forms") from the start.
+This is temporary: once you are approved you can put your forms back (question 30). Removing every calendar or calculator from the whole site is a creator claim, not in HighLevel's articles.
 
 **20. Persona photo ID when buying a number: whose ID?**
 Persona is a one-time identity check per sub-account when buying a +1 number on LC Phone; it does not replace A2P. The business's own authorized person completes it. Sources: HL 155000005798.
@@ -114,10 +114,26 @@ A small local US business with an EIN that sends reminders and updates plus an o
 ---
 
 **30. Can I put my forms back after approval?** (last verified 2026-11-13)
-- **No. This kit will not tell you to pull your forms to pass review and put them back after. Keep what's live matching what you registered. If your forms are how people opt in to texts, register the forms through Manual Setup.**
-- Every opt-in method must be listed in the registration: HL 155000004746 code 30896 ("All methods of opt-in need to be listed", modified 2026-10-12); Twilio error 30917 (the opt-in description must name every opt-in method actually used).
-- An approved campaign is not edited to add one. Twilio: once a campaign is approved, "there is currently no way to make updates to that campaign" (Twilio help article 4402888955163, updated 2026-11-05). HighLevel: the opt-in message and use case cannot be changed on a resubmission; a new campaign is needed (HighLevel changelog "A2P campaign resubmissions are now free", no date on the page).
-- HighLevel's widget guides stop at approval and never say you may add a form later (HL 155000008725, 155000008590, modified 2026-09-11).
-- **The written path for a form with an SMS consent box next to an approved widget campaign:** its own campaign for the same brand. Campaigns > Create Campaign > choose the Brand, then Manual Setup (HL 155000008590). Never while a campaign is Pending (same article). A sole proprietor brand has one campaign (question 7 above and `requirements.md`). A new campaign carries its own fees (`fees.md`, confirm in your Trust Center).
+- **Yes. Once you are approved you can put your forms back. One note: a form that collects texting consent is its own opt-in method, so put HighLevel's consent wording on it and keep what is live matching what you registered; if forms are your main way to collect texting consent, register the form itself (Manual Setup, its own campaign).**
+- Why the note: every opt-in method must be listed in the registration (HL 155000004746 code 30896, "All methods of opt-in need to be listed", modified 2026-10-12; Twilio error 30917, the opt-in description must name every opt-in method actually used). An approved campaign is not updated in place (Twilio help article 4402888955163, updated 2026-11-05), and the opt-in message and use case cannot be changed on a resubmission, a new campaign is needed (HighLevel changelog "A2P campaign resubmissions are now free", no date on the page).
+- **Registering the form itself:** its own campaign for the same brand. Campaigns > Create Campaign > choose the Brand, then Manual Setup (HL 155000008590, modified 2026-09-11). Not while a campaign is Pending (same article). A sole proprietor brand has one campaign (question 7 above and `requirements.md`). A new campaign carries its own fees (`fees.md`, confirm in your Trust Center).
+
+**31. Is A2P only for marketing texts? What about appointment reminders?** (last verified 2026-11-13)
+No. Registration is required for business texts to US recipients from standard 10-digit local numbers, including appointment reminders, customer-care messages and account notifications, not only offers. Sources: HL 155000002380 (modified 2026-09-04), HL 155000006960 (modified 2026-08-11).
+
+**32. My sub-account uses its own Twilio account. Where do I register, and what happens if I move to LC Phone?** (last verified 2026-11-13)
+- A2P registered through your own Twilio account does not move to LC Phone. After switching to LC Phone, the sub-account completes A2P registration again, then attaches each number to the approved campaign. Source: HL 48001204027 (modified 2026-10-09).
+- Moving US numbers from Twilio to LC Phone is coordinated by HighLevel Support; it does not move messaging registration, and Support confirms the timing. Source: HL 48001240108 (modified 2026-09-03).
+- A toll-free number on your own Twilio account is registered through Twilio support, not in HighLevel. Source: HL 48001204834 (modified 2026-08-31).
+
+**33. What is Number Intelligence (phone validation), and do I need it?** (last verified 2026-11-13)
+An optional HighLevel setting that bundles spam detection and name lookup for incoming US calls with a validity check on a number before the first outbound text. It is billed per check (usage-based; see the article for current rates). It does not replace A2P registration. Source: HL 48001153968 (modified 2026-09-08).
+
+**34. Toll-free: how do I buy one, and can I text before it is verified?** (last verified 2026-11-13)
+- Toll-free numbers use prefixes such as 800, 888, 877, 866, 855, 844 and 833. To buy one: Settings > Phone System > + Add Number > Add Phone Number > Filters > Number Type: Toll-Free > Apply > pick a number > Proceed to Buy. Source: HL 48001204834 (modified 2026-08-31).
+- Only a toll-free number with a Verified (Approved) status can send texts to the US and Canada; Restricted (Unverified), Pending Verification and Rejected numbers are blocked (error 30032). No website? The verification form accepts an eligible public business profile instead. Source: HL 48001222300 (modified 2026-09-17).
+
+**35. Where do I check that my business name is available or registered?** (unverified)
+Your state's business registry (usually the Secretary of State's business search). Not covered by HighLevel's public articles in this kit's sources: unverified. For A2P, what matters is that the name matches your EIN letter exactly (question 5).
 
 ---
