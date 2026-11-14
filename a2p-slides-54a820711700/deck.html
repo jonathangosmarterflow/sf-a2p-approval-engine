@@ -516,6 +516,12 @@ HomePrivacy Policy
   var armed=false, last=null;
   function card(t){ return t&&t.closest?t.closest(".slide.on .pr-card"):null; }
   function text(c){ return c.getAttribute("data-text")||""; }
+  /* a highlight that began in a card ends inside that card, however far the pointer went */
+  function clamp(){ var c=document.querySelector(".pr-card.pr-act"), p=c&&c.querySelector(".pr-txt"), s=getSelection(); if(!p||!s||s.isCollapsed||!s.rangeCount) return;
+    var r=s.getRangeAt(0), full=document.createRange(); full.selectNodeContents(p); if(!p.contains(s.anchorNode)) return;
+    var ch=false; if(r.compareBoundaryPoints(Range.START_TO_START,full)<0){ r.setStart(full.startContainer,full.startOffset); ch=true; }
+    if(r.compareBoundaryPoints(Range.END_TO_END,full)>0){ r.setEnd(full.endContainer,full.endOffset); ch=true; }
+    if(ch){ s.removeAllRanges(); s.addRange(r); } }
   /* while a drag that began in one card runs, the other cards on the slide cannot be selected */
   function mark(c){ [].forEach.call(document.querySelectorAll(".pr-act,.pr-sel"),function(x){ x.classList.remove("pr-act"); x.classList.remove("pr-sel"); }); if(c){ c.classList.add("pr-act"); var s=c.closest(".slide"); if(s) s.classList.add("pr-sel"); } }
   function selAll(c){ var p=c.querySelector(".pr-txt"); if(!p) return false; var r=document.createRange(); r.selectNodeContents(p); var s=getSelection(); s.removeAllRanges(); s.addRange(r); return true; }
@@ -525,7 +531,7 @@ HomePrivacy Policy
     try{ if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(function(){ done(true); },function(){ done(legacy(t)); }); return; } }catch(e){}
     done(legacy(t)); }
   ["pointerdown","mousedown","touchstart"].forEach(function(ty){ window.addEventListener(ty,function(e){ var c=card(e.target); armed=!!c; mark(c); if(c){ last=c; e.stopPropagation(); } },{capture:true,passive:true}); });
-  ["pointerup","pointercancel","mouseup","touchend","touchcancel"].forEach(function(ty){ window.addEventListener(ty,function(){ mark(null); },{capture:true,passive:true}); });
+  ["pointerup","pointercancel","mouseup","touchend","touchcancel"].forEach(function(ty){ window.addEventListener(ty,function(){ clamp(); mark(null); },{capture:true,passive:true}); });
   window.addEventListener("click",function(e){
     var c=card(e.target), was=armed; if(!c&&!was) return;
     e.stopPropagation();                                  /* never a slide change */
