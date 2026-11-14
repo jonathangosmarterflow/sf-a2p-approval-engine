@@ -189,7 +189,7 @@ html,body{height:100%;margin:0;overflow:hidden;background:#f4f1fb}
 #fit{position:fixed;inset:0 0 52px 0}
 #stage{position:absolute;top:0;left:0;width:1600px;height:900px;transform-origin:top left;overflow:hidden;box-shadow:0 10px 40px rgba(25,20,48,.12)}
 #bar{position:fixed;left:0;right:0;bottom:0;height:52px;display:flex;align-items:center;gap:10px;padding:0 14px;background:#ffffff;border-top:1px solid #eae6f6;font:600 15px/1 'Plus Jakarta Sans',system-ui,sans-serif;color:#191627}
-.wm,#bar .mark{word-spacing:-.3em}
+.sp{font-size:0}
 #bar .mark{font:800 16px/1 'Sora',system-ui,sans-serif;letter-spacing:-.03em;margin-right:auto;white-space:nowrap}
 #bar .mark b{background:linear-gradient(100deg,#4f46e5,#7c3aed 60%,#c4489f);-webkit-background-clip:text;background-clip:text;color:transparent}
 #bar button,#bar a{font:700 15px/1 'Plus Jakarta Sans',system-ui,sans-serif;color:#191627;background:#faf8ff;border:1px solid #eae6f6;border-radius:999px;padding:10px 16px;cursor:pointer;text-decoration:none;white-space:nowrap}
@@ -202,6 +202,9 @@ html.print #stage{position:static;width:1600px;height:auto;transform:none!import
 html.print #stage .slide{position:relative;opacity:1;visibility:visible;break-after:page;page-break-after:always;animation:none!important}
 html.print #stage .slide *{animation:none!important}
 html.print .pr-copy{display:none}
+html.print .slide *{box-shadow:none!important;text-shadow:none!important}
+html.print .sp{font-size:1em;letter-spacing:.12em!important}
+html.print .wm b{background:none!important;color:#7c3aed!important;-webkit-text-fill-color:#7c3aed}
 html.print .slide *{font-kerning:none;font-variant-ligatures:none;letter-spacing:0!important;text-rendering:optimizeSpeed}
 @page{size:1600px 900px;margin:0}
 </style>
@@ -216,7 +219,7 @@ html.print .slide *{font-kerning:none;font-variant-ligatures:none;letter-spacing
     </div>
     <div class="r3-col"><div class="r3-row"><div class="r3-card grow v6-aud"><div class="r3-lab">Not submitted yet</div><div class="r3-t">The fast way, then the checks</div></div><div class="r3-card grow alert v6-aud"><div class="r3-lab">Already rejected</div><div class="r3-t">Each code, mapped to its fix</div></div></div><div class="r3-row wrap" style="margin-top:6px"><span class="r3-pill">A2P certified by HighLevel</span></div></div>
   </div>
-<span class="wm">Smarter <b>Flow</b></span></section>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 r3-talk" data-v7m="1">
   <div class="split" style="--lc:640px;gap:44px">
     <div>
@@ -225,7 +228,7 @@ html.print .slide *{font-kerning:none;font-variant-ligatures:none;letter-spacing
     </div>
     <div class="r3-col"><div class="v6-wall"><div class="r3-bub v6-bub">Hi, your appointment is tomorrow at 9.</div><i class="v6-brick"></i><div class="r3-fail">Blocked</div></div><div class="r3-lab" style="margin:10px 0 0">Register in this order</div><div class="r3-list"><div class="r3-step sm"><b>1</b><span>Brand: who is sending</span></div><div class="r3-step sm"><b>2</b><span>Campaign: what you send, and how people said yes</span></div></div></div>
   </div>
-<span class="wm">Smarter <b>Flow</b></span></section>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 r3-talk" data-v7m="1">
   <div class="split" style="--lc:640px;gap:44px">
     <div>
@@ -234,7 +237,7 @@ html.print .slide *{font-kerning:none;font-variant-ligatures:none;letter-spacing
     </div>
     <div class="r3-col"><div class="r3-list"><div class="r3-step sm"><b>1</b><span>Ask AI. Fast. It types the form.</span></div><div class="r3-step sm"><b>2</b><span>Chat Widget Setup. HighLevel&#x27;s recommended path. Phone and texting forms come off during review.</span></div><div class="r3-step sm"><b>3</b><span>Keep your forms. Register the form itself. A bigger job.</span></div></div></div>
   </div>
-<span class="wm">Smarter <b>Flow</b></span></section>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 r3-talk" data-v7m="1">
   <div class="split" style="--lc:640px;gap:44px">
     <div>
@@ -243,7 +246,7 @@ html.print .slide *{font-kerning:none;font-variant-ligatures:none;letter-spacing
     </div>
     <div class="r3-col"><div class="r3-top"><span class="r3-fd">Fictional demo</span></div><div class="r3-lab" style="margin:0">Option 1, or your own AI</div><div class="r3-row"><div class="r3-card grow act v6-aud"><div class="r3-lab">HighLevel Ask AI</div><div class="r3-t" style="font-size:27px">Registers it in HighLevel, after you approve</div></div><div class="r3-card grow v6-aud"><div class="r3-lab">Claude, ChatGPT</div><div class="r3-t" style="font-size:27px">Drafts the answers, you paste them in</div></div></div><div class="r3-chat"><div class="r3-bub v6-bub">Help me register this sub-account for A2P 10DLC … Do not save or submit anything until I say approve.</div></div></div>
   </div>
-<span class="wm">Smarter <b>Flow</b></span></section>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 pr" data-kind="prompt" data-v7m="1">
   <div class="pr-l">
     <span class="pr-chip">HighLevel · Ask AI</span>
@@ -254,7 +257,7 @@ html.print .slide *{font-kerning:none;font-variant-ligatures:none;letter-spacing
   <div class="pr-r">
     <div class="pr-card" data-pid="P4-1" data-kind="prompt" data-text="Help me register this sub-account for A2P 10DLC, the brand and the campaign. My legal business name, exactly as on my EIN letter: Ridgeline Demo Heating &amp; Air LLC. Do I have an EIN: yes. Business address, as on the letter: 1200 Example Ave, Charlotte, NC 28203. Business email on my own domain: service@ridgeline-demo.example. Website (my main site): https://ridgeline-demo.example. Privacy policy: https://ridgeline-demo.example/privacy-policy.html. Terms: none yet. Opt-in: HighLevel&#x27;s chat widget (Chat Widget Setup); I will install the widget code on my site before I approve. What my texts are about and who gets them: appointment confirmations and reminders, technician on-the-way notices, service follow-ups, and a seasonal tune-up offer, maybe 2 a month, to homeowners who book service or ask for a quote. Use my Business Profile for anything else and ask me only what you cannot find. Show me every answer first. Do not save or submit anything until I say approve." style="--ps:26px"><div class="pr-hd"><span class="pr-cap">The prompt</span><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div><pre class="pr-txt">Help me register this sub-account for A2P 10DLC, the brand and the campaign. My legal business name, exactly as on my EIN letter: Ridgeline Demo Heating &amp; Air LLC. Do I have an EIN: yes. Business address, as on the letter: 1200 Example Ave, Charlotte, NC 28203. Business email on my own domain: service@ridgeline-demo.example. Website (my main site): https://ridgeline-demo.example. Privacy policy: https://ridgeline-demo.example/privacy-policy.html. Terms: none yet. Opt-in: HighLevel&#x27;s chat widget (Chat Widget Setup); I will install the widget code on my site before I approve. What my texts are about and who gets them: appointment confirmations and reminders, technician on-the-way notices, service follow-ups, and a seasonal tune-up offer, maybe 2 a month, to homeowners who book service or ask for a quote. Use my Business Profile for anything else and ask me only what you cannot find. Show me every answer first. Do not save or submit anything until I say approve.</pre></div>
   </div>
-<span class="wm">Smarter <b>Flow</b></span></section>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 pr" data-kind="prompt" data-v7m="1">
   <div class="pr-l">
     <span class="pr-chip">No Ask AI?</span>
@@ -265,7 +268,7 @@ html.print .slide *{font-kerning:none;font-variant-ligatures:none;letter-spacing
   <div class="pr-r">
     <div class="pr-card" data-pid="P4-2" data-kind="prompt" data-text="Help me register this sub-account for A2P 10DLC, the brand and the campaign. My legal business name, exactly as on my EIN letter: Ridgeline Demo Heating &amp; Air LLC. Do I have an EIN: yes. Business address, as on the letter: 1200 Example Ave, Charlotte, NC 28203. Business email on my own domain: service@ridgeline-demo.example. Website (my main site): https://ridgeline-demo.example. Privacy policy: https://ridgeline-demo.example/privacy-policy.html. Terms: none yet. Opt-in: HighLevel&#x27;s chat widget (Chat Widget Setup); I will install the widget code on my site before I approve. What my texts are about and who gets them: appointment confirmations and reminders, technician on-the-way notices, service follow-ups, and a seasonal tune-up offer, maybe 2 a month, to homeowners who book service or ask for a quote. Use my Business Profile for anything else and ask me only what you cannot find. You cannot enter anything in HighLevel. Give me every answer in Trust Center screen order, and flag anything my pages do not support." style="--ps:26px"><div class="pr-hd"><span class="pr-cap">The prompt, for your own AI</span><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div><pre class="pr-txt">Help me register this sub-account for A2P 10DLC, the brand and the campaign. My legal business name, exactly as on my EIN letter: Ridgeline Demo Heating &amp; Air LLC. Do I have an EIN: yes. Business address, as on the letter: 1200 Example Ave, Charlotte, NC 28203. Business email on my own domain: service@ridgeline-demo.example. Website (my main site): https://ridgeline-demo.example. Privacy policy: https://ridgeline-demo.example/privacy-policy.html. Terms: none yet. Opt-in: HighLevel&#x27;s chat widget (Chat Widget Setup); I will install the widget code on my site before I approve. What my texts are about and who gets them: appointment confirmations and reminders, technician on-the-way notices, service follow-ups, and a seasonal tune-up offer, maybe 2 a month, to homeowners who book service or ask for a quote. Use my Business Profile for anything else and ask me only what you cannot find. You cannot enter anything in HighLevel. Give me every answer in Trust Center screen order, and flag anything my pages do not support.</pre></div>
   </div>
-<span class="wm">Smarter <b>Flow</b></span></section>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 r3-talk" data-v7m="1">
   <div class="split" style="--lc:640px;gap:44px">
     <div>
@@ -274,7 +277,7 @@ html.print .slide *{font-kerning:none;font-variant-ligatures:none;letter-spacing
     </div>
     <div class="r3-col"><div class="r3-top"><span class="r3-fd">Fictional demo</span></div><div class="v6-fld alert"><div class="r3-lab">Legal business name</div><div class="v6-val">Ridgeline Demo Heating &amp; Air LLC</div><div class="v6-flag">Does your site say this?</div></div><div class="v6-fld"><div class="r3-lab">Website footer says</div><div class="v6-val">Ridgeline Heating and Air</div></div><div class="v6-fld"><div class="r3-lab">Opt-in</div><div class="v6-val">Contact form on our website</div></div></div>
   </div>
-<span class="wm">Smarter <b>Flow</b></span></section>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 r3-talk" data-v7m="1">
   <div class="split" style="--lc:640px;gap:44px">
     <div>
@@ -283,7 +286,7 @@ html.print .slide *{font-kerning:none;font-variant-ligatures:none;letter-spacing
     </div>
     <div class="r3-col"><div class="r3-list"><div class="r3-step sm"><b>1</b><span>Live and public</span></div><div class="r3-step sm"><b>2</b><span>Clearly your business, matching your brand details</span></div><div class="r3-step sm"><b>3</b><span>Business contact info on the site</span></div><div class="r3-step sm"><b>4</b><span>Privacy policy and terms</span></div><div class="r3-step sm"><b>5</b><span>The chat widget installed on the page you submit</span></div><div class="r3-step sm"><b>6</b><span>No phone or texting forms, no lead-buying or affiliate wording</span></div></div></div>
   </div>
-<span class="wm">Smarter <b>Flow</b></span></section>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 r3-talk" data-v7m="1">
   <div class="split" style="--lc:640px;gap:44px">
     <div>
@@ -292,7 +295,7 @@ html.print .slide *{font-kerning:none;font-variant-ligatures:none;letter-spacing
     </div>
     <div class="r3-col"><div class="r3-top"><span class="r3-fd">Fictional demo</span></div><div class="r3-card "><div class="r3-lab">On the IRS letter (CP 575 or 147C)</div><div class="r3-t">Ridgeline Demo Heating &amp; Air LLC</div></div><div class="r3-card alert"><div class="r3-lab">On the website footer</div><div class="r3-t">Ridgeline Heating and Air</div></div><div class="r3-row wrap"><span class="r3-pill">LLC or not</span><span class="r3-pill">letter for letter</span></div></div>
   </div>
-<span class="wm">Smarter <b>Flow</b></span></section>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 r3-talk" data-v7m="1">
   <div class="split" style="--lc:640px;gap:44px">
     <div>
@@ -301,7 +304,7 @@ html.print .slide *{font-kerning:none;font-variant-ligatures:none;letter-spacing
     </div>
     <div class="r3-col"><div class="r3-top"><span class="r3-fd">Fictional demo</span></div><div class="v6-chips"><div class="v6-chip"><b>Website</b><span>ridgeline-demo.example</span></div><div class="v6-chip"><b>Privacy policy</b><span>/privacy-policy</span></div><div class="v6-chip"><b>Terms</b><span>none yet</span></div><div class="v6-chip"><b>Opt-in page</b><span>/contact</span></div></div><div class="v6-ar" style="font-size:34px">↓</div><div class="r3-row c"><div class="r3-doc"><i></i><i></i><i></i><i></i></div><div class="r3-chat" style="align-items:flex-start;padding:0"><div class="r3-bub v6-bub">Start my A2P package.</div></div></div><div class="r3-row wrap"><span class="r3-pill">One file. One line.</span></div></div>
   </div>
-<span class="wm">Smarter <b>Flow</b></span></section>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 pr" data-kind="prompt" data-v7m="1">
   <div class="pr-l">
     <span class="pr-chip">Claude</span>
@@ -327,7 +330,7 @@ Terms: none yet
 Opt-in (our contact form): https://get.gosmarterflow.com/a2p-approval-engine/demo/before/contact.html
 (Video note: this fictional site is hosted on the Smarter Flow test address only for the recording. Audit it as if it were live on our own domain, https://ridgeline-demo.example, and ignore the &quot;FICTIONAL DEMO&quot; banner: it is the video&#x27;s label, not part of our site.)</pre></div>
   </div>
-<span class="wm">Smarter <b>Flow</b></span></section>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 r3-talk" data-v7m="1">
   <div class="split" style="--lc:640px;gap:44px">
     <div>
@@ -336,7 +339,7 @@ Opt-in (our contact form): https://get.gosmarterflow.com/a2p-approval-engine/dem
     </div>
     <div class="r3-col"><div class="r3-top"><span class="r3-fd">Fictional demo</span></div><div class="r3-lab" style="margin:0">One table: what it saw on your pages</div><div class="r3-list v6-rows"><div class="v6-res"><span>Legal name matches EIN letter</span><em class="v6-code">30907</em><em class="v6-tag gap">Gap</em></div><div class="v6-res"><span>Live on your own domain</span><em class="v6-tag nc">Unchecked</em></div><div class="v6-res"><span>Address, phone and email</span><em class="v6-tag pass">Found</em></div><div class="v6-res"><span>Site mentions your texting</span><em class="v6-code">30919</em><em class="v6-tag gap">Gap</em></div><div class="v6-res"><span>Privacy: no sharing for marketing</span><em class="v6-code">30932</em><em class="v6-tag gap">Gap</em></div><div class="v6-res"><span>Terms page exists and is linked</span><em class="v6-code">30896</em><em class="v6-tag gap">Gap</em></div><div class="v6-res"><span>No lead buying or affiliate marketing</span><em class="v6-tag pass">Found</em></div><div class="v6-res"><span>Widget path: no other phone form</span><em class="v6-code">30896</em><em class="v6-tag gap">Gap</em></div></div></div>
   </div>
-<span class="wm">Smarter <b>Flow</b></span></section>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 pr" data-kind="prompt" data-v7m="1">
   <div class="pr-l">
     <span class="pr-chip">Claude · same chat</span>
@@ -352,7 +355,7 @@ Opt-in (our contact form): https://get.gosmarterflow.com/a2p-approval-engine/dem
     <div class="pr-card pr-row" data-pid="P9-5" data-kind="reply" data-text="Yes, both."><i class="pr-n">5</i><div class="pr-rt"><span class="pr-cap">Use case</span><pre class="pr-txt">Yes, both.</pre></div><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div>
     <div class="pr-card pr-row" data-pid="P9-6" data-kind="reply" data-text="Yes."><i class="pr-n">6</i><div class="pr-rt"><span class="pr-cap">Description and samples</span><pre class="pr-txt">Yes.</pre></div><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div>
   </div>
-<span class="wm">Smarter <b>Flow</b></span></section>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 r3-talk" data-v7m="1">
   <div class="split" style="--lc:640px;gap:44px">
     <div>
@@ -361,7 +364,7 @@ Opt-in (our contact form): https://get.gosmarterflow.com/a2p-approval-engine/dem
     </div>
     <div class="r3-col"><div class="r3-top"><span class="r3-fd">Fictional demo</span></div><div class="r3-list"><div class="r3-step sm"><b>1</b><span>The gap it found</span></div><div class="r3-step sm"><b>2</b><span>The exact fix</span></div><div class="r3-step sm"><b>3</b><span>Then: Ask AI, or by hand?</span></div></div></div>
   </div>
-<span class="wm">Smarter <b>Flow</b></span></section>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 pr" data-kind="prompt" data-v7m="1">
   <div class="pr-l">
     <span class="pr-chip">Claude · same chat</span>
@@ -372,7 +375,7 @@ Opt-in (our contact form): https://get.gosmarterflow.com/a2p-approval-engine/dem
   <div class="pr-r">
     <div class="pr-card" data-pid="P10-1" data-kind="reply" data-text="Ask AI." style="--ps:44px"><div class="pr-hd"><span class="pr-cap">Which finish do you want?</span><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div><pre class="pr-txt">Ask AI.</pre></div>
   </div>
-<span class="wm">Smarter <b>Flow</b></span></section>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 r3-talk" data-v7m="1">
   <div class="split" style="--lc:640px;gap:44px">
     <div>
@@ -381,7 +384,7 @@ Opt-in (our contact form): https://get.gosmarterflow.com/a2p-approval-engine/dem
     </div>
     <div class="r3-col"><div class="r3-top"><span class="r3-fd">Fictional demo</span></div><div class="r3-row c"><div class="r3-doc"><i></i><i></i><i></i><i></i></div><div><div class="r3-lab" style="margin-bottom:8px">From your package</div><div class="r3-t">The same answers, in screen order</div></div></div><div class="r3-chat"><div class="r3-bub v6-bub">Chat Widget Setup · Mixed · ridgeline-demo.example · copy the widget code · the website checklist</div></div><div class="r3-row c" style="margin-top:6px"><div class="r3-btn grow">Submit</div><div class="r3-t">after you approve it</div></div><div class="r3-s" style="color:var(--c-mut);font:600 22px/1.3 var(--body)">Note: a form that collects texting consent is its own opt-in. Keep what&#x27;s live matching what you registered.</div></div>
   </div>
-<span class="wm">Smarter <b>Flow</b></span></section>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 pr" data-kind="prompt" data-v7m="1">
   <div class="pr-l">
     <span class="pr-chip">HighLevel · Chat Widget Setup</span>
@@ -392,7 +395,7 @@ Opt-in (our contact form): https://get.gosmarterflow.com/a2p-approval-engine/dem
   <div class="pr-r">
     <div class="pr-card" data-pid="P11-1" data-kind="input" data-text="https://ridgeline-demo.example" style="--ps:44px"><div class="pr-hd"><span class="pr-cap">Business website URL</span><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div><pre class="pr-txt">https://ridgeline-demo.example</pre></div>
   </div>
-<span class="wm">Smarter <b>Flow</b></span></section>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 r3-talk" data-v7m="1">
   <div class="split" style="--lc:640px;gap:44px">
     <div>
@@ -401,7 +404,7 @@ Opt-in (our contact form): https://get.gosmarterflow.com/a2p-approval-engine/dem
     </div>
     <div class="r3-col"><div class="r3-top"><span class="r3-fd">Fictional demo</span></div><div class="r3-card "><div class="r3-lab">Fresh chat, one message</div><div class="r3-t">Keep my forms. Here is my form page.</div></div><div class="v6-ar" style="font-size:34px">↓</div><div class="r3-card act"><div class="r3-lab">It flags the gaps</div><div class="r3-t">The consent boxes, the wording, the footer links</div></div></div>
   </div>
-<span class="wm">Smarter <b>Flow</b></span></section>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 pr" data-kind="prompt" data-v7m="1">
   <div class="pr-l">
     <span class="pr-chip">Claude · fresh chat</span>
@@ -442,7 +445,7 @@ Send
 HomePrivacy Policy
 </pre></div>
   </div>
-<span class="wm">Smarter <b>Flow</b></span></section>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 r3-talk" data-v7m="1">
   <div class="split" style="--lc:640px;gap:44px">
     <div>
@@ -451,7 +454,7 @@ HomePrivacy Policy
     </div>
     <div class="r3-col"><div class="r3-card alert"><div class="r3-lab">View required fixes</div><div class="r3-row c" style="gap:22px"><div class="r3-big" style="--bs:96px">30932</div><div class="r3-t" style="font-size:28px">Privacy policy shares opt-in data for marketing</div></div></div><div class="v6-ar" style="font-size:34px">↓</div><div class="r3-card act"><div class="r3-lab">The fix</div><div class="r3-t">Add the exact no-sharing clause. Remove the sharing line.</div></div></div>
   </div>
-<span class="wm">Smarter <b>Flow</b></span></section>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 pr" data-kind="prompt" data-v7m="1">
   <div class="pr-l">
     <span class="pr-chip">Claude · fresh chat</span>
@@ -462,7 +465,7 @@ HomePrivacy Policy
   <div class="pr-r">
     <div class="pr-card" data-pid="P13-1" data-kind="prompt" data-text="@A2P-AGENT-ONE-FILE.md My campaign was rejected. The code in View required fixes is 30932." style="--ps:34px"><div class="pr-hd"><span class="pr-cap">One message, fresh chat</span><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div><pre class="pr-txt">@A2P-AGENT-ONE-FILE.md My campaign was rejected. The code in View required fixes is 30932.</pre></div>
   </div>
-<span class="wm">Smarter <b>Flow</b></span></section>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 r3-talk" data-v7m="1">
   <div class="split" style="--lc:640px;gap:44px">
     <div>
@@ -471,7 +474,7 @@ HomePrivacy Policy
     </div>
     <div class="r3-col"><div class="r3-dark"><div class="r3-lab">Do it yourself</div><div class="r3-row c"><div class="r3-big" style="--bs:150px">$1</div><div><div class="r3-t" style="font-size:40px">A2P Approval Agent</div><div class="r3-s">by email · link below</div></div></div><div class="r3-lab" style="margin-top:22px">Done for you</div><div class="r3-t" style="font-size:40px">Free 30-minute consulting call</div><div class="r3-s">On the page: would you pay $55/hour for consulting?</div></div></div>
   </div>
-<span class="wm">Smarter <b>Flow</b></span></section>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 r3-talk" data-v7m="1">
   <div class="split" style="--lc:640px;gap:44px">
     <div>
@@ -480,9 +483,9 @@ HomePrivacy Policy
     </div>
     <div class="r3-col"><div class="r3-card v7-pg"><div class="r3-lab">The page behind the link below</div><div class="r3-btn" style="font-size:32px">Get the kit for USD $1</div><div class="v7-ghost">See if a free call fits</div><div class="r3-s" style="color:var(--c-mut);font:600 22px/1.3 var(--body)">A free 30-minute call with a Smarter Flow consultant</div></div></div>
   </div>
-<span class="wm">Smarter <b>Flow</b></span></section>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 </div></div>
-<div id="bar"><span class="mark">Smarter <b>Flow</b></span><button type="button" id="prev" aria-label="Previous slide">Back</button><span id="pos"></span><button type="button" id="next" aria-label="Next slide">Next</button><a class="dl" href="a2p-slide-deck.pdf" download>Download PDF</a></div>
+<div id="bar"><span class="mark">Smarter<i class="sp"> </i><b>Flow</b></span><button type="button" id="prev" aria-label="Previous slide">Back</button><span id="pos"></span><button type="button" id="next" aria-label="Next slide">Next</button><a class="dl" href="a2p-slide-deck.pdf" download>Download PDF</a></div>
 <script>
 (function(){
   var html=document.documentElement, stage=document.getElementById('stage'), fitEl=document.getElementById('fit');
