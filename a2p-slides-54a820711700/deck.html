@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The A2P slide deck · Smarter Flow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--vio:#7c3aed; --ind:#4f46e5; --pk:#db2777; --pk-soft:#c4489f;
+  --ink:#191627; --muted:#5f5a75; --muted2:#7d7793;
+  --bg:#ffffff; --bg-soft:#faf8ff; --soft:#faf8ff; --line:#eae6f6;
+  --ground:radial-gradient(1100px 680px at 74% -14%,#f3edff 0%,#ffffff 60%);
+  --grad:linear-gradient(100deg,var(--ind),var(--vio) 60%,var(--pk-soft));
+  --head:'Sora',system-ui,sans-serif; --body:'Plus Jakarta Sans',system-ui,sans-serif;
+
+  
+  --page:#ffffff;
+  --c-fg:var(--ink); --c-mut:var(--muted); --c-mut2:var(--muted2);
+  --c-acc:var(--vio); --c-alert:var(--pk);
+  --c-card:#ffffff; --c-cardline:var(--line); --c-soft:var(--bg-soft); --c-tint:#f3edff;
+  --c-track:var(--line); --c-solid:#ffffff;
+  --g1:var(--ind); --g2:var(--vio); --g3:var(--pk-soft);
+  --text-grad:var(--grad);
+  --wm-grad:linear-gradient(100deg,var(--ind),var(--pk));
+  --card-shadow:0 16px 44px rgba(124,58,237,.07);
+  --card-shadow-lg:0 24px 64px rgba(124,58,237,.16);
+  --svg-shadow:drop-shadow(0 14px 26px rgba(124,58,237,.12));}
+html[data-theme="dark"]{--page:#191430;
+  --c-fg:#ffffff; --c-mut:#c9c2e4; --c-mut2:#c9c2e4;
+  --c-acc:#8b9bff; --c-alert:#ff8fd2;
+  --c-card:rgba(255,255,255,.07); --c-cardline:rgba(255,255,255,.22); --c-soft:rgba(255,255,255,.05); --c-tint:rgba(139,123,255,.2);
+  --c-track:rgba(255,255,255,.18); --c-solid:#221a45;
+  --g1:#8b9bff; --g2:#8b7bff; --g3:#ff8fd2;
+  --text-grad:linear-gradient(90deg,#8b9bff,#ff8fd2);
+  --wm-grad:linear-gradient(90deg,#8b7bff,#f0abfc);
+  --card-shadow:0 22px 50px rgba(25,20,48,.45);
+  --card-shadow-lg:0 30px 70px rgba(25,20,48,.55);
+  --svg-shadow:drop-shadow(0 18px 30px rgba(25,20,48,.5));}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;width:100%;overflow:hidden;background:var(--page)}
+body{font-family:var(--body);color:var(--c-fg);-webkit-font-smoothing:antialiased}
+#fit{position:fixed;inset:0}
+#stage{position:absolute;top:0;left:0;width:1600px;height:900px;transform-origin:top left;overflow:hidden}
+.slide{position:absolute;left:0;top:0;width:1600px;height:900px;opacity:0;visibility:hidden;overflow:hidden;
+  background:#ffffff;background-image:var(--ground);color:var(--c-fg);
+  padding:80px 96px 120px;display:flex;flex-direction:column;justify-content:center}
+html.ready #stage .slide{transition:opacity .18s ease}
+html.ready:not(.still) #stage .slide{transition:none}
+.slide.on{opacity:1;visibility:visible}
+html[data-theme="dark"] .slide{background:linear-gradient(160deg,#191430,#221a45 68%,#2b1f56)}
+html[data-theme="dark"] .slide::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.11) 1.2px,transparent 1.6px);background-size:22px 22px}
+html[data-theme="dark"] .slide::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(820px 520px at 14% 6%,rgba(124,58,237,.55),transparent 62%),
+             radial-gradient(720px 500px at 90% 98%,rgba(219,39,119,.32),transparent 64%)}
+.slide>*{position:relative;z-index:2}
+.wm{position:absolute;left:96px;top:36px;z-index:3;font-family:var(--head);font-weight:800;letter-spacing:-.03em;font-size:26px;color:var(--c-fg);line-height:1}
+.wm b{background:var(--wm-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.h{font-family:var(--head);font-weight:800;letter-spacing:-.035em;line-height:1.03;font-size:var(--hs,104px);color:var(--c-fg)}
+.split{display:grid;grid-template-columns:var(--lc,640px) 1fr;gap:64px;align-items:center;height:100%}
+.split>:first-child{align-self:start;margin-top:var(--ht,24px)}
+svg text{font-family:var(--head);font-weight:800;letter-spacing:-.02em}
+svg *{stroke-linecap:round;stroke-linejoin:round}
+#stage .slide.play .h{animation:fu .4s cubic-bezier(.2,.7,.2,1) both}
+@keyframes fu{from{opacity:0;transform:translateY(22px)}}
+@keyframes fus{from{opacity:0;transform:translateY(12px)}}
+@keyframes fi{from{opacity:0}}
+@keyframes fl{from{opacity:0;transform:translateX(-26px)}}
+@keyframes pop{from{opacity:0;transform:scale(.6)}}
+@keyframes grow{from{transform:scaleX(0)}}
+@keyframes draw{0%{stroke-dashoffset:1;opacity:0}40%{opacity:1}100%{stroke-dashoffset:0;opacity:1}}
+@keyframes flow{from{stroke-dashoffset:48}to{stroke-dashoffset:0}}
+@keyframes cur7{0%{opacity:0;transform:translate(150px,110px)}45%{opacity:1;transform:translate(54px,26px)}}
+@keyframes rip{from{opacity:0;transform:scale(.35)}}
+@keyframes ring16{from{opacity:.9;transform:scale(1)}to{opacity:0;transform:scale(1.22)}}
+@keyframes outx{from{opacity:1}}
+@keyframes sel8{from{transform:translateY(-136px)}}
+@keyframes al9{from{transform:translateY(56px)}}
+html.still #stage .slide,html.still #stage .slide *,html.still #stage .slide *::before,html.still #stage .slide *::after{animation:none!important}
+@media (prefers-reduced-motion:reduce){#stage .slide,#stage .slide *,#stage .slide *::before,#stage .slide *::after{animation:none!important}}
+.tp{margin-top:22px;font-family:var(--body);font-weight:600;color:var(--c-fg);font-size:31px;line-height:1.32;letter-spacing:-.01em}
+.slide.r3 .split>:first-child{margin-top:8px}
+.slide.r3 .tp{font-size:30px;margin-top:20px}
+.r3-col{display:flex;flex-direction:column;gap:16px;width:100%;align-self:center;min-width:0}
+.r3-top{display:flex;align-items:center;gap:14px;min-height:38px}
+.r3-fd{flex:0 0 auto;font:800 15px/1 var(--head);letter-spacing:.1em;text-transform:uppercase;color:var(--c-alert);border:2px solid var(--c-alert);border-radius:999px;padding:9px 14px;white-space:nowrap}
+.r3-row{display:flex;gap:20px;align-items:stretch}
+.r3-row.c{align-items:center;gap:32px}
+.r3-row.wrap{flex-wrap:wrap;gap:10px}
+.r3-row.wrap .r3-pill{font-size:20px;padding:12px 15px}
+.r3-list{display:flex;flex-direction:column;gap:16px;width:100%}
+.grow{flex:1;min-width:0}
+.r3-card{background:var(--c-card);border:2px solid var(--c-cardline);border-radius:22px;box-shadow:var(--card-shadow);padding:26px 28px}
+.r3-card.alert{border-color:var(--c-alert)}
+.r3-card.alert .r3-t{color:var(--c-alert)}
+.r3-card.act{border:3px solid var(--c-acc);margin-top:4px}
+.r3-lab{font:800 16px/1 var(--head);letter-spacing:.12em;text-transform:uppercase;color:var(--c-acc);margin-bottom:14px}
+.r3-t{font:800 34px/1.16 var(--head);letter-spacing:-.025em;color:var(--c-fg)}
+.r3-s{font:600 26px/1.3 var(--body);color:var(--c-mut)}
+.r3-big{font:800 var(--bs,220px)/.92 var(--head);letter-spacing:-.05em;background:var(--text-grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.05em;white-space:nowrap}
+.r3-pill{display:inline-block;font:700 24px/1 var(--head);letter-spacing:-.01em;color:var(--c-fg);background:var(--c-card);border:2px solid var(--c-cardline);border-radius:999px;padding:14px 22px;white-space:nowrap}
+.r3-pill.on{background:var(--grad);border-color:transparent;color:#ffffff}
+.r3-pill.sm{font-size:14px;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;font-weight:800}
+.r3-btn{background:var(--grad);color:#ffffff;font:800 36px/1 var(--head);letter-spacing:-.02em;border-radius:18px;padding:26px 36px;text-align:center;box-shadow:0 14px 32px rgba(124,58,237,.28)}
+.r3-step{display:flex;align-items:center;gap:20px;background:var(--c-card);border:2px solid var(--c-cardline);border-radius:18px;padding:18px 24px;box-shadow:var(--card-shadow)}
+.r3-step b{flex:0 0 auto;width:52px;height:52px;border-radius:50%;background:var(--c-tint);color:var(--c-acc);font:800 26px/52px var(--head);text-align:center}
+.r3-step span{font:800 32px/1.15 var(--head);letter-spacing:-.025em;color:var(--c-fg)}
+.r3-step.sm{padding:13px 18px;gap:14px}
+.r3-step.sm b{width:40px;height:40px;font-size:20px;line-height:40px}
+.r3-step.sm span{font-size:24px}
+.r3-doc{width:120px;height:150px;border-radius:14px;border:3px solid var(--c-acc);background:var(--c-solid);padding:26px 18px;display:flex;flex-direction:column;gap:14px}
+.r3-doc i{display:block;height:10px;border-radius:5px;background:var(--c-track)}
+.r3-doc i:first-child{background:var(--c-acc);width:60%}
+.r3-chat{display:flex;flex-direction:column;align-items:flex-end;gap:16px;padding:0 10px}
+.r3-bub{max-width:560px;background:var(--grad);color:#ffffff;font:700 40px/1.22 var(--head);letter-spacing:-.02em;border-radius:34px 34px 8px 34px;padding:30px 36px;box-shadow:0 18px 40px rgba(124,58,237,.25)}
+.r3-fail{font:800 30px/1 var(--head);color:var(--c-alert)}
+.r3-fail::before{content:"!";display:inline-block;width:38px;height:38px;border-radius:50%;background:var(--c-alert);color:#ffffff;text-align:center;line-height:38px;margin-right:12px;font-size:26px}
+.r3-dark{background:linear-gradient(150deg,#191430,#2c2154 55%,#3b2a68);border-radius:28px;padding:40px 44px;display:flex;flex-direction:column;gap:22px;box-shadow:0 30px 70px rgba(25,20,48,.3);
+  --c-fg:#ffffff;--c-mut:#d9d2f2;--c-acc:#b9adff;--text-grad:linear-gradient(90deg,#8b7bff,#f0abfc);--c-cardline:rgba(255,255,255,.22)}
+html[data-theme="dark"] .r3-dark{box-shadow:0 0 0 2px rgba(255,255,255,.2),0 30px 70px rgba(25,20,48,.55)}
+.r3-dark .r3-lab{margin-bottom:0}
+.v6-bub{font-size:28px;max-width:640px;padding:22px 28px}
+.v6-aud{display:flex;flex-direction:column;gap:6px}
+.v6-wall{display:flex;align-items:center;gap:22px}
+.v6-wall .v6-bub{font-size:26px;max-width:380px}
+.v6-brick{flex:0 0 auto;width:16px;height:150px;border-radius:8px;background:repeating-linear-gradient(180deg,var(--c-alert) 0 26px,transparent 26px 32px)}
+.v6-ar{text-align:center;color:var(--c-mut2);font:800 22px/1 var(--head)}
+.v6-fld{background:var(--c-card);border:2px solid var(--c-cardline);border-radius:18px;padding:16px 22px;box-shadow:var(--card-shadow)}
+.v6-fld .r3-lab{font-size:14px;margin-bottom:8px}
+.v6-val{font:800 28px/1.2 var(--head);letter-spacing:-.02em;color:var(--c-fg)}
+.v6-fld.alert{border:3px solid var(--c-alert)}
+.v6-flag{display:inline-block;margin-top:10px;font:800 18px/1 var(--head);color:#ffffff;background:var(--c-alert);border-radius:999px;padding:9px 14px}
+.v6-chips{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.v6-chip{display:flex;flex-direction:column;gap:6px;background:var(--c-card);border:2px solid var(--c-acc);border-radius:18px;padding:14px 18px;box-shadow:var(--card-shadow)}
+.v6-chip b{font:800 24px/1.1 var(--head);letter-spacing:-.02em;color:var(--c-fg)}
+.v6-chip span{font:600 19px/1.2 var(--body);color:var(--c-mut)}
+.v6-rows{gap:10px}
+.v6-res{display:flex;align-items:center;gap:16px;background:var(--c-card);border:2px solid var(--c-cardline);border-radius:16px;padding:12px 18px;box-shadow:var(--card-shadow)}
+.v6-res span{flex:1;font:700 23px/1.2 var(--head);letter-spacing:-.015em;color:var(--c-fg)}
+.v6-tag{flex:0 0 auto;font:800 14px/1 var(--head);font-style:normal;letter-spacing:.08em;text-transform:uppercase;padding:9px 12px;border-radius:999px;white-space:nowrap}
+.v6-tag.pass{background:var(--c-tint);color:var(--c-acc);border:2px solid var(--c-acc)}
+.v6-tag.gap{background:var(--c-alert);color:#ffffff;border:2px solid var(--c-alert)}
+.v6-tag.nc{border:2px dashed var(--c-mut2);color:var(--c-mut)}
+.v6-code{flex:0 0 auto;font:700 16px/1 ui-monospace,"SF Mono",Menlo,monospace;font-style:normal;color:var(--c-alert);white-space:nowrap}
+.v7-pg{display:flex;flex-direction:column;gap:18px}
+.v7-ghost{font:800 30px/1 var(--head);letter-spacing:-.02em;text-align:center;border:3px solid var(--c-acc);color:var(--c-acc);border-radius:18px;padding:22px;background:var(--c-card)}
+#stage .slide.play[data-v7m] .tp{animation:fu .4s cubic-bezier(.2,.7,.2,1) .1s both}
+#stage .slide.play[data-v7m] .r3-col>*{animation:fus .4s ease-out .2s both}
+#stage .slide.play[data-v7m] .r3-col>*:nth-child(2){animation-delay:.35s}
+#stage .slide.play[data-v7m] .r3-col>*:nth-child(3){animation-delay:.5s}
+#stage .slide.play[data-v7m] .r3-col>*:nth-child(n+4){animation-delay:.6s}
+#stage .slide.play[data-v7m] .r3-pill{animation:pop .35s ease-out 1.1s both}
+#stage .slide.play[data-v7m] .r3-fail{animation:pop .35s ease-out 1.1s both}
+#stage .slide.play[data-v7m] .r3-big{animation:pop .4s ease-out 1s both}
+#stage .slide.play[data-v7m] .v6-flag{animation:pop .35s ease-out 1.1s both}
+#stage .slide.play[data-v7m] .v6-tag.gap{animation:pop .35s ease-out 1.1s both}
+#stage .slide.play[data-v7m] .v7-ghost{animation:pop .35s ease-out 1.1s both}
+.slide.pr{padding:0;display:block;-webkit-user-select:none;user-select:none}
+.pr-l{position:absolute;left:96px;top:108px;width:404px}
+.pr-chip{display:inline-flex;align-items:center;gap:.6em;font:800 16px/1 var(--head);letter-spacing:.08em;text-transform:uppercase;color:#ffffff;background:var(--ink);border-radius:999px;padding:12px 18px;box-shadow:inset 0 0 0 2px #2fe39a;white-space:nowrap}
+.pr-chip::before{content:"";flex:0 0 auto;width:.6em;height:.6em;border-radius:50%;background:#2fe39a}
+.slide.pr .h{margin-top:24px}
+.slide.pr .tp{font-size:25px;line-height:1.32;margin-top:18px;color:var(--c-mut)}
+.pr-l .r3-fd{display:inline-block;margin-top:22px}
+.pr-r{position:absolute;left:540px;top:76px;width:964px;height:748px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+.pr-card{position:relative;flex:0 0 auto;background:var(--c-card);border:3px solid var(--c-acc);border-radius:26px;overflow:hidden;box-shadow:0 22px 56px rgba(124,58,237,.14)}
+.pr-hd{display:flex;align-items:center;gap:14px;padding:12px 14px 12px 24px;background:var(--c-tint);border-bottom:2px solid var(--c-cardline)}
+.pr-n{flex:0 0 auto;width:34px;height:34px;border-radius:50%;background:var(--c-acc);color:#ffffff;font:800 18px/34px var(--head);font-style:normal;text-align:center}
+.pr-cap{flex:1;min-width:0;font:800 16px/1.25 var(--head);letter-spacing:.1em;text-transform:uppercase;color:var(--c-acc)}
+.pr-copy{flex:0 0 auto;min-width:124px;font:800 18px/1 var(--head);letter-spacing:.01em;color:#ffffff;background:var(--grad);border:0;border-radius:999px;padding:13px 22px;cursor:pointer;box-shadow:0 8px 20px rgba(124,58,237,.28);-webkit-appearance:none;appearance:none;touch-action:manipulation}
+.pr-copy:focus-visible{outline:3px solid var(--c-fg);outline-offset:2px}
+.pr-copy.ok{background:#0f9d63;box-shadow:none}
+.pr-txt{margin:0;padding:20px 26px 22px;font:600 var(--ps,24px)/1.42 var(--body);letter-spacing:-.005em;color:var(--c-fg);white-space:pre-wrap;overflow-wrap:anywhere;font-variant-ligatures:none;-webkit-user-select:text;user-select:text;cursor:text}
+.pr-txt::selection{background:#d6c4ff;color:#191627}
+.slide.pr.pr-sel .pr-card:not(.pr-act) .pr-txt{-webkit-user-select:none;user-select:none}
+.pr-card.pr-row{display:flex;align-items:center;gap:16px;padding:11px 14px 11px 20px;border-width:2px;border-radius:20px;box-shadow:var(--card-shadow)}
+.pr-rt{flex:1;min-width:0}
+.pr-row .pr-cap{display:block;font-size:14px}
+.pr-row .pr-txt{padding:4px 0 0;font:700 var(--ps,26px)/1.25 var(--head);letter-spacing:-.015em}
+.pr-row .pr-meta{padding:4px 0 0;font:600 20px/1.3 var(--body);color:var(--c-mut)}
+.pr-doc{border-style:dashed}
+#stage .slide.play.pr .pr-chip{animation:fu .4s cubic-bezier(.2,.7,.2,1) both}
+#stage .slide.play.pr .pr-card{animation:fus .4s ease-out .2s both}
+#stage .slide.play.pr .pr-card:nth-child(n+2){animation-delay:.3s}
+
+html,body{height:100%;margin:0;overflow:hidden;background:#f4f1fb}
+#fit{position:fixed;inset:0 0 52px 0}
+#stage{position:absolute;top:0;left:0;width:1600px;height:900px;transform-origin:top left;overflow:hidden;box-shadow:0 10px 40px rgba(25,20,48,.12)}
+#bar{position:fixed;left:0;right:0;bottom:0;height:52px;display:flex;align-items:center;gap:10px;padding:0 14px;background:#ffffff;border-top:1px solid #eae6f6;font:600 15px/1 'Plus Jakarta Sans',system-ui,sans-serif;color:#191627}
+.wm,#bar .mark{word-spacing:-.3em}
+#bar .mark{font:800 16px/1 'Sora',system-ui,sans-serif;letter-spacing:-.03em;margin-right:auto;white-space:nowrap}
+#bar .mark b{background:linear-gradient(100deg,#4f46e5,#7c3aed 60%,#c4489f);-webkit-background-clip:text;background-clip:text;color:transparent}
+#bar button,#bar a{font:700 15px/1 'Plus Jakarta Sans',system-ui,sans-serif;color:#191627;background:#faf8ff;border:1px solid #eae6f6;border-radius:999px;padding:10px 16px;cursor:pointer;text-decoration:none;white-space:nowrap}
+#bar a.dl{color:#ffffff;background:#7c3aed;border-color:#7c3aed}
+#bar #pos{min-width:64px;text-align:center;font-variant-numeric:tabular-nums}
+html.print,html.print body{height:auto;overflow:visible;background:#ffffff}
+html.print #bar{display:none}
+html.print #fit{position:static}
+html.print #stage{position:static;width:1600px;height:auto;transform:none!important;box-shadow:none;overflow:visible}
+html.print #stage .slide{position:relative;opacity:1;visibility:visible;break-after:page;page-break-after:always;animation:none!important}
+html.print #stage .slide *{animation:none!important}
+html.print .pr-copy{display:none}
+html.print .slide *{font-kerning:none;font-variant-ligatures:none;letter-spacing:0!important;text-rendering:optimizeSpeed}
+@page{size:1600px 900px;margin:0}
+</style>
+</head>
+<body>
+<div id="fit"><div id="stage">
+<section class="slide r3 r3-talk" data-v7m="1">
+  <div class="split" style="--lc:640px;gap:44px">
+    <div>
+      <h1 class="h" style="--hs:60px">Submitting A2P? Or already rejected?</h1>
+      <p class="tp">The fast way. Why it gets rejected. The fix.</p>
+    </div>
+    <div class="r3-col"><div class="r3-row"><div class="r3-card grow v6-aud"><div class="r3-lab">Not submitted yet</div><div class="r3-t">The fast way, then the checks</div></div><div class="r3-card grow alert v6-aud"><div class="r3-lab">Already rejected</div><div class="r3-t">Each code, mapped to its fix</div></div></div><div class="r3-row wrap" style="margin-top:6px"><span class="r3-pill">A2P certified by HighLevel</span></div></div>
+  </div>
+<span class="wm">Smarter <b>Flow</b></span></section>
+<section class="slide r3 r3-talk" data-v7m="1">
+  <div class="split" style="--lc:640px;gap:44px">
+    <div>
+      <h1 class="h" style="--hs:84px">No A2P, no texts.</h1>
+      <p class="tp">Unregistered local numbers get blocked. Brand first, then campaign.</p>
+    </div>
+    <div class="r3-col"><div class="v6-wall"><div class="r3-bub v6-bub">Hi, your appointment is tomorrow at 9.</div><i class="v6-brick"></i><div class="r3-fail">Blocked</div></div><div class="r3-lab" style="margin:10px 0 0">Register in this order</div><div class="r3-list"><div class="r3-step sm"><b>1</b><span>Brand: who is sending</span></div><div class="r3-step sm"><b>2</b><span>Campaign: what you send, and how people said yes</span></div></div></div>
+  </div>
+<span class="wm">Smarter <b>Flow</b></span></section>
+<section class="slide r3 r3-talk" data-v7m="1">
+  <div class="split" style="--lc:640px;gap:44px">
+    <div>
+      <h1 class="h" style="--hs:84px">Three options. Same finish.</h1>
+      <p class="tp">Same review screen at the end. You approve it.</p>
+    </div>
+    <div class="r3-col"><div class="r3-list"><div class="r3-step sm"><b>1</b><span>Ask AI. Fast. It types the form.</span></div><div class="r3-step sm"><b>2</b><span>Chat Widget Setup. HighLevel&#x27;s recommended path. Phone and texting forms come off during review.</span></div><div class="r3-step sm"><b>3</b><span>Keep your forms. Register the form itself. A bigger job.</span></div></div></div>
+  </div>
+<span class="wm">Smarter <b>Flow</b></span></section>
+<section class="slide r3 r3-talk" data-v7m="1">
+  <div class="split" style="--lc:640px;gap:44px">
+    <div>
+      <h1 class="h" style="--hs:72px">Option 1: Ask AI, one prompt</h1>
+      <p class="tp">Your facts in. Every answer shown. Nothing saved until you approve.</p>
+    </div>
+    <div class="r3-col"><div class="r3-top"><span class="r3-fd">Fictional demo</span></div><div class="r3-lab" style="margin:0">Option 1, or your own AI</div><div class="r3-row"><div class="r3-card grow act v6-aud"><div class="r3-lab">HighLevel Ask AI</div><div class="r3-t" style="font-size:27px">Registers it in HighLevel, after you approve</div></div><div class="r3-card grow v6-aud"><div class="r3-lab">Claude, ChatGPT</div><div class="r3-t" style="font-size:27px">Drafts the answers, you paste them in</div></div></div><div class="r3-chat"><div class="r3-bub v6-bub">Help me register this sub-account for A2P 10DLC … Do not save or submit anything until I say approve.</div></div></div>
+  </div>
+<span class="wm">Smarter <b>Flow</b></span></section>
+<section class="slide r3 pr" data-kind="prompt" data-v7m="1">
+  <div class="pr-l">
+    <span class="pr-chip">HighLevel · Ask AI</span>
+    <h1 class="h" style="--hs:56px">Paste this into Ask AI</h1>
+    <p class="tp">Your own facts go in.</p>
+    <span class="r3-fd">Fictional demo</span>
+  </div>
+  <div class="pr-r">
+    <div class="pr-card" data-pid="P4-1" data-kind="prompt" data-text="Help me register this sub-account for A2P 10DLC, the brand and the campaign. My legal business name, exactly as on my EIN letter: Ridgeline Demo Heating &amp; Air LLC. Do I have an EIN: yes. Business address, as on the letter: 1200 Example Ave, Charlotte, NC 28203. Business email on my own domain: service@ridgeline-demo.example. Website (my main site): https://ridgeline-demo.example. Privacy policy: https://ridgeline-demo.example/privacy-policy.html. Terms: none yet. Opt-in: HighLevel&#x27;s chat widget (Chat Widget Setup); I will install the widget code on my site before I approve. What my texts are about and who gets them: appointment confirmations and reminders, technician on-the-way notices, service follow-ups, and a seasonal tune-up offer, maybe 2 a month, to homeowners who book service or ask for a quote. Use my Business Profile for anything else and ask me only what you cannot find. Show me every answer first. Do not save or submit anything until I say approve." style="--ps:26px"><div class="pr-hd"><span class="pr-cap">The prompt</span><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div><pre class="pr-txt">Help me register this sub-account for A2P 10DLC, the brand and the campaign. My legal business name, exactly as on my EIN letter: Ridgeline Demo Heating &amp; Air LLC. Do I have an EIN: yes. Business address, as on the letter: 1200 Example Ave, Charlotte, NC 28203. Business email on my own domain: service@ridgeline-demo.example. Website (my main site): https://ridgeline-demo.example. Privacy policy: https://ridgeline-demo.example/privacy-policy.html. Terms: none yet. Opt-in: HighLevel&#x27;s chat widget (Chat Widget Setup); I will install the widget code on my site before I approve. What my texts are about and who gets them: appointment confirmations and reminders, technician on-the-way notices, service follow-ups, and a seasonal tune-up offer, maybe 2 a month, to homeowners who book service or ask for a quote. Use my Business Profile for anything else and ask me only what you cannot find. Show me every answer first. Do not save or submit anything until I say approve.</pre></div>
+  </div>
+<span class="wm">Smarter <b>Flow</b></span></section>
+<section class="slide r3 pr" data-kind="prompt" data-v7m="1">
+  <div class="pr-l">
+    <span class="pr-chip">No Ask AI?</span>
+    <h1 class="h" style="--hs:56px">Paste this into your own AI</h1>
+    <p class="tp">It drafts the answers. You type them in.</p>
+    <span class="r3-fd">Fictional demo</span>
+  </div>
+  <div class="pr-r">
+    <div class="pr-card" data-pid="P4-2" data-kind="prompt" data-text="Help me register this sub-account for A2P 10DLC, the brand and the campaign. My legal business name, exactly as on my EIN letter: Ridgeline Demo Heating &amp; Air LLC. Do I have an EIN: yes. Business address, as on the letter: 1200 Example Ave, Charlotte, NC 28203. Business email on my own domain: service@ridgeline-demo.example. Website (my main site): https://ridgeline-demo.example. Privacy policy: https://ridgeline-demo.example/privacy-policy.html. Terms: none yet. Opt-in: HighLevel&#x27;s chat widget (Chat Widget Setup); I will install the widget code on my site before I approve. What my texts are about and who gets them: appointment confirmations and reminders, technician on-the-way notices, service follow-ups, and a seasonal tune-up offer, maybe 2 a month, to homeowners who book service or ask for a quote. Use my Business Profile for anything else and ask me only what you cannot find. You cannot enter anything in HighLevel. Give me every answer in Trust Center screen order, and flag anything my pages do not support." style="--ps:26px"><div class="pr-hd"><span class="pr-cap">The prompt, for your own AI</span><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div><pre class="pr-txt">Help me register this sub-account for A2P 10DLC, the brand and the campaign. My legal business name, exactly as on my EIN letter: Ridgeline Demo Heating &amp; Air LLC. Do I have an EIN: yes. Business address, as on the letter: 1200 Example Ave, Charlotte, NC 28203. Business email on my own domain: service@ridgeline-demo.example. Website (my main site): https://ridgeline-demo.example. Privacy policy: https://ridgeline-demo.example/privacy-policy.html. Terms: none yet. Opt-in: HighLevel&#x27;s chat widget (Chat Widget Setup); I will install the widget code on my site before I approve. What my texts are about and who gets them: appointment confirmations and reminders, technician on-the-way notices, service follow-ups, and a seasonal tune-up offer, maybe 2 a month, to homeowners who book service or ask for a quote. Use my Business Profile for anything else and ask me only what you cannot find. You cannot enter anything in HighLevel. Give me every answer in Trust Center screen order, and flag anything my pages do not support.</pre></div>
+  </div>
+<span class="wm">Smarter <b>Flow</b></span></section>
+<section class="slide r3 r3-talk" data-v7m="1">
+  <div class="split" style="--lc:640px;gap:44px">
+    <div>
+      <h1 class="h" style="--hs:72px">Read it before it goes in</h1>
+      <p class="tp">Fast works when your pages are already right.</p>
+    </div>
+    <div class="r3-col"><div class="r3-top"><span class="r3-fd">Fictional demo</span></div><div class="v6-fld alert"><div class="r3-lab">Legal business name</div><div class="v6-val">Ridgeline Demo Heating &amp; Air LLC</div><div class="v6-flag">Does your site say this?</div></div><div class="v6-fld"><div class="r3-lab">Website footer says</div><div class="v6-val">Ridgeline Heating and Air</div></div><div class="v6-fld"><div class="r3-lab">Opt-in</div><div class="v6-val">Contact form on our website</div></div></div>
+  </div>
+<span class="wm">Smarter <b>Flow</b></span></section>
+<section class="slide r3 r3-talk" data-v7m="1">
+  <div class="split" style="--lc:640px;gap:44px">
+    <div>
+      <h1 class="h" style="--hs:72px">HighLevel&#x27;s website checklist</h1>
+      <p class="tp">Every option ends at this checklist.</p>
+    </div>
+    <div class="r3-col"><div class="r3-list"><div class="r3-step sm"><b>1</b><span>Live and public</span></div><div class="r3-step sm"><b>2</b><span>Clearly your business, matching your brand details</span></div><div class="r3-step sm"><b>3</b><span>Business contact info on the site</span></div><div class="r3-step sm"><b>4</b><span>Privacy policy and terms</span></div><div class="r3-step sm"><b>5</b><span>The chat widget installed on the page you submit</span></div><div class="r3-step sm"><b>6</b><span>No phone or texting forms, no lead-buying or affiliate wording</span></div></div></div>
+  </div>
+<span class="wm">Smarter <b>Flow</b></span></section>
+<section class="slide r3 r3-talk" data-v7m="1">
+  <div class="split" style="--lc:640px;gap:44px">
+    <div>
+      <h1 class="h" style="--hs:72px">Do you know your legal name?</h1>
+      <p class="tp">It&#x27;s on your IRS letter. LLC or not, letter for letter.</p>
+    </div>
+    <div class="r3-col"><div class="r3-top"><span class="r3-fd">Fictional demo</span></div><div class="r3-card "><div class="r3-lab">On the IRS letter (CP 575 or 147C)</div><div class="r3-t">Ridgeline Demo Heating &amp; Air LLC</div></div><div class="r3-card alert"><div class="r3-lab">On the website footer</div><div class="r3-t">Ridgeline Heating and Air</div></div><div class="r3-row wrap"><span class="r3-pill">LLC or not</span><span class="r3-pill">letter for letter</span></div></div>
+  </div>
+<span class="wm">Smarter <b>Flow</b></span></section>
+<section class="slide r3 r3-talk" data-v7m="1">
+  <div class="split" style="--lc:640px;gap:44px">
+    <div>
+      <h1 class="h" style="--hs:66px">Option 2: your links, or screenshots</h1>
+      <p class="tp">Any website builder. No link it can read? Paste the text or a screenshot.</p>
+    </div>
+    <div class="r3-col"><div class="r3-top"><span class="r3-fd">Fictional demo</span></div><div class="v6-chips"><div class="v6-chip"><b>Website</b><span>ridgeline-demo.example</span></div><div class="v6-chip"><b>Privacy policy</b><span>/privacy-policy</span></div><div class="v6-chip"><b>Terms</b><span>none yet</span></div><div class="v6-chip"><b>Opt-in page</b><span>/contact</span></div></div><div class="v6-ar" style="font-size:34px">↓</div><div class="r3-row c"><div class="r3-doc"><i></i><i></i><i></i><i></i></div><div class="r3-chat" style="align-items:flex-start;padding:0"><div class="r3-bub v6-bub">Start my A2P package.</div></div></div><div class="r3-row wrap"><span class="r3-pill">One file. One line.</span></div></div>
+  </div>
+<span class="wm">Smarter <b>Flow</b></span></section>
+<section class="slide r3 pr" data-kind="prompt" data-v7m="1">
+  <div class="pr-l">
+    <span class="pr-chip">Claude</span>
+    <h1 class="h" style="--hs:56px">Paste these into Claude</h1>
+    <p class="tp">The start line. Then your details and links.</p>
+    <span class="r3-fd">Fictional demo</span>
+  </div>
+  <div class="pr-r">
+    <div class="pr-card" data-pid="P8-1" data-kind="prompt" data-text="@A2P-AGENT-ONE-FILE.md You are the A2P Approval Agent. Follow the attached A2P-AGENT-ONE-FILE.md exactly, starting with its opening message. Start my A2P package." style="--ps:22px"><div class="pr-hd"><i class="pr-n">1</i><span class="pr-cap">Start line</span><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div><pre class="pr-txt">@A2P-AGENT-ONE-FILE.md You are the A2P Approval Agent. Follow the attached A2P-AGENT-ONE-FILE.md exactly, starting with its opening message. Start my A2P package.</pre></div>
+    <div class="pr-card" data-pid="P8-2" data-kind="prompt" data-text="Here are my details: @business-data.md @ein-letter-SPECIMEN.md
+
+Here are my links:
+Website: https://get.gosmarterflow.com/a2p-approval-engine/demo/before/
+Privacy policy: https://get.gosmarterflow.com/a2p-approval-engine/demo/before/privacy-policy.html
+Terms: none yet
+Opt-in (our contact form): https://get.gosmarterflow.com/a2p-approval-engine/demo/before/contact.html
+(Video note: this fictional site is hosted on the Smarter Flow test address only for the recording. Audit it as if it were live on our own domain, https://ridgeline-demo.example, and ignore the &quot;FICTIONAL DEMO&quot; banner: it is the video&#x27;s label, not part of our site.)" style="--ps:22px"><div class="pr-hd"><i class="pr-n">2</i><span class="pr-cap">Your details and links, one message</span><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div><pre class="pr-txt">Here are my details: @business-data.md @ein-letter-SPECIMEN.md
+
+Here are my links:
+Website: https://get.gosmarterflow.com/a2p-approval-engine/demo/before/
+Privacy policy: https://get.gosmarterflow.com/a2p-approval-engine/demo/before/privacy-policy.html
+Terms: none yet
+Opt-in (our contact form): https://get.gosmarterflow.com/a2p-approval-engine/demo/before/contact.html
+(Video note: this fictional site is hosted on the Smarter Flow test address only for the recording. Audit it as if it were live on our own domain, https://ridgeline-demo.example, and ignore the &quot;FICTIONAL DEMO&quot; banner: it is the video&#x27;s label, not part of our site.)</pre></div>
+  </div>
+<span class="wm">Smarter <b>Flow</b></span></section>
+<section class="slide r3 r3-talk" data-v7m="1">
+  <div class="split" style="--lc:640px;gap:44px">
+    <div>
+      <h1 class="h" style="--hs:60px">It checks HighLevel&#x27;s checklist for you</h1>
+      <p class="tp">Found, gap or unchecked. What it saw, not an approval.</p>
+    </div>
+    <div class="r3-col"><div class="r3-top"><span class="r3-fd">Fictional demo</span></div><div class="r3-lab" style="margin:0">One table: what it saw on your pages</div><div class="r3-list v6-rows"><div class="v6-res"><span>Legal name matches EIN letter</span><em class="v6-code">30907</em><em class="v6-tag gap">Gap</em></div><div class="v6-res"><span>Live on your own domain</span><em class="v6-tag nc">Unchecked</em></div><div class="v6-res"><span>Address, phone and email</span><em class="v6-tag pass">Found</em></div><div class="v6-res"><span>Site mentions your texting</span><em class="v6-code">30919</em><em class="v6-tag gap">Gap</em></div><div class="v6-res"><span>Privacy: no sharing for marketing</span><em class="v6-code">30932</em><em class="v6-tag gap">Gap</em></div><div class="v6-res"><span>Terms page exists and is linked</span><em class="v6-code">30896</em><em class="v6-tag gap">Gap</em></div><div class="v6-res"><span>No lead buying or affiliate marketing</span><em class="v6-tag pass">Found</em></div><div class="v6-res"><span>Widget path: no other phone form</span><em class="v6-code">30896</em><em class="v6-tag gap">Gap</em></div></div></div>
+  </div>
+<span class="wm">Smarter <b>Flow</b></span></section>
+<section class="slide r3 pr" data-kind="prompt" data-v7m="1">
+  <div class="pr-l">
+    <span class="pr-chip">Claude · same chat</span>
+    <h1 class="h" style="--hs:56px">Your answers, ready to paste</h1>
+    <p class="tp">One per question, in this order.</p>
+    <span class="r3-fd">Fictional demo</span>
+  </div>
+  <div class="pr-r">
+    <div class="pr-card pr-row" data-pid="P9-1" data-kind="reply" data-text="Yes, service@ridgeline-demo.example."><i class="pr-n">1</i><div class="pr-rt"><span class="pr-cap">Email</span><pre class="pr-txt">Yes, service@ridgeline-demo.example.</pre></div><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div>
+    <div class="pr-card pr-row pr-doc" data-pid="P9-2" data-kind="doc"><i class="pr-n">2</i><div class="pr-rt"><span class="pr-cap">HighLevel&#x27;s sample terms</span><div class="pr-meta">The whole document, one paste</div></div></div>
+    <div class="pr-card pr-row" data-pid="P9-3" data-kind="reply" data-text="Chat Widget Setup."><i class="pr-n">3</i><div class="pr-rt"><span class="pr-cap">Which path</span><pre class="pr-txt">Chat Widget Setup.</pre></div><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div>
+    <div class="pr-card pr-row" data-pid="P9-4" data-kind="reply" data-text="It says Ridgeline Heating and Air."><i class="pr-n">4</i><div class="pr-rt"><span class="pr-cap">Business Profile</span><pre class="pr-txt">It says Ridgeline Heating and Air.</pre></div><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div>
+    <div class="pr-card pr-row" data-pid="P9-5" data-kind="reply" data-text="Yes, both."><i class="pr-n">5</i><div class="pr-rt"><span class="pr-cap">Use case</span><pre class="pr-txt">Yes, both.</pre></div><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div>
+    <div class="pr-card pr-row" data-pid="P9-6" data-kind="reply" data-text="Yes."><i class="pr-n">6</i><div class="pr-rt"><span class="pr-cap">Description and samples</span><pre class="pr-txt">Yes.</pre></div><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div>
+  </div>
+<span class="wm">Smarter <b>Flow</b></span></section>
+<section class="slide r3 r3-talk" data-v7m="1">
+  <div class="split" style="--lc:640px;gap:44px">
+    <div>
+      <h1 class="h" style="--hs:64px">One finding. The fix. The field.</h1>
+      <p class="tp">Not an approval. You still check every line.</p>
+    </div>
+    <div class="r3-col"><div class="r3-top"><span class="r3-fd">Fictional demo</span></div><div class="r3-list"><div class="r3-step sm"><b>1</b><span>The gap it found</span></div><div class="r3-step sm"><b>2</b><span>The exact fix</span></div><div class="r3-step sm"><b>3</b><span>Then: Ask AI, or by hand?</span></div></div></div>
+  </div>
+<span class="wm">Smarter <b>Flow</b></span></section>
+<section class="slide r3 pr" data-kind="prompt" data-v7m="1">
+  <div class="pr-l">
+    <span class="pr-chip">Claude · same chat</span>
+    <h1 class="h" style="--hs:56px">Paste this into Claude</h1>
+    <p class="tp">It asks which finish you want.</p>
+    <span class="r3-fd">Fictional demo</span>
+  </div>
+  <div class="pr-r">
+    <div class="pr-card" data-pid="P10-1" data-kind="reply" data-text="Ask AI." style="--ps:44px"><div class="pr-hd"><span class="pr-cap">Which finish do you want?</span><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div><pre class="pr-txt">Ask AI.</pre></div>
+  </div>
+<span class="wm">Smarter <b>Flow</b></span></section>
+<section class="slide r3 r3-talk" data-v7m="1">
+  <div class="split" style="--lc:640px;gap:44px">
+    <div>
+      <h1 class="h" style="--hs:68px">Same finish: Chat Widget Setup</h1>
+      <p class="tp">Same answers. HighLevel&#x27;s checklist. You approve it.</p>
+    </div>
+    <div class="r3-col"><div class="r3-top"><span class="r3-fd">Fictional demo</span></div><div class="r3-row c"><div class="r3-doc"><i></i><i></i><i></i><i></i></div><div><div class="r3-lab" style="margin-bottom:8px">From your package</div><div class="r3-t">The same answers, in screen order</div></div></div><div class="r3-chat"><div class="r3-bub v6-bub">Chat Widget Setup · Mixed · ridgeline-demo.example · copy the widget code · the website checklist</div></div><div class="r3-row c" style="margin-top:6px"><div class="r3-btn grow">Submit</div><div class="r3-t">after you approve it</div></div><div class="r3-s" style="color:var(--c-mut);font:600 22px/1.3 var(--body)">Note: a form that collects texting consent is its own opt-in. Keep what&#x27;s live matching what you registered.</div></div>
+  </div>
+<span class="wm">Smarter <b>Flow</b></span></section>
+<section class="slide r3 pr" data-kind="prompt" data-v7m="1">
+  <div class="pr-l">
+    <span class="pr-chip">HighLevel · Chat Widget Setup</span>
+    <h1 class="h" style="--hs:54px">Paste this into HighLevel</h1>
+    <p class="tp">Your main business website.</p>
+    <span class="r3-fd">Fictional demo</span>
+  </div>
+  <div class="pr-r">
+    <div class="pr-card" data-pid="P11-1" data-kind="input" data-text="https://ridgeline-demo.example" style="--ps:44px"><div class="pr-hd"><span class="pr-cap">Business website URL</span><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div><pre class="pr-txt">https://ridgeline-demo.example</pre></div>
+  </div>
+<span class="wm">Smarter <b>Flow</b></span></section>
+<section class="slide r3 r3-talk" data-v7m="1">
+  <div class="split" style="--lc:640px;gap:44px">
+    <div>
+      <h1 class="h" style="--hs:84px">Option 3: keep your forms</h1>
+      <p class="tp">Register the form itself. Your AI flags the gaps.</p>
+    </div>
+    <div class="r3-col"><div class="r3-top"><span class="r3-fd">Fictional demo</span></div><div class="r3-card "><div class="r3-lab">Fresh chat, one message</div><div class="r3-t">Keep my forms. Here is my form page.</div></div><div class="v6-ar" style="font-size:34px">↓</div><div class="r3-card act"><div class="r3-lab">It flags the gaps</div><div class="r3-t">The consent boxes, the wording, the footer links</div></div></div>
+  </div>
+<span class="wm">Smarter <b>Flow</b></span></section>
+<section class="slide r3 pr" data-kind="prompt" data-v7m="1">
+  <div class="pr-l">
+    <span class="pr-chip">Claude · fresh chat</span>
+    <h1 class="h" style="--hs:56px">Paste this into a fresh chat</h1>
+    <p class="tp">Your form page goes in the message.</p>
+    <span class="r3-fd">Fictional demo</span>
+  </div>
+  <div class="pr-r">
+    <div class="pr-card" data-pid="P12-1" data-kind="prompt" data-text="@A2P-AGENT-ONE-FILE.md You are the A2P Approval Agent. Follow the attached A2P-AGENT-ONE-FILE.md exactly. I want to keep my contact form as the way people opt in to texts (Manual Setup), so check it and tell me what it needs. Texts: appointment reminders and a seasonal tune-up offer to homeowners who book with us. Legal name on our EIN letter: Ridgeline Demo Heating &amp; Air LLC (we have an EIN). The form page text (ignore the FICTIONAL DEMO banner, it is the video&#x27;s label):
+
+Contact | FICTIONAL DEMO
+FICTIONAL DEMO BUSINESS for a Smarter Flow video. Not a real company. Nothing here was submitted to any carrier.
+Ridgeline Heating and Air
+HomeServicesAboutContact
+Contact us
+Tell us what you need and we will call you back.
+Name[input field: name]
+Phone[input field: phone]
+Email[input field: email]
+Message
+Send
+© 2026 Ridgeline Heating and Air. 1200 Example Ave, Charlotte, NC 28203. (704) 555-0188. service@ridgeline-demo.example
+HomePrivacy Policy
+" style="--ps:20px"><div class="pr-hd"><span class="pr-cap">One message, fresh chat</span><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div><pre class="pr-txt">@A2P-AGENT-ONE-FILE.md You are the A2P Approval Agent. Follow the attached A2P-AGENT-ONE-FILE.md exactly. I want to keep my contact form as the way people opt in to texts (Manual Setup), so check it and tell me what it needs. Texts: appointment reminders and a seasonal tune-up offer to homeowners who book with us. Legal name on our EIN letter: Ridgeline Demo Heating &amp; Air LLC (we have an EIN). The form page text (ignore the FICTIONAL DEMO banner, it is the video&#x27;s label):
+
+Contact | FICTIONAL DEMO
+FICTIONAL DEMO BUSINESS for a Smarter Flow video. Not a real company. Nothing here was submitted to any carrier.
+Ridgeline Heating and Air
+HomeServicesAboutContact
+Contact us
+Tell us what you need and we will call you back.
+Name[input field: name]
+Phone[input field: phone]
+Email[input field: email]
+Message
+Send
+© 2026 Ridgeline Heating and Air. 1200 Example Ave, Charlotte, NC 28203. (704) 555-0188. service@ridgeline-demo.example
+HomePrivacy Policy
+</pre></div>
+  </div>
+<span class="wm">Smarter <b>Flow</b></span></section>
+<section class="slide r3 r3-talk" data-v7m="1">
+  <div class="split" style="--lc:640px;gap:44px">
+    <div>
+      <h1 class="h" style="--hs:84px">Already rejected?</h1>
+      <p class="tp">Paste the rejection. It maps each code to the fix.</p>
+    </div>
+    <div class="r3-col"><div class="r3-card alert"><div class="r3-lab">View required fixes</div><div class="r3-row c" style="gap:22px"><div class="r3-big" style="--bs:96px">30932</div><div class="r3-t" style="font-size:28px">Privacy policy shares opt-in data for marketing</div></div></div><div class="v6-ar" style="font-size:34px">↓</div><div class="r3-card act"><div class="r3-lab">The fix</div><div class="r3-t">Add the exact no-sharing clause. Remove the sharing line.</div></div></div>
+  </div>
+<span class="wm">Smarter <b>Flow</b></span></section>
+<section class="slide r3 pr" data-kind="prompt" data-v7m="1">
+  <div class="pr-l">
+    <span class="pr-chip">Claude · fresh chat</span>
+    <h1 class="h" style="--hs:56px">Paste this into a fresh chat</h1>
+    <p class="tp">Your own code goes where 30932 is.</p>
+    <span class="r3-fd">Fictional demo</span>
+  </div>
+  <div class="pr-r">
+    <div class="pr-card" data-pid="P13-1" data-kind="prompt" data-text="@A2P-AGENT-ONE-FILE.md My campaign was rejected. The code in View required fixes is 30932." style="--ps:34px"><div class="pr-hd"><span class="pr-cap">One message, fresh chat</span><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div><pre class="pr-txt">@A2P-AGENT-ONE-FILE.md My campaign was rejected. The code in View required fixes is 30932.</pre></div>
+  </div>
+<span class="wm">Smarter <b>Flow</b></span></section>
+<section class="slide r3 r3-talk" data-v7m="1">
+  <div class="split" style="--lc:640px;gap:44px">
+    <div>
+      <h1 class="h" style="--hs:64px">Do it yourself or done for you</h1>
+      <p class="tp">The $1 agent, or a free consulting call.</p>
+    </div>
+    <div class="r3-col"><div class="r3-dark"><div class="r3-lab">Do it yourself</div><div class="r3-row c"><div class="r3-big" style="--bs:150px">$1</div><div><div class="r3-t" style="font-size:40px">A2P Approval Agent</div><div class="r3-s">by email · link below</div></div></div><div class="r3-lab" style="margin-top:22px">Done for you</div><div class="r3-t" style="font-size:40px">Free 30-minute consulting call</div><div class="r3-s">On the page: would you pay $55/hour for consulting?</div></div></div>
+  </div>
+<span class="wm">Smarter <b>Flow</b></span></section>
+<section class="slide r3 r3-talk" data-v7m="1">
+  <div class="split" style="--lc:640px;gap:44px">
+    <div>
+      <h1 class="h" style="--hs:84px">Where to click</h1>
+      <p class="tp">One page. Link below.</p>
+    </div>
+    <div class="r3-col"><div class="r3-card v7-pg"><div class="r3-lab">The page behind the link below</div><div class="r3-btn" style="font-size:32px">Get the kit for USD $1</div><div class="v7-ghost">See if a free call fits</div><div class="r3-s" style="color:var(--c-mut);font:600 22px/1.3 var(--body)">A free 30-minute call with a Smarter Flow consultant</div></div></div>
+  </div>
+<span class="wm">Smarter <b>Flow</b></span></section>
+</div></div>
+<div id="bar"><span class="mark">Smarter <b>Flow</b></span><button type="button" id="prev" aria-label="Previous slide">Back</button><span id="pos"></span><button type="button" id="next" aria-label="Next slide">Next</button><a class="dl" href="a2p-slide-deck.pdf" download>Download PDF</a></div>
+<script>
+(function(){
+  var html=document.documentElement, stage=document.getElementById('stage'), fitEl=document.getElementById('fit');
+  var slides=[].slice.call(stage.querySelectorAll('.slide')), N=slides.length, i=0, pos=document.getElementById('pos');
+  var PRINT=/[?&]print=1/.test(location.search);
+  if(PRINT){ html.classList.add('print'); html.classList.add('still'); slides.forEach(function(s){ s.classList.add('on'); }); html.classList.add('ready'); return; }
+  function fit(){ var w=fitEl.clientWidth, h=fitEl.clientHeight, k=Math.min(w/1600,h/900); stage.style.transform='translate('+Math.max(0,(w-1600*k)/2)+'px,'+Math.max(0,(h-900*k)/2)+'px) scale('+k+')'; }
+  function show(n,quiet){ n=Math.max(0,Math.min(N-1,n)); slides[i].classList.remove('on'); slides[i].classList.remove('play'); i=n; var s=slides[i]; s.classList.add('on');
+    void s.offsetWidth; s.classList.add('play'); pos.textContent=(i+1)+' / '+N; if(!quiet){ try{ history.replaceState(null,'','#'+(i+1)); }catch(e){} } }
+  function step(d){ show(i+d); }
+  document.addEventListener('keydown',function(e){ if(e.metaKey||e.ctrlKey||e.altKey) return; var k=e.key;
+    if(k==='ArrowRight'||k==='ArrowDown'||k===' '||k==='PageDown'){ step(1); e.preventDefault(); }
+    else if(k==='ArrowLeft'||k==='ArrowUp'||k==='PageUp'){ step(-1); e.preventDefault(); }
+    else if(k==='Home') show(0); else if(k==='End') show(N-1); });
+  fitEl.addEventListener('click',function(e){ step(e.clientX<innerWidth/2?-1:1); });
+  var sx=null, sy=0;
+  fitEl.addEventListener('touchstart',function(e){ if(e.touches.length===1){ sx=e.touches[0].clientX; sy=e.touches[0].clientY; } },{passive:true});
+  fitEl.addEventListener('touchend',function(e){ if(sx===null) return; var t=e.changedTouches[0], dx=t.clientX-sx, dy=t.clientY-sy; sx=null;
+    if(Math.abs(dx)>48&&Math.abs(dx)>Math.abs(dy)*1.5){ step(dx<0?1:-1); e.preventDefault(); } },{passive:false});
+  document.getElementById('prev').addEventListener('click',function(){ step(-1); });
+  document.getElementById('next').addEventListener('click',function(){ step(1); });
+  addEventListener('resize',fit); addEventListener('orientationchange',function(){ setTimeout(fit,250); });
+  addEventListener('hashchange',function(){ var n=parseInt(location.hash.slice(1),10); if(n>=1&&n<=N&&n-1!==i) show(n-1,true); });
+  fit(); var h=parseInt(location.hash.slice(1),10); slides[0].classList.add('on'); show(h>=1&&h<=N?h-1:0,true);
+  requestAnimationFrame(function(){ html.classList.add('ready'); });
+})();
+</script>
+<script>
+/* prompt slides (Deck Brain S33): highlight or Copy, byte-exact, and a click in a card never turns the slide */
+(function(){
+  var armed=false, last=null;
+  function card(t){ return t&&t.closest?t.closest(".slide.on .pr-card"):null; }
+  function text(c){ return c.getAttribute("data-text")||""; }
+  /* while a drag that began in one card runs, the other cards on the slide cannot be selected */
+  function mark(c){ [].forEach.call(document.querySelectorAll(".pr-act,.pr-sel"),function(x){ x.classList.remove("pr-act"); x.classList.remove("pr-sel"); }); if(c){ c.classList.add("pr-act"); var s=c.closest(".slide"); if(s) s.classList.add("pr-sel"); } }
+  function selAll(c){ var p=c.querySelector(".pr-txt"); if(!p) return false; var r=document.createRange(); r.selectNodeContents(p); var s=getSelection(); s.removeAllRanges(); s.addRange(r); return true; }
+  function flash(c,t){ var b=c.querySelector(".pr-copy"); if(!b) return; if(!b.getAttribute("data-o")) b.setAttribute("data-o",b.textContent); b.textContent=t; b.classList.toggle("ok",t==="Copied"); clearTimeout(b._t); b._t=setTimeout(function(){ b.textContent=b.getAttribute("data-o"); b.classList.remove("ok"); },1600); }
+  function legacy(t){ var ta=document.createElement("textarea"); ta.value=t; ta.setAttribute("readonly",""); ta.style.cssText="position:fixed;left:-9999px;top:0;opacity:0"; document.body.appendChild(ta); ta.select(); try{ ta.setSelectionRange(0,t.length); }catch(e){} var ok=false; try{ ok=document.execCommand("copy"); }catch(e){} document.body.removeChild(ta); return ok; }
+  function copy(c){ var t=text(c); function done(ok){ flash(c,ok?"Copied":"Press Cmd C"); if(!ok) selAll(c); }
+    try{ if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(function(){ done(true); },function(){ done(legacy(t)); }); return; } }catch(e){}
+    done(legacy(t)); }
+  ["pointerdown","mousedown","touchstart"].forEach(function(ty){ window.addEventListener(ty,function(e){ var c=card(e.target); armed=!!c; mark(c); if(c){ last=c; e.stopPropagation(); } },{capture:true,passive:true}); });
+  ["pointerup","pointercancel","mouseup","touchend","touchcancel"].forEach(function(ty){ window.addEventListener(ty,function(){ mark(null); },{capture:true,passive:true}); });
+  window.addEventListener("click",function(e){
+    var c=card(e.target), was=armed; if(!c&&!was) return;
+    e.stopPropagation();                                  /* never a slide change */
+    if(!c){ e.preventDefault(); return; }                  /* a drag that began in a card and ended outside it */
+    if(e.target.closest(".pr-copy")){ e.preventDefault(); copy(c); return; }
+    if(e.detail>=3) selAll(c);                             /* triple click = exactly the prompt */
+  },true);
+  window.addEventListener("keydown",function(e){
+    if(!(e.metaKey||e.ctrlKey)||e.altKey) return; if((e.key||"").toLowerCase()!=="a") return;
+    var t=e.target; if(t&&(t.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName||""))) return;
+    var s=document.querySelector(".slide.on.pr"); if(!s) return;
+    var c=(last&&s.contains(last)&&last.querySelector(".pr-txt"))?last:(s.querySelector(".pr-card .pr-txt")||{}).parentNode; while(c&&!(c.classList&&c.classList.contains("pr-card"))) c=c.parentNode;
+    if(c&&selAll(c)){ e.preventDefault(); e.stopPropagation(); }
+  },true);
+  window.addEventListener("keydown",function(e){
+    var k=e.key||"", t=e.target, s=getSelection();
+    if(t&&t.closest&&t.closest(".slide.on .pr-copy")&&(k===" "||k==="Enter")){ e.stopPropagation(); return; }   /* the button takes the key */
+    if(e.shiftKey&&/^(Arrow|Home|End)/.test(k)&&s&&s.anchorNode){ var a=s.anchorNode.nodeType===1?s.anchorNode:s.anchorNode.parentNode; if(a&&a.closest&&a.closest(".slide.on .pr-txt")) e.stopPropagation(); }
+  },true);
+  document.addEventListener("copy",function(e){
+    var s=getSelection(); if(!s||s.isCollapsed||!s.anchorNode||!e.clipboardData) return;
+    var a=s.anchorNode.nodeType===1?s.anchorNode:s.anchorNode.parentNode, p=a&&a.closest?a.closest(".pr-txt"):null; if(!p) return;
+    var c=p.closest(".pr-card"), full=text(c), got=String(s).replace(/\u00a0/g," ").replace(/\r/g,"");
+    var whole=got.trim()===full.trim();
+    e.clipboardData.setData("text/plain",whole?full:got); e.preventDefault(); if(whole) flash(c,"Copied");
+  });
+})();
+</script>
+</body>
+</html>
