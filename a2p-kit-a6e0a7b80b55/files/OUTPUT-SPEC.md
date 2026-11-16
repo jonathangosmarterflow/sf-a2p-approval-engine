@@ -1,4 +1,4 @@
-# OUTPUT-SPEC: the exact package the A2P Approval Agent emits (a2p-kit 1.3.1)
+# OUTPUT-SPEC: the exact package the A2P Approval Agent emits (a2p-kit 1.4.0)
 
 The Smarter Flow page builder and any later automation parse this; the buyer can ignore the JSON block. The agent emits the human-readable package first (sections 1 to 12 below, in this order, with these exact headings) and ends with ONE fenced ```json block. The builder always reads the LAST ```json fence in the output.
 
@@ -6,7 +6,7 @@ The Smarter Flow page builder and any later automation parse this; the buyer can
 
 ```
 # A2P package for <business_name>
-Kit: a2p-kit 1.3.1 | sources last verified 2026-10-28 | Registry compliance, not legal advice.
+Kit: a2p-kit 1.4.0 | sources last verified 2026-10-28 | Registry compliance, not legal advice.
 ## 1. Eligibility screen            (clear / restricted / uncertain -> human review / prohibited -> STOP)
 ## 2. Brand path                    (decided, or CONDITIONAL with prerequisites + unknowns, or STOP)
 ## 3. Website gap audit             (one row per check: ✅ FOUND / ❌ GAP / ⚠️ UNCHECKED + the rejection code each ❌ would trigger + fix; "Live, public, HTTPS, own domain" is its own row, ⚠️ UNCHECKED unless a tool opened the URL; widget path: the website checklist items + the identity facts; ends "This is what I saw on your pages, not an approval.")
@@ -30,7 +30,7 @@ Required fields (always present; use "" or [] when not applicable, never omit):
 
 | Field | Type | Meaning |
 |---|---|---|
-| `kit_version` | string | "a2p-kit 1.3.1" |
+| `kit_version` | string | "a2p-kit 1.4.0" |
 | `last_verified` | string | "2026-10-28" |
 | `synthetic` | bool | true only for a fictional/demo business |
 | `business_name` | string | the name shown to texters (the DBA if one is declared, else the legal name) |
@@ -64,5 +64,9 @@ Rules the JSON must obey:
 - Links are full `https://` on the business's own domain; no public URL shorteners.
 - No em dashes.
 
-## C. Example
+## C. The simple website reply (not a package)
+
+When the buyer asks for a simple website for a subdomain (SYSTEM-PROMPT.md, "Simple website on a subdomain"), the agent answers in ONE message, in this order, and writes no package and no JSON block for it: the disclaimer line; (a) one complete HTML file in one copy block (inline CSS, no script, no form, no input, no phone or texting field; the legal name in the header and footer; who we are, what we do, service area, contact; a Privacy Policy section and a Terms section from HighLevel's sample pages in `hl-flow.md` section 10; a CHAT WIDGET comment just before `</body>`); (b) the six-row website checklist table (Live and public · Clearly your business · Contact details · Privacy policy and terms · The chat widget · No phone or texting forms), "Live and public" and "The chat widget" ⚠️ UNCHECKED until the buyer sends the live link; (c) the five "where it goes" lines; (d) "This is what I saw on your pages, not an approval. HighLevel's review and the carriers decide."; (e) "One human check before you submit: the site, the campaign answers and the way people really opt in must agree."; the disclaimer line; one question asking for the live link. In the package that follows, `pages_created` lists it as `{"page": "website", "source": "business copy + HighLevel sample 155000007237", "publish_at": "<the subdomain link>"}`.
+
+## D. Example
 A worked example on a fictional business is shown in the Smarter Flow A2P video.

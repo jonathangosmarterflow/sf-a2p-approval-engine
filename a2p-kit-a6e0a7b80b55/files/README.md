@@ -1,8 +1,8 @@
-# The A2P Approval Agent kit (a2p-kit 1.3.1, sources last verified 2026-10-28)
+# The A2P Approval Agent kit (a2p-kit 1.4.0, sources last verified 2026-10-28)
 
 **Start with `START-HERE.md`.** The fastest way: attach `A2P-AGENT-ONE-FILE.md` to a new chat in Claude, ChatGPT or Gemini and paste the one line from START-HERE.md.
 
-An AI agent you run in your own AI. It tells you what it needs, then walks you through one item at a time: what you text, your legal name and EIN, contact details, website, privacy policy, terms, opt-in and your HighLevel Business Profile name. Have it? Give it the link and it checks it against the carrier rules and lists the exact fixes, with the HighLevel rejection code each gap would trigger (several links at once are checked together in one table). Do not have it? It creates it (HighLevel's own sample policy pages filled with your details, the carrier-published clauses, the opt-in text, the website page text). Then it writes your use case, description, two sample messages, every Trust Center answer and an Ask AI prompt. **You click Submit in HighLevel; nothing is submitted for you, and nobody can promise an approval or a review time.** Registry compliance information, not legal advice.
+An AI agent you run in your own AI. It tells you what it needs, then walks you through one item at a time: what you text, your legal name and EIN, contact details, website, privacy policy, terms, opt-in and your HighLevel Business Profile name. Have it? Give it the link and it checks it against the carrier rules and lists the exact fixes, with the HighLevel rejection code each gap would trigger (several links at once are checked together in one table). Do not have it? It creates it (HighLevel's own sample policy pages filled with your details, the carrier-published clauses, the opt-in text, the website page text). Do not want to change your main website? Ask it for a simple one-page website for a subdomain (for example go.yourbusiness.com): it builds one HTML file from your real details with HighLevel's sample privacy policy and terms, checks it against HighLevel's website checklist and tells you where it goes for Chat Widget Setup. Then it writes your use case, description, two sample messages, every Trust Center answer and an Ask AI prompt. **You click Submit in HighLevel; nothing is submitted for you, and nobody can promise an approval or a review time.** Registry compliance information, not legal advice.
 
 > **Protect your private data.**
 > - **Black out (redact) the SSN and the EIN digits on any document before you upload it.** The agent only needs to know an EIN exists, plus the legal name and address exactly as printed.
@@ -16,7 +16,7 @@ An AI agent you run in your own AI. It tells you what it needs, then walks you t
 | `A2P-AGENT-ONE-FILE.md` | the whole agent in one file (instructions + every knowledge file): attach it to any chat |
 | `SYSTEM-PROMPT.md` | the agent's instructions + the install steps (one file, Claude Code, Claude Project, Custom GPT, Gemini Gem) |
 | `knowledge/requirements.md` | every current A2P rule, with its source link and date |
-| `knowledge/hl-flow.md` | the HighLevel Trust Center screens, field by field (Chat Widget Setup first) |
+| `knowledge/hl-flow.md` | the HighLevel Trust Center screens, field by field (Chat Widget Setup first), plus HighLevel's sample privacy policy and terms, word for word |
 | `knowledge/templates.md` | the carrier-published fill-in wording + where each block comes from |
 | `knowledge/rejection-playbook.md` | every HighLevel rejection code and its fix |
 | `knowledge/fees.md` | the fee table, every row dated and sourced |

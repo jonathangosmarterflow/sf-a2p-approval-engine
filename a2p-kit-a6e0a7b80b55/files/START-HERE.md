@@ -1,4 +1,4 @@
-# START HERE: the A2P Approval Agent (a2p-kit 1.3.1)
+# START HERE: the A2P Approval Agent (a2p-kit 1.4.0)
 
 An AI agent that walks you through HighLevel's A2P 10DLC registration. It tells you what it needs, then asks one thing at a time: if you have it, you give it the link and it checks it; if you do not, it creates it for you. Have several links (website, privacy policy, terms, opt-in page)? Paste them together: after the first two questions it checks them all in one table, and names the HighLevel rejection code each gap would trigger. You click Submit in HighLevel yourself.
 
@@ -24,6 +24,9 @@ Open this folder (`a2p-approval-agent-kit`) in Claude Code and type `@A2P-AGENT-
 
 ## Way 3: keep it installed (optional)
 A Claude Project, a ChatGPT Custom GPT or a Gemini Gem: steps at the end of `SYSTEM-PROMPT.md` ("HOW TO LOAD THIS AGENT").
+
+## Want a simple website on a subdomain?
+In the same chat, right after the start line, ask: "Build me a simple one-page website for a subdomain, ready for HighLevel's Chat Widget Setup" (add your details, or attach your details file). It writes one HTML file from your real details with HighLevel's sample privacy policy and terms, checks it against HighLevel's website checklist and tells you where it goes. Your main website stays as it is.
 
 ## DONE looks like
 The first reply lists the 8 things it needs and asks only the first one: what your texts are about.

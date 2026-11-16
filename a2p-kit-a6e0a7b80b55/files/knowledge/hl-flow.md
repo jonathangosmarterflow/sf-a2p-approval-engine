@@ -1,5 +1,5 @@
-<!-- a2p-kit 1.3.1 | hand-built from the HighLevel help-article corpus | sources last verified 2026-10-28 -->
-> **a2p-kit 1.3.1** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
+<!-- a2p-kit 1.4.0 | hand-built from the HighLevel help-article corpus | sources last verified 2026-10-28 -->
+> **a2p-kit 1.4.0** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
 
 # HighLevel A2P flow, screen by screen (the human clicks every button)
 
@@ -24,7 +24,7 @@ Primary sources (open these if the screen looks different):
 | Business email | Standard brand: business-domain email. Sole prop: a public-domain address (Gmail, Hotmail, Yahoo) is REQUIRED. |
 | Authorized representative | First and last name, email, phone (reachable, not used for more than 5 brands), job position, job title. |
 | Sole-prop phone | A US or Canadian mobile from a real mobile carrier that can receive a code. Google Voice and other VoIP, LeadConnector/HighLevel and other CPaaS numbers fail. Max 3 sole-prop brands per number. |
-| Website | Live, public, the MAIN business site, more than one page, shows the legal name (or DBA), services, contact details, privacy policy and a mention of the SMS program. |
+| Website | Live, public, a real business website on your own domain: your main site, or a simple business website on a subdomain of it (`faq.md` 27), the same link in your Business Profile and in Chat Widget Setup; more than one page or one page with an about section; shows the legal name (or DBA), services, contact details, privacy policy and a mention of the SMS program. Never a lone form page. |
 | Privacy Policy URL, Terms URL | Public, with the exact clauses from `templates.md`. |
 | DBA (if any) | "We are doing DBA as [Business_Name]" in the use case description; DBA visible in the site header or footer. |
 | Sample messages (Manual Setup only) | Sample 1 promotional, Sample 2 transactional (or two of the single purpose); brand name, STOP in one, [brackets], HTTPS only, no shorteners. |
@@ -56,15 +56,15 @@ Later campaigns: **Settings > Phone System > Trust Center >** in A2P Messaging (
 ### 2A. Chat Widget Setup: the PRIMARY path for HighLevel users
 Why primary: it is HighLevel's default and recommended flow; HighLevel writes the consent text, the samples, the opt-in description and the opt-in message, and locks the disclosures so the live widget matches what was submitted. Fewer fields for you to get wrong.
 1. **Messaging use case:** Marketing / Promotional, Informational / Non-Marketing, or **Mixed** (only if one program genuinely sends both; sets the use case to Low Volume Mixed and creates two independent unchecked consent boxes). Marketing + financial or loan content prompts a switch to Informational. Age-gated or financial content adds a locked Date of Birth field.
-2. **Your business website URL:** the live public MAIN site where users consent; must match the brand and show name and contact details.
+2. **Your business website URL:** the live public business website where users consent: your main site, or a simple business website on a subdomain of your own domain (`faq.md` 27); the same link as the website in your Business Profile; must match the brand and show name and contact details.
 3. **Age-gated content** checkbox only if you send age-restricted content.
-4. Click **Copy code** and install that generated code on the site (Customize widget changes colors and header text only). **Any website builder, the always-true rule:** paste it where your builder allows site-wide custom code, in the body or footer, so it loads on the MAIN site URL; publish; open that exact URL in a private browser window: the widget must load with no login, cookie wall or 404 (155000004746, code 30909). Use only the widget generated here, never another or a customised chat widget (155000004746, code 30909). Menu steps for a named builder (WordPress, Wix, Squarespace and others) are not in this kit's sources: guide from a screenshot of the builder's own screen, or the builder's own help pages.
+4. Click **Copy code** and install that generated code on the site (Customize widget changes colors and header text only). **Any website builder, the always-true rule:** paste it where your builder allows site-wide custom code, in the body or footer, so it loads on the website URL you register (step 2); publish; open that exact URL in a private browser window: the widget must load with no login, cookie wall or 404 (155000004746, code 30909). Use only the widget generated here, never another or a customised chat widget (155000004746, code 30909). Menu steps for a named builder (WordPress, Wix, Squarespace and others) are not in this kit's sources: guide from a screenshot of the builder's own screen, or the builder's own help pages.
 5. **Other forms on the site you submit, three cases** (sources: 155000008725 and 155000008590, modified 2026-09-11: "The Chat Widget should be the only form on the submitted page collecting SMS consent"; 155000004746, modified 2026-10-12: "Remove any other form on the site that collects phone numbers or SMS consent", codes 30896, 30909):
    - No phone field and no SMS consent: can stay.
    - A phone field without SMS consent wording: not a texting opt-in. The page-level rule does not name it; the rejection guidance does. This kit takes the stricter reading: take the phone field (or the form) off the site you submit while you are in review.
    - An SMS consent form: its own opt-in method. Take it off the site you submit while you are in review.
    That is temporary. Once you are approved you can put your forms back. One note: a form that collects texting consent is its own opt-in method, so put HighLevel's consent wording on it (`templates.md` section 3) and keep what is live matching what you registered; if forms are your main way to collect texting consent, register the form itself (2B, its own campaign). Why the note: Twilio error 30917 (every opt-in method listed) and HighLevel's resubmission changelog (opt-in message cannot be changed on a resubmission) (`faq.md` question 30).
-   **Main website:** the Website URL is your main business website on the same domain as the brand registration, not a standalone form or landing page (155000004746 under 30891; Twilio error 30920, published 2026-07-23; 155000007572 lists 30920 "Website is just a form").
+   **Website link:** the Website URL is a real business website on the same domain as the brand registration, not a standalone form or landing page (155000004746, codes 30891 and 30896; Twilio error 30920, published 2026-07-23; 155000007572 lists 30920 "Website is just a form"). Your main site, or a simple business website on a subdomain of your own domain that is also the website in your Business Profile, so the widget loads on the registered URL: HighLevel's exact wording and what it does and does not state are in `faq.md` 27. A subdomain website is not a gap on that ground alone; a lone form page is.
 6. **The website still needs** a Privacy Policy with the exact non-sharing clause and Terms & Conditions with the SMS clauses (`templates.md` sections 1 and 2), linked from the site.
 7. **User Consent** step: HighLevel auto-fills Use Case Description, Sample Message #1 and #2, How do Contacts Opt-in, Opt-in Message. These are read-only; read them for accuracy against what you will really send.
 8. **Website compliance check, then Review Application** (section 3). HighLevel does not publish the exact in-app checklist labels, and the number of boxes on your screen is not verified here: match these items to the boxes you see, and tick a box only when it is true on the live site. Worded from the Chat Widget guide 155000008725, Step 7 "Complete the Website Compliance Check" (modified 2026-09-11), plus the older widget-first article 155000008308 (modified 2026-07-30) for item 6:
@@ -82,7 +82,7 @@ Use it when consent is collected another way (an existing website form, paper fo
 - User consent fields: **Opt-In Method**, **Opt-in Form URL** (public, or a hosted image), **Description of Opt-In Flow** (where the number is given, what text is shown, that consent is optional, which messages are agreed to), **Opt-in Message**, **Privacy Policy URL**, **Terms & Conditions URL**.
 - **Keep your forms (the form is the registered opt-in), form rules from 155000007240 "How to get your phone number A2P approved in 2026" (modified 2026-08-31, read 2026-11-13):** HighLevel's two exact consent wordings (`templates.md` section 3), separate marketing and non-marketing boxes, never pre-checked, optional to submit even when the phone field is required, Privacy Policy and Terms links in the footer of every form. ⚠️ Conflict: 155000007120 "Opt-In Methods & Their Compliance Requirements" (modified 2026-08-31) says consent boxes are "not required when the phone number field is not mandatory"; 155000007240 shows them for an optional phone field too. This kit uses the stricter one. Proof when the form is not public: a screenshot in HighLevel Media Storage > Get Link (section 0).
 - **Registering a form as its own opt-in next to an approved campaign** (when forms are the main way people opt in to texts): its own campaign for the same brand, **Campaigns > Create Campaign > choose the Brand**, then Manual Setup (155000008590, modified 2026-09-11). Never while a campaign is Pending ("Do not create a duplicate Campaign while the current submission is Pending", 155000008590). Sole proprietor: one campaign (`requirements.md`). A new campaign carries its own fees (`fees.md`).
-- Form placement rules (155000007237): consent checkboxes per message purpose, never pre-checked, never required to submit (even when the phone field is required); checkbox wording names the same message types as the description; Privacy Policy and Terms links in the FORM FOOTER, visible, not in a pop-up, not inside the checkbox text; a subdomain opt-in page is fine when it clearly matches the brand, the path to it is visible (email, social, ads or navigation from the main site) and it carries the CTIA disclosures; the Website URL stays the main business site, and the chat widget goes on the main site (see `faq.md` question 27).
+- Form placement rules (155000007237): consent checkboxes per message purpose, never pre-checked, never required to submit (even when the phone field is required); checkbox wording names the same message types as the description; Privacy Policy and Terms links in the FORM FOOTER, visible, not in a pop-up, not inside the checkbox text; a subdomain opt-in page is fine when it clearly matches the brand, the path to it is visible (email, social, ads or navigation from the main site) and it carries the CTIA disclosures; the Website URL is a real business website (the main site, or a simple business website on a subdomain), never the lone form page (see `faq.md` question 27).
 
 ## 3. AI Compliance Review and submit
 1. Click **Review Application**. HighLevel's AI compliance review checks the campaign and website data.
@@ -133,3 +133,218 @@ Source: HL "Ask AI Assistant" https://help.gohighlevel.com/support/solutions/art
 5. **Who has it:** "included for agency admins and agency users on HighLevel agency plans, subject to fair-use limits. Sub-account admins and users can access Ask AI through pay-per-use billing or an eligible AI Employee subscription." No price is stated here; check your account.
 6. **Campaigns auto-submit after brand approval** (HighLevel changelog https://ideas.gohighlevel.com/changelog/a2p-campaigns-now-auto-submitted-after-brand-approval , no date on the page): "As soon as your A2P brand is approved, your campaign will now be submitted automatically, no manual action required." Have every page, the opt-in and the campaign answers ready before you submit the brand.
 7. **Email code:** brand registration asks for an email code when Persona identity verification is not required and the email domain is over 45 days old (155000008140, section 1 step 9). Whoever runs the registration needs access to that inbox.
+
+## 10. HighLevel's sample Privacy Policy and Terms pages (word for word)
+HighLevel links two sample pages from its approval article 155000007237 (section "Sample Privacy Policy and Terms & Conditions Pages"): the Privacy Policy Google Doc https://docs.google.com/document/d/1mIsXvcdqxS-iCRLq710bI5o7rLdx9p_83BgaGtI141s/edit and the Terms Google Doc https://docs.google.com/document/d/1kGwIuu7K4RJ-YJZ0YMTtA_X0KEEVv2AsM0idkVvayMk/edit (HighLevel users can also load both into a sub-account: https://app.gohighlevel.com/funnels/share/69652b9c98bfa960ab84b97e ). Below is their plain-text export, copied word for word on 2026-11-16 (identical to the 2026-11-09 copy). HighLevel's note: the samples "are not comprehensive"; have your own counsel review before publishing. If HighLevel's live doc differs from this copy, the live doc wins.
+Used by the simple website build (SYSTEM-PROMPT.md, "Simple website on a subdomain"): fill the `{{placeholders}}`, change nothing else, except the two Terms changes named there (Program Description = `templates.md` clause 2a; the privacy link). In the walk, items 5 and 6 keep their own steps.
+
+### 10a. Sample Privacy Policy (HighLevel)
+```text
+{{business.name}}
+Effective Date: Jan 1st, {{right_now.year}}
+IMPORTANT NOTICE REGARDING TEXT MESSAGING
+DATA
+{{business.name}} ("we," "us," or "our") DOES NOT share customer opt-in information, including phone numbers and consent records, with any affiliates or third parties for marketing, promotional, or any other purposes unrelated to providing our direct services. All text messaging originator opt-in data is kept strictly confidential.
+________________
+
+
+1. Information We Collect
+We collect the following types of information:
+Personal Information:
+• Name, email address, phone number, physical address
+• Payment information when you make a purchase or request a quote
+• Opt-in records and timestamps for all communication channels (SMS, email, etc.)
+Non-Personal Information:
+• IP address, browser type, device information
+• Website usage patterns and analytics
+• Cookies and similar technologies
+Customer Communication:
+• Records of inquiries and service requests
+• Appointment details and preferences
+• Service history and feedback
+________________
+
+
+2. How We Use Your Information
+We use collected data for:
+• Providing and improving our services
+• Processing transactions and payments
+• Communicating with you about your inquiries, appointments, and promotions
+• Enhancing website functionality and user experience
+• Ensuring security and fraud prevention
+• Maintaining records of your communication preferences and consent
+________________
+
+
+3. SMS Messaging & Compliance
+Text Message Program Terms & Conditions
+By opting into our SMS messaging services, you agree to receive text messages related to our services, including appointment reminders, customer support, and important updates.
+Opt-In & Consent:
+• You will only receive messages if you have explicitly opted in
+• We maintain timestamped records of all opt-in actions
+• We comply with the Telephone Consumer Protection Act (TCPA) and all applicable laws
+Opt-Out Instructions:
+• You can cancel SMS notifications at any time by replying "STOP"
+• You will receive a final confirmation message, and no further messages will be sent unless you re-opt in
+ • All opt-out requests are processed immediately.
+Message Frequency & Content:
+• Message frequency varies based on your interactions with our business
+• Messages will be directly related to the services you have requested
+• We do not send promotional content without specific consent
+Help & Support:
+• Reply "HELP" for assistance or contact us at {{location.email}}
+• Customer support is available during regular business hours
+Carrier Information:
+• Standard message and data rates may apply
+• Carriers are not liable for delayed or undelivered messages
+• Supported carriers include AT&T, Verizon, T-Mobile, Sprint, and most regional carriers
+SMS Data Protection Statement
+No mobile information will be shared with third parties/affiliates for marketing/promotional purposes. Information sharing to subcontractors in support services, such as customer service is permitted. All other use case categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.
+We implement strict data protection measures to safeguard your SMS opt-in information and consent records.
+________________
+
+
+4. Information Sharing & Disclosure
+We do not sell, rent, or trade personal information. We may share information with:
+Service Providers:
+• Third-party vendors who assist in our operations (e.g., payment processing, appointment scheduling)
+• SMS aggregators and providers solely for the purpose of delivering messages you've consented to receive
+• All service providers are contractually obligated to maintain confidentiality and security
+Legal Compliance:
+• If required by law, legal process, or to protect our rights
+• In response to valid law enforcement requests or court orders
+Business Transfers:
+• In case of mergers, acquisitions, or sale of assets
+• In such cases, your data remains protected under the terms of this policy
+All the above categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties, excluding aggregators and providers of the Text Message services.
+________________
+
+
+5. Data Security
+We implement and maintain reasonable security measures to protect your personal information:
+• Encryption of sensitive data in transit and at rest
+• Secure access controls and authentication mechanisms
+• Regular security assessments and updates
+• Employee training on data protection
+• Breach notification protocols in accordance with applicable laws
+• Secure backup systems and disaster recovery procedures
+Despite these measures, no method of transmission over the Internet or electronic storage is 100% secure. We strive to use commercially acceptable means to protect your personal information but cannot guarantee absolute security.
+________________
+
+
+6. Cookies & Tracking Technologies
+We use cookies and similar technologies to:
+• Analyze site traffic and user behavior
+• Remember your preferences
+• Improve website functionality and user experience
+• Measure the effectiveness of our services
+You may control cookies through your browser settings. Disabling cookies may limit your ability to use certain features of our website.
+________________
+
+
+7. Your Rights & Choices
+You have the right to:
+• Access, update, or delete your personal information
+• Opt-out of marketing emails by clicking "unsubscribe" in our emails
+• Opt-out of SMS messages by replying "STOP"
+• Request information on how we process your data
+• Withdraw consent at any time for future communications
+• Lodge a complaint with a supervisory authority if you believe your rights have been violated
+To exercise these rights, please contact us using the information in Section 10.
+________________
+
+
+8. Third-Party Links
+Our website may contain links to third-party websites. We are not responsible for their privacy practices and encourage you to review their policies. This privacy policy applies only to information collected by {{location.name}}.
+________________
+
+
+9. Changes to This Privacy Policy
+We may update this policy periodically. The latest version will always be available on our website with the effective date. For significant changes, we will notify you by email or through a notice on our website.
+________________
+
+
+10. Contact Us
+If you have questions about this Privacy Policy or how your information is handled, contact us at:
+{{business.name}}
+Phone: {{business.phone}}
+Email: {{business.email}}
+Website: {{business.website}}
+By using our website and services, you consent to this Privacy Policy.
+```
+
+### 10b. Sample Terms & Conditions (HighLevel)
+```text
+{{business.name}}
+Effective Date: Jan 1st, {{right_now.year}}
+________________
+
+
+SMS Messaging Terms & Compliance
+1. Program Description: This messaging program sends appointment confirmation and reminder messages to customers who have booked an appointment with {{business.name}} through our website at {{business.website}}, or via our scheduling forms, and have explicitly opted in to receive SMS notifications. Opt-in is collected via web forms with a dedicated checkbox for SMS consent. Messages include scheduling confirmations, appointment reminders, rescheduling updates, and customer support communications.
+2. Cancellation Instructions: You can cancel the SMS service at any time. Simply text "STOP" to the same number that sent you messages. Upon sending "STOP," we will confirm your unsubscribe status via SMS. Following this confirmation, you will no longer receive SMS messages from us. To rejoin, sign up as you did initially, and we will resume sending SMS messages to you.
+3. Support Information: If you experience issues with the messaging program, reply with the keyword "HELP" for more assistance, or reach out directly to {{business.email}} or call {{business.phone}} during business hours.
+4. Carrier Liability: Carriers are not liable for delayed or undelivered messages.
+5. Message & Data Rates: Message and data rates may apply for messages sent to you from us and to us from you. Message frequency varies based on your service usage and appointment schedule. For questions about your text plan or data plan, contact your wireless provider.
+6. Supported Carriers: Our SMS program works with all major U.S. wireless carriers, including AT&T, T-Mobile, Verizon, Sprint, and most regional carriers.
+7. Age Restriction: You must be 18 years or older to participate in our SMS program.
+8. Privacy Policy: For privacy-related inquiries, please refer to our Privacy Policy at {{business.website}}/privacy-policy
+We comply with all applicable laws and regulations, including the Telephone Consumer Protection Act (TCPA) and CTIA guidelines, regarding the use of SMS communications.
+________________
+
+
+General Terms
+This website (the "Site") is owned and operated by {{business.name}} ("COMPANY," "we" or "us"). By using the Site, you agree to be bound by these Terms of Service and to use the Site in accordance with these Terms of Service, our Privacy Policy, and any additional terms and conditions that may apply to specific sections of the Site or to products and services available through the Site or from {{business.name}}.
+Accessing the Site, in any manner, whether automated or otherwise, constitutes use of the Site and your agreement to be bound by these Terms of Service.
+We reserve the right to change these Terms of Service or to impose new conditions on the use of the Site from time to time, in which case we will post the revised Terms of Service on this website. By continuing to use the Site after we post any such changes, you accept the Terms of Service, as modified.
+________________
+
+
+Intellectual Property Rights
+Our Limited License to You
+This Site and all the materials available on the Site are the property of {{business.name}} and/or our affiliates or licensors and are protected by copyright, trademark, and other intellectual property laws. The Site is provided solely for your personal non-commercial use.
+You may not use the Site or the materials available on the Site in a manner that constitutes an infringement of our rights or that has not been authorized by us.
+Unless explicitly authorized, you may not modify, copy, reproduce, republish, upload, post, transmit, translate, sell, create derivative works, exploit, or distribute in any manner or medium any material from the Site. However, you may download and/or print one copy of individual pages for your personal, non-commercial use, provided that you keep intact all copyright and other proprietary notices.
+Your License to Us
+By posting or submitting any material (including comments, blog entries, social media posts, photos, and videos) to us via the Site, internet groups, or other digital venues, you represent that you own the material or have obtained the necessary permissions. You grant us a royalty-free, perpetual, irrevocable, non-exclusive, worldwide license to use, modify, transmit, sell, exploit, create derivative works from, distribute, and publicly perform or display such material.
+________________
+
+
+Disclaimers
+Throughout the Site, we may provide links and pointers to Internet sites maintained by third parties. Our linking to such third-party sites does not imply an endorsement or sponsorship of such sites or the information, products, or services offered on or through the sites.
+The information, products, and services offered on or through the Site are provided "as is" and without warranties of any kind, either express or implied. To the fullest extent permissible pursuant to applicable law, we disclaim all warranties, including implied warranties of merchantability and fitness for a particular purpose.
+You agree at all times to indemnify and hold harmless {{business.name}}, its affiliates, and their respective officers, directors, agents, and employees from any claims, causes of action, damages, liabilities, costs, and expenses arising out of or related to your breach of any obligation, warranty, or representation under these Terms of Service.
+________________
+
+
+Online Commerce
+Certain sections of the Site may allow you to purchase products and services from third-party vendors. We are not responsible for the quality, accuracy, timeliness, reliability, or any other aspect of these products and services. If you make a purchase from a third party linked through the Site, the information obtained during your visit, including payment information, may be collected by both the merchant and us.
+Your participation in any dealings with third-party vendors is solely between you and the third party. {{business.name}} shall not be responsible for any loss or damage incurred as a result of such dealings.
+________________
+
+
+Registration & Passwords
+To access certain features of the Site, you may be required to register and create an account. You agree to provide accurate, current, and complete information during the registration process. You are responsible for maintaining the confidentiality of your login credentials and for all activities conducted under your account.
+If you suspect unauthorized use of your account, notify us immediately at {{business.email}}. We are not liable for any loss or damage arising from your failure to comply with this obligation.
+________________
+
+
+Termination
+We reserve the right to terminate or suspend your access to the Site, without notice, if we determine that you have violated these Terms of Service or engaged in conduct that we deem inappropriate or unlawful. Upon termination, you must cease all use of the Site and any content obtained from it.
+________________
+
+
+Governing Law
+These Terms of Service shall be governed by and construed in accordance with the laws of the state in which {{business.name}} operates. Any dispute arising under these Terms shall be resolved exclusively through binding arbitration in that jurisdiction.
+________________
+
+
+Changes to Terms of Service
+We may update these Terms of Service from time to time. The latest version will always be available on our website with the effective date.
+For any questions regarding these Terms of Service, please contact us at:
+{{business.name}}
+Phone: {{business.phone}}
+Email: {{business.email}}
+Website: {{business.website}}
+By using our website and services, you consent to these Terms of Service.
+```
