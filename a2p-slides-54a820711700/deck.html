@@ -122,13 +122,14 @@ html.still #stage .slide,html.still #stage .slide *,html.still #stage .slide *::
 .slide.pr .tp{font-size:25px;line-height:1.32;margin-top:18px;color:var(--c-mut)}
 .pr-step{display:block;margin:0 0 16px;font-size:18px}
 .pr-r{position:absolute;left:540px;top:76px;width:964px;height:748px;display:flex;flex-direction:column;justify-content:center;gap:14px}
-.pr-card{position:relative;flex:0 0 auto;background:var(--c-card);border:3px solid var(--c-acc);border-radius:26px;overflow:hidden;box-shadow:0 22px 56px rgba(124,58,237,.14)}
+.pr-card{position:relative;flex:0 1 auto;min-height:0;max-height:100%;display:flex;flex-direction:column;background:var(--c-card);border:3px solid var(--c-acc);border-radius:26px;overflow:hidden;box-shadow:0 22px 56px rgba(124,58,237,.14)}
+.pr-hd{flex:0 0 auto}
 .pr-hd{display:flex;align-items:center;gap:14px;padding:12px 14px 12px 24px;background:var(--c-tint);border-bottom:2px solid var(--c-cardline)}
 .pr-cap{flex:1;min-width:0;font:800 16px/1.25 var(--head);letter-spacing:.1em;text-transform:uppercase;color:var(--c-acc)}
 .pr-copy{flex:0 0 auto;min-width:124px;font:800 18px/1 var(--head);letter-spacing:.01em;color:#ffffff;background:var(--grad);border:0;border-radius:999px;padding:13px 22px;cursor:pointer;box-shadow:0 8px 20px rgba(124,58,237,.28);-webkit-appearance:none;appearance:none;touch-action:manipulation}
 .pr-copy:focus-visible{outline:3px solid var(--c-fg);outline-offset:2px}
 .pr-copy.ok{background:#0f9d63;box-shadow:none}
-.pr-txt{margin:0;padding:20px 26px 22px;font:600 var(--ps,24px)/1.42 var(--body);letter-spacing:-.005em;color:var(--c-fg);white-space:pre-wrap;overflow-wrap:anywhere;font-variant-ligatures:none;-webkit-user-select:text;user-select:text;cursor:text}
+.pr-txt{margin:0;padding:20px 26px 22px;font:600 var(--ps,24px)/1.42 var(--body);letter-spacing:-.005em;color:var(--c-fg);white-space:pre-wrap;overflow-wrap:anywhere;font-variant-ligatures:none;-webkit-user-select:text;user-select:text;cursor:text;flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:thin}
 .pr-txt::selection{background:#d6c4ff;color:#191627}
 .slide.pr.pr-sel .pr-card:not(.pr-act) .pr-txt{-webkit-user-select:none;user-select:none}
 #stage .slide.play.pr .pr-chip{animation:fu .4s cubic-bezier(.2,.7,.2,1) both}
@@ -140,14 +141,14 @@ html.still #stage .slide,html.still #stage .slide *,html.still #stage .slide *::
 .slide.dd .dd-left{position:absolute;left:96px;top:120px;width:300px}
 .slide.dd .dd-left .h{margin-top:18px}
 .dd-chip{display:inline-block;font:800 15px/1 var(--head);letter-spacing:.1em;text-transform:uppercase;color:#ffffff;background:var(--ink);border-radius:999px;padding:10px 16px}
-.slide.dd .dd-g{position:absolute;left:440px;right:96px;top:110px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.slide.dd .dd-g{position:absolute;left:440px;right:96px;top:110px;display:grid;grid-template-columns:1.15fr .9fr 1fr 1.15fr;gap:14px}
 .dd-c{display:flex;flex-direction:column;gap:10px;min-width:0}
 .dd-gh{font:800 14px/1.2 var(--head);letter-spacing:.1em;text-transform:uppercase;color:var(--c-acc);min-height:34px}
 .dd-f{display:flex;flex-direction:column;gap:4px;background:var(--c-card);border:2px solid var(--c-cardline);border-radius:12px;padding:9px 12px;cursor:copy;box-shadow:var(--card-shadow);position:relative}
 .dd-f:hover{border-color:var(--c-acc)}
 .dd-f.ok{border-color:#2fe39a}
 .dd-k{font:700 13px/1.2 var(--body);color:var(--c-mut)}
-.dd-v{font:800 18px/1.25 var(--head);color:var(--c-fg);overflow-wrap:anywhere;-webkit-user-select:text;user-select:text}
+.dd-v{font:800 18px/1.25 var(--head);color:var(--c-fg);overflow-wrap:break-word;-webkit-user-select:text;user-select:text}
 .dd-f.ok .dd-k::after{content:" · Copied";color:#1a9e6a}
 .dd-gh{border-bottom:4px solid var(--vio);padding-bottom:6px}
 .dd-c:nth-child(even) .dd-gh{border-bottom-color:var(--pk)}
@@ -156,7 +157,50 @@ html.still #stage .slide,html.still #stage .slide *,html.still #stage .slide *::
 .ln-row span{font-size:22px}
 .ln-why{flex:0 0 auto;font:700 15px/1.2 var(--body);font-style:normal;color:var(--c-mut);white-space:nowrap}
 .ln-row.ok{border:3px solid var(--c-acc)}
+.ln-ex{margin-top:22px;padding:14px 18px;border-radius:14px;border:2px dashed var(--vio);display:flex;flex-direction:column;gap:6px}
+.ln-ex b{font:800 21px/1.25 var(--body);letter-spacing:.01em}
+.ln-exl{font:700 16px/1.3 var(--body);color:var(--c-mut)}
 .slide.dd .dd-left .tp{font-size:26px}
+.sd-blk{margin-top:6px;padding:16px 18px;border-radius:18px;border:2px dashed var(--vio);display:flex;flex-direction:column;gap:10px}
+.sd-must{font:800 22px/1.25 var(--head);color:var(--c-fg)}
+.sd-rows{display:flex;flex-direction:column;gap:8px}
+.sd-rows .v6-res{padding:9px 16px}
+.sd-rows .v6-res span{font-size:22px}
+.sd-prev{color:var(--c-mut)!important;font-style:italic}
+.sd-check{font:700 18px/1.3 var(--body);color:var(--c-mut)}
+.slide.af .af-l{position:absolute;left:96px;top:120px;width:560px}
+.slide.af .af-l .h{text-wrap:balance}
+.af-url{display:inline-block;white-space:nowrap;margin-top:26px;font:700 20px/1.3 ui-monospace,"SF Mono",Menlo,monospace;color:var(--c-acc);background:var(--c-tint);border:2px solid var(--c-acc);border-radius:12px;padding:12px 16px;-webkit-user-select:text;user-select:text}
+.af-doc{position:absolute;left:720px;top:84px;width:300px;height:900px;background:var(--c-card);border:2px solid var(--c-cardline);border-radius:16px 16px 0 0;box-shadow:var(--card-shadow);padding:0 20px;overflow:hidden;-webkit-mask-image:linear-gradient(#000 70%,transparent 96%);mask-image:linear-gradient(#000 70%,transparent 96%)}
+.af-top{margin:0 -20px 12px;padding:12px 20px;background:var(--c-tint);border-bottom:2px solid var(--c-cardline);font:800 14px/1.2 ui-monospace,"SF Mono",Menlo,monospace;color:var(--c-acc)}
+.af-h{font:800 15px/1.2 var(--head);color:var(--c-fg);margin:10px 0 5px}
+.af-b{display:block;height:6px;border-radius:3px;background:var(--c-cardline);margin:5px 0}
+.af-stats{position:absolute;left:1060px;top:150px;width:440px;display:flex;flex-direction:column;gap:16px}
+.af-st{font:800 40px/1.1 var(--head);letter-spacing:-.02em;color:var(--c-fg);background:var(--c-card);border:2px solid var(--c-cardline);border-left:9px solid var(--vio);border-radius:18px;padding:20px 24px;box-shadow:var(--card-shadow)}
+.af-st:nth-child(2){border-left-color:var(--pk)}
+.af-st.af-src{font:700 22px/1.35 var(--body);letter-spacing:0}
+.aio-split{height:auto;padding-top:0}
+.aio-cta{position:absolute;left:700px;right:96px;top:640px;display:flex;align-items:center;gap:22px;padding:20px 26px;border-radius:22px 22px 22px 6px;background:var(--c-tint);border:3px solid var(--c-acc);box-shadow:var(--card-shadow)}
+.aio-ic{flex:0 0 auto;width:58px;height:58px;color:var(--c-acc)}
+.aio-ask{font:700 22px/1.25 var(--body);color:var(--c-mut)}
+.aio-big{font:800 38px/1.15 var(--head);letter-spacing:-.02em;color:var(--c-fg);margin-top:4px}
+.cta-c{position:relative;display:flex;flex-direction:column;gap:10px;padding-top:30px}
+.cta-n{display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;background:var(--grad);color:#ffffff;font:800 36px/1 var(--head);font-style:normal;margin-bottom:6px}
+.cta-s{font:600 22px/1.3 var(--body);color:var(--c-mut)}
+.cta-u{margin-top:auto;padding-top:8px;font:700 18px/1.35 ui-monospace,"SF Mono",Menlo,monospace;color:var(--c-acc)}
+.cta-u span{display:inline-block;white-space:nowrap}
+.cta-wide{padding:34px 36px}
+.cs-row{padding:16px 22px;gap:18px}
+.cs-lab{flex:0 0 150px;font:800 15px/1.2 var(--head);font-style:normal;letter-spacing:.1em;text-transform:uppercase;color:var(--c-mut)}
+.v6-res .cs-v{font:800 30px/1.2 var(--head);letter-spacing:-.015em;color:var(--c-fg);overflow-wrap:anywhere}
+.cs-dom{color:var(--c-acc);font-weight:800}
+.cs-name{margin-top:16px;border:3px solid var(--c-acc)}
+.v6-res.cs-name .cs-v{display:flex;flex-direction:column;gap:6px;font-size:28px}
+.sd-chips{display:flex;flex-wrap:wrap;gap:14px}
+.sd-chip{font:800 40px/1 var(--head);letter-spacing:-.02em;color:var(--c-fg);background:var(--c-card);border:3px solid var(--c-cardline);border-radius:16px;padding:18px 24px;box-shadow:var(--card-shadow);-webkit-user-select:text;user-select:text;cursor:text}
+.sd-chip.on{background:var(--grad);color:#ffffff;border-color:transparent}
+.sd-ex{margin-top:14px}
+.sd-url{font:800 46px/1.15 var(--head);letter-spacing:-.02em;color:var(--c-fg);overflow-wrap:anywhere;-webkit-user-select:text;user-select:text}
 
 html,body{height:100%;margin:0;overflow:hidden;background:#f4f1fb}
 #fit{position:fixed;inset:0 0 52px 0}
@@ -224,12 +268,25 @@ html.print .slide *{font-kerning:none;font-variant-ligatures:none;letter-spacing
     <div class="r3-col"><div class="v6-st qs-pt">Business type and industry</div><div class="v6-st qs-pt">Business phone</div><div class="v6-st qs-pt">Who signs: name, job title, email, phone</div><div class="v6-st qs-pt">What your texts are about, and who gets them</div></div>
   </div>
 <span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
+<section class="slide r3 pr" data-kind="prompt" data-v7m="1">
+  <div class="pr-l">
+    <span class="r3-lab pr-step">Step 1 · Prompt 1</span>
+    <span class="pr-chip">Claude · your files, Drive, email</span>
+    <h1 class="h" style="--hs:56px">Let your AI find it for you</h1>
+    <p class="tp">It links every source so you can check. Or send this prompt to whoever keeps your paperwork.</p>
+    
+  </div>
+  <div class="pr-r">
+    <div class="pr-card" data-pid="P4-0" data-kind="prompt" data-text="Find my business details for A2P 10DLC, so I can fill in my HighLevel Business Profile. Search this computer (documents, downloads and desktop) and, if you are connected to them, my Google Drive and my email. Look for my EIN letter from the IRS (CP 575 or 147C), my business formation papers, and anything with my business address, email or phone. Find: my legal business name, exactly as on my EIN letter, letter for letter; my EIN; my business type (LLC, corporation or sole proprietor) and industry; my business address, as on the letter; my business email on my own domain; my business phone; my website and its privacy policy page; and who signs (name, job title, email, phone). Give me each answer with a link to the file or email it came from, so I can double check it. If something is missing, or two sources disagree, tell me. Do not change, move, share or send anything." style="--ps:28px"><div class="pr-hd"><span class="pr-cap">The prompt</span><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div><pre class="pr-txt">Find my business details for A2P 10DLC, so I can fill in my HighLevel Business Profile. Search this computer (documents, downloads and desktop) and, if you are connected to them, my Google Drive and my email. Look for my EIN letter from the IRS (CP 575 or 147C), my business formation papers, and anything with my business address, email or phone. Find: my legal business name, exactly as on my EIN letter, letter for letter; my EIN; my business type (LLC, corporation or sole proprietor) and industry; my business address, as on the letter; my business email on my own domain; my business phone; my website and its privacy policy page; and who signs (name, job title, email, phone). Give me each answer with a link to the file or email it came from, so I can double check it. If something is missing, or two sources disagree, tell me. Do not change, move, share or send anything.</pre></div>
+  </div>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 r3-talk" data-v7m="1">
   <div class="split" style="--lc:560px;gap:40px">
     <div>
       <h1 class="h" style="--hs:58px">Which name matches the EIN letter?</h1>
       <p class="tp">The letter says: <b>Ridgeline Demo Heating &amp; Air LLC</b></p>
       <p class="tp ln-how">This is how exact you have to be. Every letter, comma and capital.</p>
+      <div class="ln-ex"><span class="ln-exl">Single member LLC? It can look like this:</span><b>RIDGELINE DEMO HEATING &amp; AIR LLC JOHN DOE SINGLE MEMBER</b><span class="ln-exl">Long and weird. If your letter says it, that is your name.</span></div>
     </div>
     <div class="r3-col v6-rows"><div class="v6-res ln-row"><span>Ridgeline Heating and Air</span><em class="ln-why">The brand on the trucks</em><em class="v6-tag gap">Wrong</em></div><div class="v6-res ln-row"><span>Ridgeline Demo Heating &amp; Air</span><em class="ln-why">LLC missing</em><em class="v6-tag gap">Wrong</em></div><div class="v6-res ln-row"><span>Ridgeline Demo Heating and Air LLC</span><em class="ln-why">&quot;and&quot; is not &quot;&amp;&quot;</em><em class="v6-tag gap">Wrong</em></div><div class="v6-res ln-row"><span>Ridgeline Demo Heating &amp; Air, LLC</span><em class="ln-why">An extra comma</em><em class="v6-tag gap">Wrong</em></div><div class="v6-res ln-row"><span>Ridgeline Demo Heating &amp; Air L.L.C.</span><em class="ln-why">L.L.C. is not LLC</em><em class="v6-tag gap">Wrong</em></div><div class="v6-res ln-row"><span>ridgeline demo heating &amp; air llc</span><em class="ln-why">Capitals do not match</em><em class="v6-tag gap">Wrong</em></div><div class="v6-res ln-row ok"><span>Ridgeline Demo Heating &amp; Air LLC</span><em class="ln-why">Letter for letter</em><em class="v6-tag pass">Match</em></div></div>
   </div>
@@ -242,16 +299,12 @@ html.print .slide *{font-kerning:none;font-variant-ligatures:none;letter-spacing
     <div class="r3-col"><div class="v6-st qs-pt">IRS EIN letter (CP 575)</div><div class="v6-st qs-pt">Lost it? Ask the IRS for a 147C letter</div><div class="v6-st qs-pt">LLC: your Articles of Organization</div><div class="v6-st qs-pt">Corporation: your Articles of Incorporation</div><div class="v6-st qs-pt">Sole proprietor: your own legal name</div></div>
   </div>
 <span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
-<section class="slide r3 pr" data-kind="prompt" data-v7m="1">
-  <div class="pr-l">
-    <span class="r3-lab pr-step">Step 1 · Prompt 1</span>
-    <span class="pr-chip">Claude · your computer</span>
-    <h1 class="h" style="--hs:56px">Let Claude find it for you</h1>
-    <p class="tp">It links each file so you can check. Give it to your clients too.</p>
-    
-  </div>
-  <div class="pr-r">
-    <div class="pr-card" data-pid="P4-0" data-kind="prompt" data-text="Find my business details for A2P 10DLC on this computer, so I can fill in my HighLevel Business Profile. Look through my documents, downloads and desktop for my EIN letter from the IRS (CP 575 or 147C), my business formation papers, and anything with my business address, email or phone. Find: my legal business name, exactly as on my EIN letter, letter for letter; my EIN; my business type (LLC, corporation or sole proprietor) and industry; my business address, as on the letter; my business email on my own domain; my business phone; my website and its privacy policy page; and who signs (name, job title, email, phone). Give me each answer with a link to the file it came from, so I can double check it. If something is missing, or two files disagree, tell me. Do not change, move or send any file." style="--ps:28px"><div class="pr-hd"><span class="pr-cap">The prompt</span><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div><pre class="pr-txt">Find my business details for A2P 10DLC on this computer, so I can fill in my HighLevel Business Profile. Look through my documents, downloads and desktop for my EIN letter from the IRS (CP 575 or 147C), my business formation papers, and anything with my business address, email or phone. Find: my legal business name, exactly as on my EIN letter, letter for letter; my EIN; my business type (LLC, corporation or sole proprietor) and industry; my business address, as on the letter; my business email on my own domain; my business phone; my website and its privacy policy page; and who signs (name, job title, email, phone). Give me each answer with a link to the file it came from, so I can double check it. If something is missing, or two files disagree, tell me. Do not change, move or send any file.</pre></div>
+<section class="slide r3 r3-talk" data-v7m="1">
+  <div class="split" style="--lc:640px;gap:44px">
+    <div>
+      <h1 class="h" style="--hs:58px">Can&#x27;t find it? Look here.</h1>
+    </div>
+    <div class="r3-col"><div class="v6-st qs-pt">Search your email and Drive: &quot;EIN&quot;, &quot;CP 575&quot;, &quot;IRS&quot;</div><div class="v6-st qs-pt">The service that formed your LLC (LegalZoom, ZenBusiness and others)</div><div class="v6-st qs-pt">Your state&#x27;s business search (Secretary of State)</div><div class="v6-st qs-pt">Your accountant or bookkeeper</div><div class="v6-st qs-pt">Still nothing? Call the IRS for a 147C letter</div></div>
   </div>
 <span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 r3-talk" data-v7m="1">
@@ -265,10 +318,18 @@ html.print .slide *{font-kerning:none;font-variant-ligatures:none;letter-spacing
 <section class="slide r3 dd" data-v7m="1">
   <div class="dd-left"><span class="dd-chip">Demo data · HVAC</span>
     <h1 class="h" style="--hs:50px">The demo business</h1>
-    <p class="tp">Click any field to copy it.</p>
     
   </div>
-  <div class="dd-g"><div class="dd-c"><div class="dd-gh">General</div><div class="dd-f"><span class="dd-k">Business name</span><span class="dd-v">Ridgeline Heating and Air</span></div><div class="dd-f"><span class="dd-k">Legal business name</span><span class="dd-v">Ridgeline Demo Heating &amp; Air LLC</span></div><div class="dd-f"><span class="dd-k">Business email</span><span class="dd-v">service@ridgeline-demo.example</span></div><div class="dd-f"><span class="dd-k">Business phone</span><span class="dd-v">+1 704 555 0188</span></div><div class="dd-f"><span class="dd-k">Website</span><span class="dd-v">https://ridgeline-demo.example</span></div><div class="dd-f"><span class="dd-k">Niche</span><span class="dd-v">HVAC</span></div></div><div class="dd-c"><div class="dd-gh">Address</div><div class="dd-f"><span class="dd-k">Street address</span><span class="dd-v">1200 Example Ave</span></div><div class="dd-f"><span class="dd-k">City</span><span class="dd-v">Charlotte</span></div><div class="dd-f"><span class="dd-k">State</span><span class="dd-v">North Carolina</span></div><div class="dd-f"><span class="dd-k">Postal code</span><span class="dd-v">28203</span></div><div class="dd-f"><span class="dd-k">Country</span><span class="dd-v">United States</span></div></div><div class="dd-c"><div class="dd-gh">Business information</div><div class="dd-f"><span class="dd-k">Business type</span><span class="dd-v">Limited Liability Company (LLC)</span></div><div class="dd-f"><span class="dd-k">Industry</span><span class="dd-v">Construction (closest to HVAC)</span></div><div class="dd-f"><span class="dd-k">Registration ID type</span><span class="dd-v">USA: Employer Identification Number (EIN)</span></div><div class="dd-f"><span class="dd-k">EIN</span><span class="dd-v">12-3456789</span></div><div class="dd-f"><span class="dd-k">Regions of operation</span><span class="dd-v">USA</span></div></div><div class="dd-c"><div class="dd-gh">Authorized representative</div><div class="dd-f"><span class="dd-k">First name</span><span class="dd-v">Jordan</span></div><div class="dd-f"><span class="dd-k">Last name</span><span class="dd-v">Ellis</span></div><div class="dd-f"><span class="dd-k">Email</span><span class="dd-v">jordan@ridgeline-demo.example</span></div><div class="dd-f"><span class="dd-k">Job position</span><span class="dd-v">CEO</span></div><div class="dd-f"><span class="dd-k">Phone</span><span class="dd-v">+1 704 555 0142</span></div></div></div>
+  <div class="dd-g"><div class="dd-c"><div class="dd-gh">General</div><div class="dd-f"><span class="dd-k">Business name</span><span class="dd-v">Ridgeline Heating and Air</span></div><div class="dd-f"><span class="dd-k">Legal business name</span><span class="dd-v">Ridgeline Demo Heating &amp; Air LLC</span></div><div class="dd-f"><span class="dd-k">Business email</span><span class="dd-v">service@</span><div class="dd-f"><span class="dd-k">Business phone</span><span class="dd-v">+1 704 555 0188</span></div><div class="dd-f"><span class="dd-k">Website</span><span class="dd-v">https://</span><div class="dd-f"><span class="dd-k">Niche</span><span class="dd-v">HVAC</span></div></div><div class="dd-c"><div class="dd-gh">Address</div><div class="dd-f"><span class="dd-k">Street address</span><span class="dd-v">1200 Example Ave</span></div><div class="dd-f"><span class="dd-k">City</span><span class="dd-v">Charlotte</span></div><div class="dd-f"><span class="dd-k">State</span><span class="dd-v">North Carolina</span></div><div class="dd-f"><span class="dd-k">Postal code</span><span class="dd-v">28203</span></div><div class="dd-f"><span class="dd-k">Country</span><span class="dd-v">United States</span></div></div><div class="dd-c"><div class="dd-gh">Business information</div><div class="dd-f"><span class="dd-k">Business type</span><span class="dd-v">Limited Liability Company (LLC)</span></div><div class="dd-f"><span class="dd-k">Industry</span><span class="dd-v">Construction (closest to HVAC)</span></div><div class="dd-f"><span class="dd-k">Registration ID type</span><span class="dd-v">USA: Employer Identification Number (EIN)</span></div><div class="dd-f"><span class="dd-k">EIN</span><span class="dd-v">12-3456789</span></div><div class="dd-f"><span class="dd-k">Regions of operation</span><span class="dd-v">USA</span></div></div><div class="dd-c"><div class="dd-gh">Authorized representative</div><div class="dd-f"><span class="dd-k">First name</span><span class="dd-v">Jordan</span></div><div class="dd-f"><span class="dd-k">Last name</span><span class="dd-v">Ellis</span></div><div class="dd-f"><span class="dd-k">Email</span><span class="dd-v">jordan@</span><div class="dd-f"><span class="dd-k">Job position</span><span class="dd-v">CEO</span></div><div class="dd-f"><span class="dd-k">Phone</span><span class="dd-v">+1 704 555 0142</span></div></div></div>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
+<section class="slide r3 r3-talk" data-v7m="1">
+  <div class="split" style="--lc:560px;gap:40px">
+    <div>
+      <h1 class="h" style="--hs:60px">Same details. Everywhere.</h1>
+      <p class="tp">Mismatched details are a common reason for rejection.</p>
+    </div>
+    <div class="r3-col v6-rows"><div class="v6-res cs-row"><em class="cs-lab">Website</em><span class="cs-v"><b class="cs-dom">ridgelineair247.com</b></span></div><div class="v6-res cs-row"><em class="cs-lab">Email</em><span class="cs-v">service@<b class="cs-dom">ridgelineair247.com</b></span></div><div class="v6-res cs-row"><em class="cs-lab">Subdomain</em><span class="cs-v">go.<b class="cs-dom">ridgelineair247.com</b></span></div><div class="v6-res cs-row cs-name"><em class="cs-lab">Legal name</em><span class="cs-v">Ridgeline Demo Heating &amp; Air LLC</span></div></div>
+  </div>
 <span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 r3-talk" data-v7m="1">
   <div class="split" style="--lc:640px;gap:44px">
@@ -279,12 +340,40 @@ html.print .slide *{font-kerning:none;font-variant-ligatures:none;letter-spacing
     <div class="r3-col"><div class="r3-card act"><div class="r3-row c" style="gap:14px"><span class="r3-pill">go.yourbusiness.com</span></div><div class="r3-list v6-rows" style="margin-top:18px"><div class="v6-res"><span>Live and public</span><em class="v6-tag pass">✓</em></div><div class="v6-res"><span>Clearly your business</span><em class="v6-tag pass">✓</em></div><div class="v6-res"><span>Contact details</span><em class="v6-tag pass">✓</em></div><div class="v6-res"><span>Privacy policy and terms</span><em class="v6-tag pass">✓</em></div><div class="v6-res"><span>The chat widget</span><em class="v6-tag pass">✓</em></div><div class="v6-res"><span>No phone or texting forms</span><em class="v6-tag pass">✓</em></div></div></div></div>
   </div>
 <span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
+<section class="slide r3 r3-talk" data-v7m="1">
+  <div class="split" style="--lc:560px;gap:40px">
+    <div>
+      <h1 class="h" style="--hs:64px">Pick your subdomain.</h1>
+      <p class="tp">Short, and on your own domain. Your main website stays as it is.</p>
+    </div>
+    <div class="r3-col"><div class="sd-chips"><span class="sd-chip on">go.</span><span class="sd-chip">get.</span><span class="sd-chip">start.</span><span class="sd-chip">book.</span><span class="sd-chip">hello.</span><span class="sd-chip">workwith.</span><span class="sd-chip">ai.</span></div><div class="r3-card act sd-ex"><div class="sd-url"><b class="cs-dom">go.</b>ridgelineair247.com</div></div></div>
+  </div>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 pr" data-kind="prompt" data-v7m="1">
   <div class="pr-l">
-    <span class="r3-lab pr-step">Step 2 · Prompt 2</span>
+    <span class="r3-lab pr-step">Step 2 · Prompt 2a</span>
+    <span class="pr-chip">HighLevel · Ask AI</span>
+    <h1 class="h" style="--hs:56px">Let HighLevel&#x27;s AI draft it</h1>
+    <p class="tp">It drafts the pages. A preview link is not your website: connect your subdomain next.</p>
+    
+  </div>
+  <div class="pr-r">
+    <div class="pr-card" data-pid="P11-2A" data-kind="prompt" data-text="Create a new website for my business, for A2P 10DLC registration with Chat Widget Setup. Use the details in my Business Profile. Pages: Home, Privacy Policy and Terms. Home: who we are, with my legal business name exactly as in my Business Profile; what we do, with our specific services; how to reach us, with our address, phone and email; one short line that customers can text us and we reply by text; and links to the Privacy Policy and the Terms in the footer. For the Privacy Policy and the Terms use HighLevel&#x27;s sample A2P wording, including the sentence that mobile information is not shared with third parties for marketing. Use only details from my Business Profile. If something is missing, ask me. Do not invent anything. No forms, no pop-ups. Do not publish it and do not connect a domain. I will do both myself." style="--ps:28px"><div class="pr-hd"><span class="pr-cap">One message to Ask AI</span><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div><pre class="pr-txt">Create a new website for my business, for A2P 10DLC registration with Chat Widget Setup. Use the details in my Business Profile. Pages: Home, Privacy Policy and Terms. Home: who we are, with my legal business name exactly as in my Business Profile; what we do, with our specific services; how to reach us, with our address, phone and email; one short line that customers can text us and we reply by text; and links to the Privacy Policy and the Terms in the footer. For the Privacy Policy and the Terms use HighLevel&#x27;s sample A2P wording, including the sentence that mobile information is not shared with third parties for marketing. Use only details from my Business Profile. If something is missing, ask me. Do not invent anything. No forms, no pop-ups. Do not publish it and do not connect a domain. I will do both myself.</pre></div>
+  </div>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
+<section class="slide r3 r3-talk af" data-v7m="1">
+  <div class="af-l"><h1 class="h" style="--hs:60px">The agent is one file.</h1>
+      <p class="tp">Free. First it reads this, then it does the work.</p>
+      <div class="af-url">get.gosmarterflow.com/a2p-approval-engine</div></div>
+  <div class="af-doc"><div class="af-top">A2P-AGENT-ONE-FILE.md</div><div class="af-h">Instructions</div><i class="af-b" style="width:88%"></i><div class="af-h">Hard rules</div><i class="af-b" style="width:88%"></i><div class="af-h">The walk</div><i class="af-b" style="width:88%"></i><i class="af-b" style="width:79%"></i><i class="af-b" style="width:70%"></i><i class="af-b" style="width:88%"></i><div class="af-h">Requirements</div><i class="af-b" style="width:88%"></i><i class="af-b" style="width:79%"></i><i class="af-b" style="width:70%"></i><div class="af-h">Prohibited use cases</div><i class="af-b" style="width:88%"></i><div class="af-h">Fees</div><i class="af-b" style="width:88%"></i><div class="af-h">HighLevel flow, screen by screen</div><i class="af-b" style="width:88%"></i><i class="af-b" style="width:79%"></i><i class="af-b" style="width:70%"></i><div class="af-h">Sample privacy and terms</div><i class="af-b" style="width:88%"></i><i class="af-b" style="width:79%"></i><i class="af-b" style="width:70%"></i><i class="af-b" style="width:88%"></i><div class="af-h">Connect the subdomain</div><i class="af-b" style="width:88%"></i><div class="af-h">Templates</div><i class="af-b" style="width:88%"></i><i class="af-b" style="width:79%"></i><i class="af-b" style="width:70%"></i><div class="af-h">Rejection playbook</div><i class="af-b" style="width:88%"></i><i class="af-b" style="width:79%"></i><i class="af-b" style="width:70%"></i><div class="af-h">FAQ</div><i class="af-b" style="width:88%"></i><i class="af-b" style="width:79%"></i><i class="af-b" style="width:70%"></i><div class="af-h">After approval</div><i class="af-b" style="width:88%"></i><i class="af-b" style="width:79%"></i></div>
+  <div class="af-stats"><div class="af-st">1,342 lines</div><div class="af-st">29,000 words</div><div class="af-st af-src">Built from 81 HighLevel help articles, 310 A2P videos and 123 other official pages</div></div>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
+<section class="slide r3 pr" data-kind="prompt" data-v7m="1">
+  <div class="pr-l">
+    <span class="r3-lab pr-step">Step 2 · Prompt 2b</span>
     <span class="pr-chip">Claude</span>
-    <h1 class="h" style="--hs:56px">Paste this into Claude</h1>
-    <p class="tp">Your own details go here.</p>
+    <h1 class="h" style="--hs:56px">Or let your own AI build it</h1>
+    <p class="tp">Attach the agent file. Your own details go here.</p>
     
   </div>
   <div class="pr-r">
@@ -292,11 +381,39 @@ html.print .slide *{font-kerning:none;font-variant-ligatures:none;letter-spacing
 
 Here are my details: @business-data.md @ein-letter-SPECIMEN.md
 
-I do not want to change my main website. Build me a simple one-page website for a subdomain, go.ridgeline-demo.example, ready for HighLevel&#x27;s Chat Widget Setup: who we are, what we do, how to reach us, a privacy policy and terms. Only our real details. HighLevel&#x27;s sample privacy and terms wording, nothing invented. No forms. Give me one HTML file I can paste into a HighLevel page, then check it against HighLevel&#x27;s website checklist." style="--ps:28px"><div class="pr-hd"><span class="pr-cap">One message: the agent, your details, the website</span><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div><pre class="pr-txt">@A2P-AGENT-ONE-FILE.md You are the A2P Approval Agent. Follow the attached A2P-AGENT-ONE-FILE.md exactly.
+I do not want to change my main website. Build me a simple one-page website for a subdomain, go.ridgelineair247.com, ready for HighLevel&#x27;s Chat Widget Setup: who we are, what we do, how to reach us, a privacy policy and terms. Only our real details. HighLevel&#x27;s sample privacy and terms wording, nothing invented. No forms. Give me one HTML file I can paste into a HighLevel page, then check it against HighLevel&#x27;s website checklist." style="--ps:28px"><div class="pr-hd"><span class="pr-cap">One message: the agent, your details, the website</span><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div><pre class="pr-txt">@A2P-AGENT-ONE-FILE.md You are the A2P Approval Agent. Follow the attached A2P-AGENT-ONE-FILE.md exactly.
 
 Here are my details: @business-data.md @ein-letter-SPECIMEN.md
 
-I do not want to change my main website. Build me a simple one-page website for a subdomain, go.ridgeline-demo.example, ready for HighLevel&#x27;s Chat Widget Setup: who we are, what we do, how to reach us, a privacy policy and terms. Only our real details. HighLevel&#x27;s sample privacy and terms wording, nothing invented. No forms. Give me one HTML file I can paste into a HighLevel page, then check it against HighLevel&#x27;s website checklist.</pre></div>
+I do not want to change my main website. Build me a simple one-page website for a subdomain, go.ridgelineair247.com, ready for HighLevel&#x27;s Chat Widget Setup: who we are, what we do, how to reach us, a privacy policy and terms. Only our real details. HighLevel&#x27;s sample privacy and terms wording, nothing invented. No forms. Give me one HTML file I can paste into a HighLevel page, then check it against HighLevel&#x27;s website checklist.</pre></div>
+  </div>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
+<section class="slide r3 r3-talk" data-v7m="1">
+  <div class="split aio-split" style="--lc:600px;gap:44px">
+    <div>
+      <h1 class="h" style="--hs:58px">My AI operating system does the rest.</h1>
+      <p class="tp">Ask AI drafts the pages. It does not publish them or connect your domain.</p>
+    </div>
+    <div class="r3-col"><div class="v6-st qs-pt">Claude with access to my files and my domains</div><div class="v6-st qs-pt">One prompt, with the agent file</div><div class="v6-st qs-pt">It builds the page and adds the domain record</div></div>
+  </div>
+  <div class="aio-cta"><svg class="aio-ic" viewbox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.5 4v-4h0A2.5 2.5 0 0 1 4 13.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M8 8.5h8M8 11.5h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"></svg><div><div class="aio-ask">Want the video on how I set it up?</div><div class="aio-big">Comment &quot;AI OS&quot; below.</div></div></div>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
+<section class="slide r3 r3-talk" data-v7m="1">
+  <div class="split" style="--lc:500px;gap:40px">
+    <div>
+      <h1 class="h" style="--hs:64px">Both free.</h1>
+      <p class="tp">Links 1 and 2 below the video.</p>
+    </div>
+    <div class="r3-col"><div class="r3-row" style="align-items:stretch"><div class="r3-card grow v6-aud cta-c"><i class="cta-n">1</i><div class="r3-t" style="font-size:30px">The slide deck</div><div class="cta-s">Every prompt from this video, ready to copy</div><div class="cta-u"><span>get.gosmarterflow.com/</span><span>a2p-approval-engine/</span><span>slides</span></div></div><div class="r3-card grow v6-aud cta-c"><i class="cta-n">2</i><div class="r3-t" style="font-size:30px">The A2P Approval Agent</div><div class="cta-s">One file for your own AI</div><div class="cta-u"><span>get.gosmarterflow.com/</span><span>a2p-approval-engine</span></div></div></div></div>
+  </div>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
+<section class="slide r3 r3-talk" data-v7m="1">
+  <div class="split" style="--lc:500px;gap:40px">
+    <div>
+      <h1 class="h" style="--hs:64px">Want it done for you?</h1>
+      <p class="tp">Link 3 below the video.</p>
+    </div>
+    <div class="r3-col"><div class="r3-card act v6-aud cta-c cta-wide"><i class="cta-n">3</i><div class="r3-t" style="font-size:40px">A free 30 minute consulting call</div><div class="cta-s" style="font-size:26px">With a Smarter Flow consultant. If you qualify.</div></div></div>
   </div>
 <span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 r3-talk" data-v7m="1">
@@ -305,7 +422,7 @@ I do not want to change my main website. Build me a simple one-page website for 
       <h1 class="h" style="--hs:60px">Put it on your subdomain</h1>
       <p class="tp">Your main website stays as it is.</p>
     </div>
-    <div class="r3-col"><div class="v6-st qs-pt">1. HighLevel: Settings, Domains. Add go.yourbusiness.com</div><div class="v6-st qs-pt">2. Add the record it shows at your domain provider</div><div class="v6-st qs-pt">3. New page on that domain. Paste the code. Publish.</div></div>
+    <div class="r3-col"><div class="v6-st qs-pt">1. Settings, Domains &amp; URL Redirects, Connect a domain</div><div class="v6-st qs-pt">2. Add the CNAME record it shows (or click Authorize if it offers)</div><div class="v6-st qs-pt">3. Link the domain to your page, then publish</div><div class="sd-blk"><div class="sd-must">The page must open on your own subdomain.</div><div class="v6-rows sd-rows"><div class="v6-res ln-row"><span class="sd-prev">a preview link from the builder</span><em class="v6-tag gap">Wrong</em></div><div class="v6-res ln-row ok"><span>go.ridgelineair247.com</span><em class="v6-tag pass">Match</em></div></div><div class="sd-check">Open it in a private window. The address bar shows your subdomain.</div></div></div>
   </div>
 <span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 pr" data-kind="prompt" data-v7m="1">
@@ -317,11 +434,11 @@ I do not want to change my main website. Build me a simple one-page website for 
     
   </div>
   <div class="pr-r">
-    <div class="pr-card" data-pid="P11-3" data-kind="prompt" data-text="I am connecting go.ridgeline-demo.example in HighLevel. This is what the Domains screen shows me:
+    <div class="pr-card" data-pid="P11-3" data-kind="prompt" data-text="I am connecting go.ridgelineair247.com in HighLevel. This is what the Domains screen shows me:
 
 [paste what the screen shows]
 
-My domain is at GoDaddy. Tell me click by click where to add this record. Use only the values I pasted, never your own. Then tell me how to check that it worked." style="--ps:28px"><div class="pr-hd"><span class="pr-cap">Your Domains screen, then GoDaddy</span><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div><pre class="pr-txt">I am connecting go.ridgeline-demo.example in HighLevel. This is what the Domains screen shows me:
+My domain is at GoDaddy. Tell me click by click where to add this record. Use only the values I pasted, never your own. Then tell me how to check that it worked." style="--ps:28px"><div class="pr-hd"><span class="pr-cap">Your Domains screen, then GoDaddy</span><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div><pre class="pr-txt">I am connecting go.ridgelineair247.com in HighLevel. This is what the Domains screen shows me:
 
 [paste what the screen shows]
 
@@ -346,7 +463,7 @@ My domain is at GoDaddy. Tell me click by click where to add this record. Use on
     
   </div>
   <div class="pr-r">
-    <div class="pr-card" data-pid="P11-4" data-kind="prompt" data-text="Give me every answer for HighLevel&#x27;s A2P registration with Chat Widget Setup, in the order the screens ask for them: the business details, the address, the person who signs, then the campaign: volume, use case, website link and the age question. One line each, ready to paste. My website link is https://go.ridgeline-demo.example. Leave blank what you do not know and ask me. Never guess." style="--ps:28px"><div class="pr-hd"><span class="pr-cap">Every answer, in screen order</span><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div><pre class="pr-txt">Give me every answer for HighLevel&#x27;s A2P registration with Chat Widget Setup, in the order the screens ask for them: the business details, the address, the person who signs, then the campaign: volume, use case, website link and the age question. One line each, ready to paste. My website link is https://go.ridgeline-demo.example. Leave blank what you do not know and ask me. Never guess.</pre></div>
+    <div class="pr-card" data-pid="P11-4" data-kind="prompt" data-text="Give me every answer for HighLevel&#x27;s A2P registration with Chat Widget Setup, in the order the screens ask for them: the business details, the address, the person who signs, then the campaign: volume, use case, website link and the age question. One line each, ready to paste. My website link is https://go.ridgelineair247.com. Leave blank what you do not know and ask me. Never guess." style="--ps:28px"><div class="pr-hd"><span class="pr-cap">Every answer, in screen order</span><button class="pr-copy" type="button" aria-label="Copy this text">Copy</button></div><pre class="pr-txt">Give me every answer for HighLevel&#x27;s A2P registration with Chat Widget Setup, in the order the screens ask for them: the business details, the address, the person who signs, then the campaign: volume, use case, website link and the age question. One line each, ready to paste. My website link is https://go.ridgelineair247.com. Leave blank what you do not know and ask me. Never guess.</pre></div>
   </div>
 <span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 pr" data-kind="prompt" data-v7m="1">
@@ -366,7 +483,7 @@ My domain is at GoDaddy. Tell me click by click where to add this record. Use on
     <div>
       <h1 class="h" style="--hs:64px">Check it. Then submit.</h1>
     </div>
-    <div class="r3-col"><div class="v6-st qs-pt">Open your link in a private window</div><div class="v6-st qs-pt">The widget shows. Privacy and terms open.</div><div class="v6-st qs-pt">Tick a box only when it is true</div><div class="v6-st qs-pt">You press submit. Nobody else.</div></div>
+    <div class="r3-col"><div class="v6-st qs-pt">Submit your subdomain link, the same as in your Business Profile</div><div class="v6-st qs-pt">Private window: the widget shows. Privacy and terms open.</div><div class="v6-st qs-pt">Tick a box only when it is true</div><div class="v6-st qs-pt">You press submit. Nobody else.</div></div>
   </div>
 <span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 pr" data-kind="prompt" data-v7m="1">
@@ -411,12 +528,21 @@ My domain is at GoDaddy. Tell me click by click where to add this record. Use on
   </div>
 <span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 <section class="slide r3 r3-talk" data-v7m="1">
-  <div class="split" style="--lc:640px;gap:44px">
+  <div class="split" style="--lc:500px;gap:40px">
     <div>
-      <h1 class="h" style="--hs:64px">Do it yourself or done for you</h1>
-      <p class="tp">The free agent, or a free consulting call.</p>
+      <h1 class="h" style="--hs:64px">Both free.</h1>
+      <p class="tp">Links 1 and 2 below the video.</p>
     </div>
-    <div class="r3-col"><div class="r3-row" style="align-items:stretch"><div class="r3-card grow v6-aud"><div class="r3-lab">Do it yourself</div><div class="r3-big" style="--bs:96px">Free</div><div class="r3-t" style="font-size:27px">The A2P Approval Agent and this slide deck, by email · link below</div></div><div class="r3-card grow act v6-aud"><div class="r3-lab">Done for you</div><div class="r3-t" style="font-size:30px">Free 30-minute consulting call</div></div></div></div>
+    <div class="r3-col"><div class="r3-row" style="align-items:stretch"><div class="r3-card grow v6-aud cta-c"><i class="cta-n">1</i><div class="r3-t" style="font-size:30px">The slide deck</div><div class="cta-s">Every prompt from this video, ready to copy</div><div class="cta-u"><span>get.gosmarterflow.com/</span><span>a2p-approval-engine/</span><span>slides</span></div></div><div class="r3-card grow v6-aud cta-c"><i class="cta-n">2</i><div class="r3-t" style="font-size:30px">The A2P Approval Agent</div><div class="cta-s">One file for your own AI</div><div class="cta-u"><span>get.gosmarterflow.com/</span><span>a2p-approval-engine</span></div></div></div></div>
+  </div>
+<span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
+<section class="slide r3 r3-talk" data-v7m="1">
+  <div class="split" style="--lc:500px;gap:40px">
+    <div>
+      <h1 class="h" style="--hs:64px">Want it done for you?</h1>
+      <p class="tp">Link 3 below the video.</p>
+    </div>
+    <div class="r3-col"><div class="r3-card act v6-aud cta-c cta-wide"><i class="cta-n">3</i><div class="r3-t" style="font-size:40px">A free 30 minute consulting call</div><div class="cta-s" style="font-size:26px">With a Smarter Flow consultant. If you qualify.</div></div></div>
   </div>
 <span class="wm">Smarter<i class="sp"> </i><b>Flow</b></span></section>
 </div></div>
@@ -479,6 +605,13 @@ My domain is at GoDaddy. Tell me click by click where to add this record. Use on
     if(e.target.closest(".pr-copy")){ e.preventDefault(); copy(c); return; }
     if(e.detail>=3) selAll(c);                             /* triple click = exactly the prompt */
   },true);
+  /* a long prompt scrolls inside its card: the fade shows while more text is below */
+  function more(){ [].forEach.call(document.querySelectorAll(".slide.on .pr-card"),function(c){ var p=c.querySelector(".pr-txt"); if(!p) return;
+    c.classList.toggle("pr-more", p.scrollHeight-p.clientHeight-p.scrollTop>2); }); }
+  document.addEventListener("scroll",function(e){ if(e.target&&e.target.classList&&e.target.classList.contains("pr-txt")) more(); },true);
+  window.addEventListener("wheel",function(e){ var p=e.target&&e.target.closest?e.target.closest(".slide.on .pr-txt"):null; if(p) e.stopPropagation(); },{capture:true,passive:true});
+  window.addEventListener("resize",more);
+  (function(){ var st=document.getElementById("stage"); if(st&&window.MutationObserver) new MutationObserver(function(){ requestAnimationFrame(more); }).observe(st,{subtree:true,attributes:true,attributeFilter:["class"]}); setTimeout(more,300); })();
   window.addEventListener("keydown",function(e){
     if(!(e.metaKey||e.ctrlKey)||e.altKey) return; if((e.key||"").toLowerCase()!=="a") return;
     var t=e.target; if(t&&(t.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName||""))) return;
