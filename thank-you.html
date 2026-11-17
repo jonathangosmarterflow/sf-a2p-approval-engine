@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=6.0.3">
-<!-- v6 2026-11-07: Stripe returns here (worker return_url thank-you.html?session_id=...). The kit is delivered by EMAIL
+<!-- v8 2026-11-17: the free opt-in (buy.html) lands here after the worker said 200. The kit is delivered by EMAIL
      (his decision: he wants the email list); this page never shows the download link. -->
 </head>
 <body>
@@ -24,7 +24,7 @@
     <h1 style="font-size:28px">Your kit is on its way</h1>
     <p class="okline" id="arrives">Your A2P Approval Agent kit arrives by email within the next few minutes.</p>
     <p id="issues">If you have any issues, email <a href="mailto:jonathan@gosmarterflow.com">jonathan@gosmarterflow.com</a>.</p>
-    <p class="small">Not in your inbox? Look in spam or promotions, and check the email you typed at checkout.</p>
+    <p class="small">Not in your inbox? Look in spam or promotions, and check the email you typed on the form.</p>
   </section>
   <section class="card">
     <h2>When it arrives</h2>
@@ -44,13 +44,13 @@
   <p>Registry compliance help from carrier-published templates, not legal advice. Nobody can promise a carrier decision or a review time; you click submit.</p>
   <p>&copy; 2026 Smarter Flow. <a href="https://gosmarterflow.com/privacy-policy">Privacy notice</a></p>
 </div></footer>
-<script src="config.js?v=6.0.0"></script>
+<script src="config.js?v=8.0.0"></script>
 <script>
 (function(){
-  /* The session id stays out of every event and link. Only a "came from checkout" flag is recorded. */
+  /* No email or name ever reaches this address. Only a "came from the opt-in" flag is recorded. */
   var q=new URLSearchParams(location.search);
   document.getElementById('dfy').href='index.html?'+a2pUtm('thank-you').toString()+'#dfy';
-  a2pEvent('a2p_thankyou_view',{state:q.get('session_id')?'checkout':'direct'});
+  a2pEvent('a2p_thankyou_view',{state:q.get('from')==='optin'?'optin':'direct'});
 })();
 </script>
 </body>

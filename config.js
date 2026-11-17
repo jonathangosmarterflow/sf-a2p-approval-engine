@@ -1,16 +1,17 @@
 /* config.js: the ONE place for the A2P funnel's rules and wiring (index.html, buy.html, qualified.html, thank-you.html
    and the kit delivery page load it).
 
-   v6 (2026-11-07, his decision, LOCKED): TWO LANES, framed exactly as DIY vs DFY.
-   - DO IT YOURSELF = the A2P Approval Agent kit for USD $1 (A2P_OFFER below). buy.html mounts Stripe Embedded Checkout
-     (POST api/checkout-session on the same origin, worker sf-get-host); Stripe returns to thank-you.html; the webhook
-     emails the kit (E0) and tags the buyer a2p-j1 + a2p-kit-bought. No countdown, no deadline: "USD $1 today" only.
-   - DONE FOR YOU = the free 30-minute call with a Smarter Flow consultant, behind the honest filter:
+   v8 (2026-11-17, his words: "The ai agent for a2p we will give away for free. Not for 1$"): TWO LANES, DIY vs DFY.
+   - DO IT YOURSELF = the A2P Approval Agent kit, FREE by email opt-in (A2P_OFFER below). buy.html is the opt-in page
+     (first name + email); it POSTs to api/optin on the same origin (worker sf-get-host, branded-host/optin.js), which
+     files the HighLevel contact (a2p-j1 + a2p-qualified|a2p-nurture), emails the kit (E0) once and tags a2p-kit-sent;
+     then thank-you.html. No Stripe, no price.
+   - DONE FOR YOU = the free 30-minute call with a Smarter Flow consultant, behind the honest filter (unchanged):
      "If you were to work with us, are you willing to pay $55/hour for consulting?" (yes/no) AND a tier 1 or tier 2
-     country. qualified = qualified.html (calendar). A NO or a tier-3 country = buy.html (the USD $1 kit), never the calendar.
-   The free opt-in (v5, api/optin) is RETIRED: the worker answers 410. The worker keeps its copy of the rule
-   (branded-host/optin.js OPTIN.qualify); review-screens.mjs fails when the two differ, so change both together. */
-var A2P_SITE_VERSION = "a2p-site 6.0.0 (2026-11-07, DIY USD $1 kit + DFY free call)";
+     country. qualified = qualified.html (calendar). A NO or a tier-3 country = buy.html (the free kit), never the calendar.
+   The worker keeps its copy of the rule (branded-host/optin.js OPTIN.qualify); review-screens.mjs fails when the two
+   differ, so change both together. (v6, 2026-11-07 to 2026-11-17: the paid Stripe kit; config.js.bak-free-20261117.) */
+var A2P_SITE_VERSION = "a2p-site 8.0.0 (2026-11-17, DIY free kit by email opt-in + DFY free call)";
 
 var QUALIFY_RULES = {
   tier1: ["US","CA"],
@@ -25,17 +26,13 @@ var QUALIFY_RULES = {
   utm: {utm_source:"youtube", utm_medium:"video", utm_campaign:"j1-a2p"}
 };
 
-/* The DIY offer. The price shown is display only: the amount charged comes ONLY from the worker's ASSETS entry
-   (amountCents 100). stripePk is the Stripe PUBLISHABLE key (public by design, from Keychain smarterflow-stripe-pk);
-   the secret key lives only in the worker. Until the worker has its Stripe secrets, api/checkout-session answers
-   503 "checkout not configured" and buy.html shows its honest "not open yet" line. */
+/* The DIY offer: FREE by email opt-in (2026-11-17). optinUrl is relative to the funnel root (buy.html sits there).
+   The page never shows the download link: the kit goes by email (E0, sent once per address by the worker). */
 var A2P_OFFER = {
-  priceCents: 100,
-  priceLabel: "USD $1",
+  priceLabel: "Free",
   productName: "A2P Approval Agent kit",
-  checkoutUrl: "api/checkout-session",
-  checkoutTimeoutMs: 20000,
-  stripePk: "pk_live_51KW0DyBKGEltOrfGC4RmRi4HF34taW0ehEU48W8dH11nHM7IRIX7byaknXzNuh7IyjG3gCm0nRPDu6Py8nOwCdoY00oAVdeEek",
+  optinUrl: "api/optin",
+  optinTimeoutMs: 15000,
   supportEmail: "jonathan@gosmarterflow.com"
 };
 

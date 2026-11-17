@@ -30,25 +30,28 @@
   <section class="card kitcard">
     <p class="lanetag">Prefer to do it yourself?</p>
     <h2>The A2P Approval Agent kit</h2>
-    <p>The agent that checks your links against the top reasons A2P gets rejected, plus every knowledge file, for your own Claude, ChatGPT or Gemini, sent to your email. USD $1 today.</p>
-    <a class="btn ghost" id="kit" href="buy.html">Get the kit for USD $1</a>
+    <p>The agent that checks your links against the top reasons A2P gets rejected, plus every knowledge file, for your own Claude, ChatGPT or Gemini, sent to your email. Free.</p>
+    <a class="btn ghost" id="kit" href="buy.html">Get the free A2P Approval Agent</a>
   </section>
 </div></main>
 <footer class="bottom"><div class="wrap">
   <p>Registry compliance help from carrier-published templates, not legal advice. Nobody can promise a carrier decision or a review time; you click submit.</p>
   <p>&copy; 2026 Smarter Flow. <a href="https://gosmarterflow.com/privacy-policy">Privacy notice</a></p>
 </div></footer>
-<script src="config.js?v=6.0.0"></script>
+<script src="config.js?v=8.0.0"></script>
 <script>
 (function(){
   /* v6: the DFY lane's result page. Re-checks the answers with the same rule as index.html (config.js). A visit
-     without qualifying answers goes to buy.html (the USD $1 kit; no calendar on that path). Otherwise the non-PII params ride on to the shared booking page
+     without qualifying answers goes to buy.html (the free kit opt-in; no calendar on that path). Otherwise the non-PII params ride on to the shared booking page
      ai.gosmarterflow.com/book (source, utm_*, q_*). No name, email or website is ever put in this URL.
      Auto-open after 3 seconds, announced only by one quiet small-text line; any click, key, touch or scroll stops it. */
   var q=new URLSearchParams(location.search);
   var a={country:q.get('q_country')||'', gate:q.get('q_gate')||'', revenue:q.get('q_revenue')||'', hl:q.get('q_hl')||''};
   if(!a2pQualified(a)){ q.set('why', a.gate!=='yes'?'gate':'region'); location.replace('buy.html?'+q.toString()); return; }
-  document.getElementById('kit').href='buy.html?'+a2pUtm('qualified-lane').toString();
+  /* v8: the kit link carries the two gate answers (never a name or email), so a qualified visitor who also takes the
+     free kit is filed a2p-qualified by the worker */
+  var kq=a2pUtm('qualified-lane'); kq.set('q_country',a.country); kq.set('q_gate',a.gate);
+  document.getElementById('kit').href='buy.html?'+kq.toString();
   a2pEvent('a2p_qualified_view',{q_tier:a2pTier(a.country),q_country:a.country});
   if(QUALIFY_RULES.capacityFull) document.getElementById('capacity').hidden=false;
   var b=new URLSearchParams();
