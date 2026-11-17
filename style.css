@@ -127,7 +127,7 @@ nav.top .wrap{padding-top:3px;padding-bottom:3px}
 footer.bottom a,.channel a{display:inline-block;padding:13px 0;margin:-13px 0}
 
 /* ============================================================================================================
-   v7 (2026-11-12): the lead magnet page. The USD $1 asset is SHOWN: a dark product shot in the hero, then four
+   v7 (2026-11-12): the lead magnet page. The asset is SHOWN: a dark product shot in the hero, then four
    designed panels (one file and one line, four links, one table, the package), then the top rejection reasons.
    Phone first (390px), desktop from 960px. No image, no script: HTML, CSS and one inline SVG sprite.
    Tokens below come from ~/.claude/brand/brand.md (dark stage variant, live-dot green, on-dark accents).
@@ -321,7 +321,7 @@ h2.big{font-size:26px;line-height:1.18;letter-spacing:-.025em;margin-bottom:8px}
 .reply>p:not(.bubble):not(.pkg-k){font-size:14.5px;line-height:1.45;color:var(--muted);margin-bottom:8px}
 h2.choose{margin:10px 0 16px}
 
-/* phones: the USD $1 button must sit inside a 390x664 Safari viewport (iPhone 13), not only inside 390x844 */
+/* phones: the DIY kit button must sit inside a 390x664 Safari viewport (iPhone 13), not only inside 390x844 */
 @media (max-width:639px){
   header.hero{padding-top:13px}
   .hero-grid{gap:11px}
