@@ -1,5 +1,5 @@
-<!-- a2p-kit 1.4.0 | hand-built from the HighLevel help-article corpus | sources last verified 2026-10-28 -->
-> **a2p-kit 1.4.0** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
+<!-- a2p-kit 1.4.1 | hand-built from the HighLevel help-article corpus | sources last verified 2026-10-28 -->
+> **a2p-kit 1.4.1** (sources last verified 2026-10-28). Registry compliance information, not legal advice.
 
 # HighLevel A2P flow, screen by screen (the human clicks every button)
 
@@ -348,3 +348,10 @@ Email: {{business.email}}
 Website: {{business.website}}
 By using our website and services, you consent to these Terms of Service.
 ```
+
+## 11. Connect the subdomain: the DNS record at your domain provider (a2p-kit 1.4.1)
+Source: HighLevel "Connecting Your Domain on GHL - A Guide", https://help.gohighlevel.com/support/solutions/articles/155000005132 (modified 2026-03-25, read 2026-11-17). Every value in a DNS record comes from YOUR HighLevel screen: this kit holds no record values and never supplies one.
+1. In HighLevel: **Sites > Settings > Domains** > **Connect a Domain**, choose the product (website or funnel) and "Enter your root domain or subdomain in the provided field" (for example go.yourbusiness.com). For manual setup, choose **Add records manually**: HighLevel shows the records to add (type, name or host, value). A subdomain uses a CNAME record (the article: "CNAME for `www` or subdomains").
+2. **GoDaddy** (the article's GoDaddy section, word for word where quoted): log in to your GoDaddy account; "**My Products > Domains**, then click **Manage DNS** next to your domain"; under the **Records** section, click **Add**; "Select type: A, CNAME, or TXT"; enter the "record values exactly as provided by HighLevel"; click **Save** after each record. GoDaddy's own help article "Add a CNAME record" (godaddy.com/help, article 19236) names the same steps from the Domain Portfolio: the domain > **DNS** > **Add New Record** > Type **CNAME**; Name = the prefix only (for go.yourbusiness.com, the name is `go`), Value = the destination HighLevel shows; **Save**. Labels differ between GoDaddy screen versions: use the one you see.
+3. Other domain providers: their menu names are not in this kit's sources. Guide from a screenshot of the provider's DNS screen; the values are still only the ones HighLevel shows.
+4. **Check that it worked:** the article: propagation takes "a few minutes to 24 hours"; SSL is set up automatically once the records are correct; manage the domain under **Settings > Domains**; if it shows "Pending" for more than 24 hours, "double-check DNS values or reach out to support". Then open the https link of the subdomain in a private browser window: your page must load.
