@@ -10,8 +10,11 @@
      "If you were to work with us, are you willing to pay $55/hour for consulting?" (yes/no) AND a tier 1 or tier 2
      country. qualified = qualified.html (calendar). A NO or a tier-3 country = buy.html (the free kit), never the calendar.
    The worker keeps its copy of the rule (branded-host/optin.js OPTIN.qualify); review-screens.mjs fails when the two
-   differ, so change both together. (v6, 2026-11-07 to 2026-11-17: the paid Stripe kit; config.js.bak-free-20261117.) */
-var A2P_SITE_VERSION = "a2p-site 8.0.0 (2026-11-17, DIY free kit by email opt-in + DFY free call)";
+   differ, so change both together.
+   v8.1 (2026-11-17, his words: "make both fields mandatory"): the DFY form also asks, both required, "Are you interested
+   in transferring your HighLevel sub-account to us?" (q_transfer yes|no) and "Which describes you?" (q_kind agency|business).
+   They ride to qualified.html and the booking link but NEVER change who qualifies (a2pQualified below is unchanged). (v6, 2026-11-07 to 2026-11-17: the paid Stripe kit; config.js.bak-free-20261117.) */
+var A2P_SITE_VERSION = "a2p-site 8.1.0 (2026-11-17, DIY free kit by email opt-in + DFY free call; DFY form also asks transfer + kind)";
 
 var QUALIFY_RULES = {
   tier1: ["US","CA"],
@@ -57,7 +60,7 @@ var A2P_WIRING = {
 };
 
 /* Branch-event beacon. NEVER carries a name, an email or a website: only the keys below survive. */
-var A2P_EVENT_KEYS = ["lane","why","state","q_tier","q_country","q_gate","file","utm_source","utm_medium","utm_campaign","utm_content","utm_term"];
+var A2P_EVENT_KEYS = ["lane","why","state","q_tier","q_country","q_gate","q_transfer","q_kind","file","utm_source","utm_medium","utm_campaign","utm_content","utm_term"];
 window.__a2pEvents = [];
 function a2pEvent(name, props){
   try{

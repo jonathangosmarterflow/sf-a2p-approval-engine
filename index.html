@@ -66,7 +66,7 @@
     <section class="pick dfy" id="lane-dfy">
       <p class="lanetag">Done for you</p>
       <a class="btn ghost" id="go-dfy" href="#dfy">See if a free call fits</a>
-      <p class="pickwhat">A free 30-minute call with a Smarter Flow consultant. Two quick questions first.</p>
+      <p class="pickwhat">A free 30-minute call with a Smarter Flow consultant. Four quick questions first.</p>
     </section>
   </div>
 </div></div></header>
@@ -313,6 +313,20 @@
         <select id="f-country" name="country" required><option value="">Choose your country</option></select>
       </div>
       <fieldset class="field gate">
+        <legend>Are you interested in transferring your HighLevel sub-account to us?</legend>
+        <div class="pair">
+          <label class="choice"><input type="radio" name="transfer" value="yes"> Yes, I'm interested</label>
+          <label class="choice"><input type="radio" name="transfer" value="no"> No</label>
+        </div>
+      </fieldset>
+      <fieldset class="field gate">
+        <legend>Which describes you?</legend>
+        <div class="pair" style="grid-template-columns:1fr">
+          <label class="choice"><input type="radio" name="kind" value="agency"> An agency reselling HighLevel</label>
+          <label class="choice"><input type="radio" name="kind" value="business"> A business using HighLevel for itself</label>
+        </div>
+      </fieldset>
+      <fieldset class="field gate">
         <legend>If you were to work with us, are you willing to pay $55/hour for consulting?</legend>
         <div class="pair">
           <label class="choice"><input type="radio" name="gate" value="yes"> Yes</label>
@@ -336,7 +350,7 @@
   <p>&copy; 2026 Smarter Flow. <a href="https://gosmarterflow.com/privacy-policy">Privacy notice</a></p>
 </div></footer>
 
-<script src="config.js?v=8.0.0"></script>
+<script src="config.js?v=8.1.0"></script>
 <script>
 /* Country list: [code, name, continent]. Tier comes from QUALIFY_RULES, never from this list. */
 var COUNTRIES = [
@@ -382,13 +396,17 @@ var COUNTRIES = [
   f.addEventListener('submit',function(ev){
     ev.preventDefault();
     if(!val('country')) return need('Choose your country.', sel);
+    if(!val('transfer')) return need('Answer the question, yes or no.', f.querySelector('input[name=transfer]'));
+    if(!val('kind')) return need('Choose the one that describes you.', f.querySelector('input[name=kind]'));
     if(!val('gate')) return need('Answer the question, yes or no.', f.querySelector('input[name=gate]'));
     st.className='status'; f.insertBefore(st,home);
-    var a={country:val('country'), gate:val('gate')};
+    /* transfer + kind (2026-11-17) are required and ride along, but never change who qualifies (a2pQualified reads country + gate) */
+    var a={country:val('country'), gate:val('gate')}, tr=val('transfer'), kd=val('kind');
     var q=a2pUtm('dfy');
     q.set('source',R.source);
     q.set('q_country',a.country); q.set('q_continent',country(a.country)[2]); q.set('q_tier',String(a2pTier(a.country))); q.set('q_gate',a.gate);
-    a2pEvent(a.gate==='yes'?'a2p_gate_yes':'a2p_gate_no',{q_tier:a2pTier(a.country),q_country:a.country,q_gate:a.gate});
+    q.set('q_transfer',tr); q.set('q_kind',kd);
+    a2pEvent(a.gate==='yes'?'a2p_gate_yes':'a2p_gate_no',{q_tier:a2pTier(a.country),q_country:a.country,q_gate:a.gate,q_transfer:tr,q_kind:kd});
     if(a2pQualified(a)){ a2pEvent('a2p_route',{lane:'qualified'}); location.href='qualified.html?'+q.toString(); }
     else { var why=a.gate!=='yes'?'gate':'region'; q.set('why',why); a2pEvent('a2p_route',{lane:'diy',why:why}); location.href='buy.html?'+q.toString(); }
   });

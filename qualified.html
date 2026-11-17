@@ -38,7 +38,7 @@
   <p>Registry compliance help from carrier-published templates, not legal advice. Nobody can promise a carrier decision or a review time; you click submit.</p>
   <p>&copy; 2026 Smarter Flow. <a href="https://gosmarterflow.com/privacy-policy">Privacy notice</a></p>
 </div></footer>
-<script src="config.js?v=8.0.0"></script>
+<script src="config.js?v=8.1.0"></script>
 <script>
 (function(){
   /* v6: the DFY lane's result page. Re-checks the answers with the same rule as index.html (config.js). A visit
@@ -55,7 +55,7 @@
   a2pEvent('a2p_qualified_view',{q_tier:a2pTier(a.country),q_country:a.country});
   if(QUALIFY_RULES.capacityFull) document.getElementById('capacity').hidden=false;
   var b=new URLSearchParams();
-  ['source','utm_source','utm_medium','utm_campaign','utm_content','utm_term','q_country','q_continent','q_tier','q_revenue','q_hl','q_gate'].forEach(function(k){ if(q.get(k)) b.set(k,q.get(k).slice(0,80)); });
+  ['source','utm_source','utm_medium','utm_campaign','utm_content','utm_term','q_country','q_continent','q_tier','q_revenue','q_hl','q_gate','q_transfer','q_kind'].forEach(function(k){ if(q.get(k)) b.set(k,q.get(k).slice(0,80)); });
   var url=QUALIFY_RULES.bookingUrl+'?'+b.toString();
   var go=document.getElementById('go'), line=document.getElementById('auto'), n=3, stop=false;
   go.href=url;
