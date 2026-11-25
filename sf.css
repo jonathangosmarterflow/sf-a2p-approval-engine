@@ -1,0 +1,105 @@
+/* sf.css: THE SMARTER FLOW FUNNEL LOOK for the video link pages (born 2026-11-25, FB-2306, his words: "the pages should
+   look like real Smarter Flow pages like our main funnel page and our estimate funnel page ... real branded pages high
+   converting simple ... powerful assets").
+   Source of the look: the live main funnel page (ai.gosmarterflow.com, scripts/hl-funnel/deploy-repo/): the still
+   background wash, the header with the wordmark and the reviews pill, the pill kicker, the centred headline with the
+   gradient words, the star line, the white question card with its step label and progress bar, the gradient button
+   with an arrow, the small centred line under it, the centred footer. Same class names as that page on purpose.
+   Loaded AFTER style.css (tokens = ~/.claude/brand/tokens.css, never a new colour here). Body class "sf". */
+body.sf{margin:0;background:#fff;background-image:var(--ground);background-attachment:fixed;line-height:1.6;-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden}
+.sf .bgfx{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.sf .bgfx::before{content:"";position:absolute;width:920px;height:920px;right:-260px;top:-320px;border-radius:50%;background:radial-gradient(circle,rgba(124,58,237,.10) 0%,rgba(79,70,229,.05) 45%,rgba(255,255,255,0) 70%)}
+.sf .bgfx::after{content:"";position:absolute;width:760px;height:760px;left:-300px;bottom:-340px;border-radius:50%;background:radial-gradient(circle,rgba(219,39,119,.06) 0%,rgba(124,58,237,.04) 45%,rgba(255,255,255,0) 70%)}
+.sf .hwrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;width:100%;padding:0 28px}
+.sf .hhead{display:flex;align-items:center;justify-content:space-between;padding:18px 0 8px;gap:14px}
+.sf .wordmark{display:block;min-height:0;font-family:var(--head);font-weight:800;font-size:22px;letter-spacing:-.03em;color:var(--ink);cursor:default}
+.sf .hpill{font-size:12.5px;font-weight:600;padding:7px 14px;border-radius:999px;white-space:nowrap;color:var(--muted);background:rgba(255,255,255,.8);border:1px solid var(--line);box-shadow:0 2px 10px rgba(80,60,160,.06)}
+
+/* the centred top: pill, headline with the gradient words, one line, the star line */
+.sf .top{text-align:center;max-width:860px;margin:6px auto 0}
+.sf .eyebrow{display:inline-block;font-family:var(--body);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:7px 14px;border-radius:999px;margin:0 0 16px;color:var(--vio);background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.18)}
+.sf h1{font-family:var(--head);font-weight:800;letter-spacing:-.025em;font-size:clamp(30px,3.7vw,46px);line-height:1.06;margin:0 0 12px;text-wrap:balance;color:var(--ink)}
+.sf h1 em{font-style:normal;background:linear-gradient(100deg,var(--ind),var(--vio) 55%,var(--pk));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sf .sub{font-size:17.5px;line-height:1.55;margin:0 auto 12px;max-width:660px;color:var(--muted)}
+.sf .trustmini{font-size:14px;color:var(--muted);font-weight:500}
+.sf .trustmini .stars{color:#f5b301;font-size:15px;letter-spacing:2px}
+.sf .trustmini b{color:var(--ink);font-weight:700}
+
+/* the offer: the asset on its stage, the question card, what is inside */
+.sf .offer{display:grid;grid-template-columns:1fr;gap:16px;max-width:1060px;margin:20px auto 0}
+.sf .offer.one{max-width:580px}
+.sf .stage{position:relative;isolation:isolate;overflow:hidden;border-radius:22px;padding:26px 18px 16px;background:linear-gradient(150deg,#191430,#2c2154 55%,#3b2a68);box-shadow:0 24px 60px rgba(60,40,140,.28)}
+.sf .stage::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(520px 300px at 78% -8%,rgba(139,123,255,.42),transparent 62%),radial-gradient(420px 260px at 6% 108%,rgba(240,171,252,.22),transparent 60%)}
+.sf .stage::after{content:"";position:absolute;inset:0;z-index:-1;background-image:radial-gradient(rgba(255,255,255,.10) 1px,transparent 1px);background-size:22px 22px}
+.sf .lm{position:relative;margin:4px auto 6px;max-width:520px;aspect-ratio:16/7.3}
+.sf .lm img{position:absolute;display:block;height:auto;border-radius:9px;background:#fff}
+.sf .lm .a{left:-2%;top:16%;width:55%;transform:rotate(-8deg);box-shadow:0 14px 34px rgba(0,0,0,.42);opacity:.96}
+.sf .lm .b{right:-2%;top:16%;width:55%;transform:rotate(8deg);box-shadow:0 14px 34px rgba(0,0,0,.42);opacity:.96}
+.sf .lm .c{left:16%;top:3%;width:68%;z-index:2;box-shadow:0 26px 60px rgba(0,0,0,.55)}
+.sf .lm .free{position:absolute;z-index:3;right:3%;top:-7%;background:var(--grad);color:#fff;font-family:var(--head);font-weight:800;font-size:13px;letter-spacing:.09em;padding:7px 14px;border-radius:999px;box-shadow:0 10px 24px rgba(0,0,0,.4);transform:rotate(6deg)}
+.sf .chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:0}
+.sf .chips span{font-family:var(--head);font-weight:700;font-size:12.5px;color:#fff;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:5px 12px}
+.sf .asset .shot{margin:0;border-radius:22px;box-shadow:0 24px 60px rgba(60,40,140,.28)}
+
+.sf .convo{position:relative;background:#fff;border:1px solid var(--line);border-radius:22px;padding:20px 24px 18px;box-shadow:0 24px 60px rgba(80,60,160,.13);text-align:left}
+.sf .ctop{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
+.sf .stepl{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--vio)}
+.sf .pbar{flex:1;max-width:150px;height:5px;border-radius:999px;overflow:hidden;margin-left:14px;background:#efeaf9}
+.sf .pbar i{display:block;height:100%;width:33%;border-radius:999px;background:linear-gradient(90deg,var(--ind),var(--pk));transition:width .45s cubic-bezier(.2,.7,.2,1)}
+.sf .q{font-family:var(--head);font-weight:800;font-size:20px;letter-spacing:-.015em;margin:8px 0 12px;line-height:1.25;color:var(--ink)}
+.sf .convo .field{margin:0 0 2px}
+.sf .convo label{display:block;font-size:12.5px;font-weight:600;margin:9px 0 5px;color:#453f5e}
+.sf .convo label.choice{font-size:15px;margin:0;color:var(--ink)}
+.sf .convo input[type=text],.sf .convo input[type=email],.sf .convo input:not([type]),.sf .convo select{width:100%;min-height:0;padding:12px 14px;border-radius:11px;font-size:16px;font-family:inherit;transition:.15s;border:1px solid #e7e2f4;background:#fdfcff;color:var(--ink)}
+.sf .convo input::placeholder{color:#b1a9c9}
+.sf .convo input:focus,.sf .convo select:focus{outline:none;border-color:var(--vio);background:#fff;box-shadow:0 0 0 4px rgba(124,58,237,.13)}
+.sf .convo .small{font-size:12.5px;color:var(--muted2);margin:6px 0 0}
+.sf .convo fieldset.gate{margin-top:12px}
+.sf .btn.cbtn{display:block;width:100%;margin:16px 0 0;padding:16px 20px;min-height:56px;border:0;border-radius:14px;background:var(--grad);color:#fff;font-family:var(--head);font-weight:800;font-size:17px;line-height:1.2;text-align:center;text-decoration:none;cursor:pointer;box-shadow:0 14px 34px rgba(124,58,237,.35);transition:.16s}
+.sf .btn.cbtn:hover{transform:translateY(-2px);box-shadow:0 18px 42px rgba(124,58,237,.45)}
+.sf .btn.cbtn.alt{background:var(--ind);box-shadow:0 14px 34px rgba(79,70,229,.32)}
+.sf .fine{font-size:12.5px;line-height:1.5;text-align:center;margin:11px 0 0;color:var(--muted2)}
+.sf .fine b,.sf .fine strong{color:var(--muted);font-weight:700}
+.sf .ticks{list-style:none;margin:6px 4px 0;padding:0}
+.sf .ticks li{position:relative;padding-left:32px;margin-bottom:9px;font-weight:600;line-height:1.4;font-size:16px}
+.sf .ticks li::before{content:"";position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:50%;background:var(--grad)}
+.sf .ticks li::after{content:"";position:absolute;left:8px;top:5px;width:5px;height:10px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+.sf .also{text-align:center;max-width:520px;margin:34px auto 0}
+.sf .also h2{font-family:var(--head);font-weight:800;font-size:22px;letter-spacing:-.02em;margin:0 0 6px}
+.sf .also p{color:var(--muted);margin:0 0 4px}
+.sf [data-step]{display:none}
+.sf [data-step].on{display:block}
+.sf .lead-in{font-weight:600;margin:6px 0 2px;color:var(--ink)}
+.sf .footer{position:relative;z-index:1;border-top:1px solid var(--line);margin-top:44px;padding:26px 0 40px;text-align:center;color:var(--muted2);font-size:13px;line-height:1.7}
+.sf .footer .wordmark{font-size:17px;margin-bottom:6px}
+.sf .footer a{color:var(--muted2)}
+
+/* phone: headline, one line, the asset (small), then the card starts on the first screen */
+@media(max-width:700px){
+  .sf .hwrap{padding:0 18px}
+  .sf .hhead{padding:16px 0 8px;justify-content:center}
+  .sf .hpill{display:none}
+  .sf .eyebrow{font-size:10.5px;padding:6px 11px;margin-bottom:12px}
+  .sf h1{font-size:29px;margin-bottom:10px}
+  .sf .sub{font-size:16px;margin-bottom:8px}
+  .sf .trustmini{font-size:12.5px}
+  .sf .offer{margin-top:16px;gap:14px}
+  .sf .stage{padding:20px 12px 12px;border-radius:18px}
+  .sf .lm{max-width:300px;margin-bottom:10px}
+  .sf .chips span{font-size:11.5px;padding:4px 10px}
+  .sf .convo{padding:18px 18px 18px;border-radius:18px}
+}
+/* desktop: the asset and what is inside on the left, the question card on the right, all on the first screen */
+@media(min-width:980px){
+  .sf .offer:not(.one){grid-template-columns:1.06fr .94fr;grid-template-rows:auto 1fr;column-gap:36px;row-gap:14px;align-items:start}
+  .sf .offer:not(.one) .asset{grid-column:1;grid-row:1}
+  .sf .offer:not(.one) .ticks{grid-column:1;grid-row:2}
+  .sf .offer:not(.one) .convo{grid-column:2;grid-row:1 / span 2}
+}
+/* the pages after the form (thank you, pick a time, the deck): same header, wash and footer, no border bar */
+.sfp nav.top{border:0;background:transparent}
+.sfp nav.top .wrap{max-width:1180px;padding:19px 28px 6px}
+.sfp .wordmark{font-size:22px}
+.sfp footer.bottom{text-align:center}
+.sf .result p{margin:0 0 8px}
+.sf .result .btn.cbtn{margin-top:10px}

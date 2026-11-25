@@ -13,49 +13,33 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=7.0.1">
+<link rel="stylesheet" href="sf.css?v=1">
 <!-- 2026-11-25: short form first (one line, the form, then what is inside); the done-for-you card links the short
      call page (call/). agent/index.html is GENERATED from this file by build-agent-page.py: edit here, then rebuild.
      v8 2026-11-17 (his words: "The ai agent for a2p we will give away for free. Not for 1$"): the ONE opt-in page for the
      free kit (the old buy.html address, so every old link still works). DIY buttons and every DFY answer that is not a
      fit land here. It POSTs first name + email (+ the gate answers when the visitor came through the gate) to the
      worker's api/optin, which emails the kit once. The only price anywhere on the site is $55/hour on the DFY gate. -->
-<style>
-/* the opt-in page, Hormozi style (2026-11-25, FB-2299): what you get + its picture on the left, the form on the right */
-.lp{padding-top:22px}
-.lp h1{font-size:27px;margin-bottom:8px}
-.lp .sub{margin-bottom:10px;font-size:16.5px}
-.lp .shot{margin:0 0 12px}
-.lp .okline{margin-top:4px}
-.lp-ticks{margin-top:18px}
-.ticks{list-style:none;margin:0 0 18px;padding:0}
-.ticks li{position:relative;padding-left:32px;margin-bottom:9px;font-weight:600;line-height:1.4}
-.ticks li::before{content:"";position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:50%;background:var(--grad)}
-.ticks li::after{content:"";position:absolute;left:8px;top:5px;width:5px;height:10px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
-span.wordmark{cursor:default}
-@media(min-width:980px){
-  .wrap.lp{max-width:1080px;display:grid;grid-template-columns:1.08fr .92fr;column-gap:44px;align-items:start;padding-top:40px}
-  .lp-copy{grid-column:1;grid-row:1}
-  .lp-ticks{grid-column:1;grid-row:2;margin-top:4px}
-  .lp-form{grid-column:2;grid-row:1 / span 2;position:sticky;top:24px;margin-top:6px}
-  .lp h1{font-size:38px;margin-bottom:14px}
-  .lp .sub{font-size:18px;margin-bottom:14px}
-  .lp .shot{margin:0 0 16px}
-}
-</style>
 </head>
-<body>
+<body class="sf">
+<!-- icon sprite: inline, no external asset, renders with images off -->
 <svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.6l4.4 4.4L19 7.4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
   <symbol id="i-file" viewBox="0 0 24 24"><path d="M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z M14 3v5h5 M9 13h6 M9 17h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
-<nav class="top"><div class="wrap"><span class="wordmark">Smarter<b>Flow</b></span></div></nav>
-<main><div class="wrap lp">
-  <div class="lp-copy">
-    <p class="eyebrow">Free download</p>
-    <h1>Get the free A2P Approval Agent</h1>
-    <p class="okline" id="why" hidden></p>
+<div class="bgfx"></div>
+<div class="hwrap">
+  <div class="hhead"><div class="wordmark">Smarter<b>Flow</b></div><div class="hpill">&#9733; Top-3 most-reviewed on the HighLevel Directory</div></div>
+<main>
+  <div class="top">
+    <span class="eyebrow">Free &middot; For your own AI &middot; By email</span>
+    <h1>Get the free <em>A2P Approval Agent</em>.</h1>
     <p class="sub" id="what">One file for your Claude, ChatGPT or Gemini. Paste four links and see what could get your A2P rejected, with the exact fix.</p>
+    <div class="trustmini"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> Rated <b>5/5</b> across <b>65+ reviews</b> on the official HighLevel Directory</div>
+  </div>
+  <div class="offer">
+    <div class="asset">
   <figure class="shot" id="shot">
     <div class="shot-bar">
       <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -71,40 +55,45 @@ span.wordmark{cursor:default}
     </ul>
     <figcaption class="shot-count"><span><b>9</b> pass</span><span><b>13</b> gaps</span><span><b>3</b> could not check</span><em>Fictional demo business</em></figcaption>
   </figure>
-  </div>
-  <section class="card primary lp-form" id="get">
+    </div>
+    <section class="convo" id="get">
+      <p class="okline" id="why" hidden></p>
+      <div class="ctop"><div class="stepl">Free download</div></div>
+      <div class="q">Where should we send your agent?</div>
     <form id="optin" class="qualify" novalidate>
       <div class="field">
         <label for="f-name">First name</label>
-        <input id="f-name" name="first_name" autocomplete="given-name" maxlength="60" required>
+        <input id="f-name" name="first_name" type="text" placeholder="Alex" autocomplete="given-name" maxlength="60" required>
       </div>
       <div class="field">
         <label for="f-email">Email</label>
-        <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="120" required>
+        <input id="f-email" name="email" type="email" placeholder="alex@business.com" autocomplete="email" inputmode="email" maxlength="120" required>
       </div>
       <div class="hp" aria-hidden="true"><label for="f-hp">Leave this empty</label><input id="f-hp" name="hp" tabindex="-1" autocomplete="off"></div>
       <p class="status" id="fstatus" role="alert" aria-live="assertive"></p>
-      <button type="submit" class="btn" id="submit">Email me the free agent</button>
-      <p class="formnote" id="consent"><strong>Free. In your inbox in a few minutes.</strong> You get the agent and 6 short A2P lessons by email. Unsubscribe any time.</p>
+      <button type="submit" class="btn cbtn" id="submit">Email me the free agent &#8594;</button>
+      <p class="fine" id="consent"><strong>Free. In your inbox in a few minutes.</strong> You get the agent and 6 short A2P lessons by email. Unsubscribe any time.</p>
     </form>
     <noscript><p class="small" style="margin-top:10px">This form needs JavaScript. Turn it on and reload this page, or email <a href="mailto:jonathan@gosmarterflow.com">jonathan@gosmarterflow.com</a> and we will send you the kit.</p></noscript>
-  </section>
-  <ul class="ticks lp-ticks" id="inside">
-    <li>Checks your website, privacy policy, terms and opt-in page</li>
-    <li>Shows the HighLevel rejection code for each gap, with the fix</li>
-    <li>Drafts your Trust Center answers and sample messages</li>
-  </ul>
-</div>
-<div class="wrap">
-  <section class="card" id="dfycard" style="text-align:center">
+    </section>
+    <ul class="ticks" id="inside">
+      <li>Checks your website, privacy policy, terms and opt-in page</li>
+      <li>Shows the HighLevel rejection code for each gap, with the fix</li>
+      <li>Drafts your Trust Center answers and sample messages</li>
+    </ul>
+  </div>
+  <div class="also" id="dfycard">
     <h2>Rather have us do it for you?</h2>
     <p>A free 30-minute A2P consulting call with a Smarter Flow consultant, if you qualify.</p>
-    <a class="btn" id="dfy" href="call/" style="background:var(--ind)">See if I qualify for a free call</a>
-  </section>
-</div></main>
-<footer class="bottom"><div class="wrap">
-  <p>&copy; 2026 Smarter Flow. <a href="https://gosmarterflow.com/privacy-policy">Privacy notice</a></p>
-</div></footer>
+    <a class="btn cbtn alt" id="dfy" href="call/">See if I qualify for a free call &#8594;</a>
+  </div>
+</main>
+  <footer class="footer">
+    <div class="wordmark">Smarter<b>Flow</b></div>
+    HighLevel Certified &middot; <a href="https://gosmarterflow.com/privacy-policy">Privacy notice</a><br>
+    &copy; 2026 Smarter Flow &middot; All rights reserved
+  </footer>
+</div>
 <script src="config.js?v=8.1.0"></script>
 <script src="track.js?v=1" data-root="./" data-page="buy" data-v="9.0.0"></script>
 <script>
