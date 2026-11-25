@@ -13,7 +13,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=6.0.3">
-<!-- v8 2026-11-17 (his words: "The ai agent for a2p we will give away for free. Not for 1$"): the ONE opt-in page for the
+<!-- 2026-11-25: short form first (one line, the form, then what is inside); the done-for-you card links the short
+     call page (call/). agent/index.html is GENERATED from this file by build-agent-page.py: edit here, then rebuild.
+     v8 2026-11-17 (his words: "The ai agent for a2p we will give away for free. Not for 1$"): the ONE opt-in page for the
      free kit (the old buy.html address, so every old link still works). DIY buttons and every DFY answer that is not a
      fit land here. It POSTs first name + email (+ the gate answers when the visitor came through the gate) to the
      worker's api/optin, which emails the kit once. The only price anywhere on the site is $55/hour on the DFY gate. -->
@@ -26,11 +28,7 @@
     <h1 style="font-size:28px">Get the free A2P Approval Agent</h1>
     <p class="okline" id="why" hidden></p>
     <p class="price"><strong>Free.</strong> Sent to your email.</p>
-    <ul class="list">
-      <li>The AI agent for your own Claude, ChatGPT or Gemini: paste your website, privacy policy, terms and opt-in links and it checks them in one table, with the rejection code and the exact fix for each gap it finds. Then it drafts your Trust Center answers, two sample messages and SMS policy wording from carrier-published templates.</li>
-      <li>One file to start in any AI, plus the knowledge files and the intake form. One zip, plus each file on its own.</li>
-      <li>Sent to the email you enter below, a few minutes after you press the button.</li>
-    </ul>
+    <p id="what">One file for your own Claude, ChatGPT or Gemini. Paste your website, privacy policy, terms and opt-in links, and it shows the rejection code each gap falls under and the exact fix.</p>
     <form id="optin" class="qualify" novalidate>
       <div class="field">
         <label for="f-name">First name</label>
@@ -42,16 +40,20 @@
       </div>
       <div class="hp" aria-hidden="true"><label for="f-hp">Leave this empty</label><input id="f-hp" name="hp" tabindex="-1" autocomplete="off"></div>
       <p class="status" id="fstatus" role="alert" aria-live="assertive"></p>
-      <button type="submit" class="btn" id="submit">Email me the free kit</button>
+      <button type="submit" class="btn" id="submit">Email me the free agent</button>
       <p class="formnote" id="consent"><strong>You get the free A2P Approval Agent kit and 6 short A2P lessons by email. Unsubscribe any time.</strong> We never sell your details. <a href="https://gosmarterflow.com/privacy-policy">Privacy notice</a>.</p>
     </form>
     <noscript><p class="small" style="margin-top:10px">This form needs JavaScript. Turn it on and reload this page, or email <a href="mailto:jonathan@gosmarterflow.com">jonathan@gosmarterflow.com</a> and we will send you the kit.</p></noscript>
-    <p class="small" style="margin-top:12px">You review everything the agent writes and click submit yourself; nobody can promise a carrier decision or a review time.</p>
+    <ul class="list" id="inside" style="margin:16px 0 0 20px">
+      <li>It also drafts your Trust Center answers, two sample messages and SMS policy wording from carrier-published templates.</li>
+      <li>It arrives a few minutes after you press the button, as one zip: the one file to start with, plus the knowledge files and the intake form.</li>
+      <li>You review everything the agent writes and click submit yourself; nobody can promise a carrier decision or a review time.</li>
+    </ul>
   </section>
   <section class="card">
     <h2>Rather have it done for you?</h2>
-    <p>A Smarter Flow consultant can do it with you. Answer four quick questions to see if a free 30-minute call fits.</p>
-    <a class="btn ghost" id="dfy" href="index.html#dfy">See if a free call fits</a>
+    <p>See if a free 30-minute call with a Smarter Flow consultant fits. Four quick questions.</p>
+    <a class="btn ghost" id="dfy" href="call/">See if a free call fits</a>
   </section>
 </div></main>
 <footer class="bottom"><div class="wrap">
@@ -69,7 +71,7 @@
   var wl=document.getElementById('why');
   if(why==='gate'){ wl.textContent='No problem. The free kit is the do-it-yourself path, and it has everything we use.'; wl.hidden=false; }
   if(why==='region'){ wl.textContent='Free calls are only open in some countries right now, so for you the free kit is the best next step.'; wl.hidden=false; }
-  document.getElementById('dfy').href='index.html?'+a2pUtm('buy').toString()+'#dfy';
+  document.getElementById('dfy').href='call/?'+a2pUtm('buy').toString();
   a2pEvent('a2p_optin_view',{why:why||''});
   function val(n){ var el=f.elements[n]; return el&&el.value!=null?String(el.value).trim():''; }
   function need(msg, el, html){

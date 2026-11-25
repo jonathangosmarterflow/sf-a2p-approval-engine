@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<title>Free 30-minute A2P consulting call | Smarter Flow</title>
+<meta name="description" content="See if a free 30-minute A2P consulting call with a Smarter Flow consultant fits. Four quick questions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css?v=7.0.1">
+<!-- 2026-11-25 (his words: "keep the links and the landing pages super short and super to the point"): the THIRD link
+     of the A2P video description (short link /a2p/call). One job: the four DFY questions, then qualified.html (the
+     booking button) or buy.html (the free agent, with the kind why line). Before this page the link dropped the
+     visitor at the bottom of the long landing page (index.html#dfy, which still works and keeps the same form).
+     The rule lives in ../config.js (QUALIFY_RULES, a2pQualified): never copy it here. The questions and their names
+     must stay equal to the form in ../index.html; review-screens.mjs fails when the two differ. -->
+</head>
+<body>
+<nav class="top"><div class="wrap"><a class="wordmark" href="https://gosmarterflow.com">Smarter<b>Flow</b></a></div></nav>
+<header class="hero"><div class="wrap">
+  <p class="eyebrow">Free 30-minute consulting call</p>
+  <h1>Want your A2P done for you?</h1>
+  <p class="sub">See if a free 30-minute call with a Smarter Flow consultant fits. Four quick questions, and answering commits you to nothing.</p>
+</div></header>
+<main><div class="wrap">
+  <section class="card primary" id="dfy">
+    <form id="gate" class="qualify" novalidate>
+      <div class="field">
+        <label for="f-country">Where is your business based?</label>
+        <select id="f-country" name="country" required><option value="">Choose your country</option></select>
+        <p class="small" id="regions">Free calls are open in the US, Canada, the UK, Ireland, the EU, Switzerland, Australia and New Zealand.</p>
+      </div>
+      <fieldset class="field gate">
+        <legend>Are you interested in transferring your HighLevel sub-account to us?</legend>
+        <div class="pair">
+          <label class="choice"><input type="radio" name="transfer" value="yes"> Yes, I'm interested</label>
+          <label class="choice"><input type="radio" name="transfer" value="no"> No</label>
+        </div>
+      </fieldset>
+      <fieldset class="field gate">
+        <legend>Which describes you?</legend>
+        <div class="pair" style="grid-template-columns:1fr">
+          <label class="choice"><input type="radio" name="kind" value="agency"> An agency reselling HighLevel</label>
+          <label class="choice"><input type="radio" name="kind" value="business"> A business using HighLevel for itself</label>
+        </div>
+      </fieldset>
+      <fieldset class="field gate">
+        <legend>If you were to work with us, are you willing to pay $55/hour for consulting?</legend>
+        <div class="pair">
+          <label class="choice"><input type="radio" name="gate" value="yes"> Yes</label>
+          <label class="choice"><input type="radio" name="gate" value="no"> No</label>
+        </div>
+      </fieldset>
+      <p class="status" id="fstatus" role="alert" aria-live="assertive"></p>
+      <button type="submit" class="btn" id="submit">See if I qualify</button>
+      <p class="formnote" id="notfit">Not a fit? You can still get the <a id="kit" href="../buy.html">free A2P Approval Agent</a>.</p>
+    </form>
+    <noscript><p class="small" style="margin-top:10px">This check needs JavaScript. The do-it-yourself path is here: <a href="../buy.html">the free A2P Approval Agent</a>.</p></noscript>
+  </section>
+  <section class="card" id="oncall">
+    <h2>What happens on the call</h2>
+    <ul class="list">
+      <li>Your consultant reviews your A2P setup with you and estimates the hours to do it for you.</li>
+      <li>The done-for-you work is optional, at $55/hour. No pressure to buy on the call.</li>
+      <li>We never ask for passwords, account logins or your EIN letter.</li>
+    </ul>
+  </section>
+</div></main>
+<footer class="bottom"><div class="wrap">
+  <p>Registry compliance help from carrier-published templates, not legal advice. Nobody can promise a carrier decision or a review time; you click submit.</p>
+  <p>&copy; 2026 Smarter Flow. <a href="https://gosmarterflow.com/privacy-policy">Privacy notice</a></p>
+</div></footer>
+<script src="../config.js?v=8.1.0"></script>
+<script>
+/* Country list: [code, name, continent]. Kept equal to ../index.html (review-screens.mjs compares the two).
+   Tier comes from QUALIFY_RULES in ../config.js, never from this list. */
+var COUNTRIES = [
+  ["US","United States","North America"],["CA","Canada","North America"],["GB","United Kingdom","Europe"],["AU","Australia","Oceania"],["NZ","New Zealand","Oceania"],
+  ["IE","Ireland","Europe"],["DE","Germany","Europe"],["FR","France","Europe"],["NL","Netherlands","Europe"],["BE","Belgium","Europe"],["LU","Luxembourg","Europe"],
+  ["AT","Austria","Europe"],["CH","Switzerland","Europe"],["IT","Italy","Europe"],["ES","Spain","Europe"],["PT","Portugal","Europe"],["DK","Denmark","Europe"],
+  ["SE","Sweden","Europe"],["NO","Norway","Europe"],["FI","Finland","Europe"],["IS","Iceland","Europe"],["PL","Poland","Europe"],["CZ","Czechia","Europe"],
+  ["EE","Estonia","Europe"],["LT","Lithuania","Europe"],["LV","Latvia","Europe"],["SK","Slovakia","Europe"],["SI","Slovenia","Europe"],["HR","Croatia","Europe"],
+  ["GR","Greece","Europe"],["MT","Malta","Europe"],["CY","Cyprus","Europe"],["HU","Hungary","Europe"],["RO","Romania","Europe"],["BG","Bulgaria","Europe"],
+  ["MX","Mexico","North America"],["BR","Brazil","South America"],["AR","Argentina","South America"],["CO","Colombia","South America"],["CL","Chile","South America"],
+  ["PE","Peru","South America"],["PH","Philippines","Asia"],["IN","India","Asia"],["PK","Pakistan","Asia"],["BD","Bangladesh","Asia"],["ID","Indonesia","Asia"],
+  ["MY","Malaysia","Asia"],["SG","Singapore","Asia"],["VN","Vietnam","Asia"],["TH","Thailand","Asia"],["AE","United Arab Emirates","Asia"],["SA","Saudi Arabia","Asia"],
+  ["IL","Israel","Asia"],["TR","Turkey","Asia"],["NG","Nigeria","Africa"],["KE","Kenya","Africa"],["GH","Ghana","Africa"],["ZA","South Africa","Africa"],
+  ["EG","Egypt","Africa"],["MA","Morocco","Africa"],["JM","Jamaica","North America"],["PR","Puerto Rico","North America"],["XX","Somewhere else","Other"]
+];
+(function(){
+  /* The funnel root from this page's own address, so /call and /call/ resolve the same. */
+  var ROOT=location.pathname.replace(/call(\/(index\.html)?)?$/,'');
+  var R=QUALIFY_RULES, f=document.getElementById('gate'), st=document.getElementById('fstatus'), btn=document.getElementById('submit');
+  var sel=document.getElementById('f-country');
+  sel.innerHTML='<option value="">Choose your country</option>'+COUNTRIES.map(function(c){return '<option value="'+c[0]+'">'+c[1]+'</option>';}).join('');
+  function val(name){var el=f.querySelector('[name="'+name+'"]:checked')||f.elements[name];return el&&el.value!=null?String(el.value).trim():'';}
+  function country(code){for(var i=0;i<COUNTRIES.length;i++){if(COUNTRIES[i][0]===code)return COUNTRIES[i];}return [code,code,'Other'];}
+  document.getElementById('kit').href=ROOT+'buy.html?'+a2pUtm('call-kit').toString();
+  function need(msg, el){
+    [].forEach.call(f.querySelectorAll('[aria-invalid]'),function(x){x.removeAttribute('aria-invalid');x.removeAttribute('aria-describedby');});
+    var box=el&&el.closest?el.closest('.field'):null;
+    if(box) box.appendChild(st); else f.insertBefore(st,btn);
+    st.textContent=msg; st.className='status show';
+    if(el){ el.setAttribute('aria-invalid','true'); el.setAttribute('aria-describedby','fstatus'); try{el.focus({preventScroll:true});}catch(e){el.focus();} }
+    try{ (box||st).scrollIntoView({block:'center'}); }catch(e){}
+    return false;
+  }
+  f.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    if(!val('country')) return need('Choose your country.', sel);
+    if(!val('transfer')) return need('Answer the question, yes or no.', f.querySelector('input[name=transfer]'));
+    if(!val('kind')) return need('Choose the one that describes you.', f.querySelector('input[name=kind]'));
+    if(!val('gate')) return need('Answer the question, yes or no.', f.querySelector('input[name=gate]'));
+    st.className='status'; f.insertBefore(st,btn);
+    /* transfer + kind are required and ride along, but never change who qualifies (a2pQualified reads country + gate) */
+    var a={country:val('country'), gate:val('gate')}, tr=val('transfer'), kd=val('kind');
+    var q=a2pUtm('call');
+    q.set('source',R.source);
+    q.set('q_country',a.country); q.set('q_continent',country(a.country)[2]); q.set('q_tier',String(a2pTier(a.country))); q.set('q_gate',a.gate);
+    q.set('q_transfer',tr); q.set('q_kind',kd);
+    a2pEvent(a.gate==='yes'?'a2p_gate_yes':'a2p_gate_no',{q_tier:a2pTier(a.country),q_country:a.country,q_gate:a.gate,q_transfer:tr,q_kind:kd});
+    if(a2pQualified(a)){ a2pEvent('a2p_route',{lane:'qualified'}); location.href=ROOT+'qualified.html?'+q.toString(); }
+    else { var why=a.gate!=='yes'?'gate':'region'; q.set('why',why); a2pEvent('a2p_route',{lane:'diy',why:why}); location.href=ROOT+'buy.html?'+q.toString(); }
+  });
+  /* tiny test hook for the walk (review-screens.mjs); harmless in production */
+  window.__a2pQualify={rules:R, qualified:a2pQualified, tierOf:a2pTier, countries:COUNTRIES};
+  a2pEvent('a2p_page_view',{});
+})();
+</script>
+</body>
+</html>
