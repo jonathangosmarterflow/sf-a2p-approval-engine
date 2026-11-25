@@ -70,8 +70,8 @@
   var f=document.getElementById('optin'), st=document.getElementById('fstatus'), btn=document.getElementById('submit');
   var LABEL=btn.textContent, MAIL='<a href="mailto:'+O.supportEmail+'">'+O.supportEmail+'</a>';
   var wl=document.getElementById('why');
-  if(why==='gate'){ wl.textContent='No problem. The free kit is the do-it-yourself path, and it has everything we use.'; wl.hidden=false; }
-  if(why==='region'){ wl.textContent='Free calls are only open in some countries right now, so for you the free kit is the best next step.'; wl.hidden=false; }
+  if(why==='gate'){ wl.textContent='Thanks for answering. The free call is for done-for-you work, so the free A2P Approval Agent is your best next step. It has everything we use. Where should we send it?'; wl.hidden=false; }
+  if(why==='region'){ wl.textContent='Free calls are not open in your country yet. The free A2P Approval Agent has everything we use, so you can still get this done. Where should we send it?'; wl.hidden=false; }
   document.getElementById('dfy').href='../call/?'+a2pUtm('buy').toString();
   a2pEvent('a2p_optin_view',{why:why||''});
   function val(n){ var el=f.elements[n]; return el&&el.value!=null?String(el.value).trim():''; }

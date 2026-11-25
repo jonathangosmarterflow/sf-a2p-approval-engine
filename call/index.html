@@ -24,9 +24,9 @@
 <body>
 <nav class="top"><div class="wrap"><a class="wordmark" href="https://gosmarterflow.com">Smarter<b>Flow</b></a></div></nav>
 <header class="hero"><div class="wrap">
-  <p class="eyebrow">Free 30-minute consulting call</p>
-  <h1>Want your A2P done for you?</h1>
-  <p class="sub">See if a free 30-minute call with a Smarter Flow consultant fits. Four quick questions, and answering commits you to nothing.</p>
+  <p class="eyebrow">With a Smarter Flow consultant</p>
+  <h1>Free 30-minute A2P consulting call</h1>
+  <p class="sub">For businesses that may want us to do the work, at $55/hour. Four quick questions to see if it fits.</p>
 </div></header>
 <main><div class="wrap">
   <section class="card primary" id="dfy">
@@ -35,6 +35,7 @@
         <label for="f-country">Where is your business based?</label>
         <select id="f-country" name="country" required><option value="">Choose your country</option></select>
         <p class="small" id="regions">Free calls are open in the US, Canada, the UK, Ireland, the EU, Switzerland, Australia and New Zealand.</p>
+        <p class="okline" id="region-note" role="status" hidden style="margin:10px 0 0">Free calls are not open in your country yet. The free A2P Approval Agent is the same one we use.</p>
       </div>
       <fieldset class="field gate">
         <legend>Are you interested in transferring your HighLevel sub-account to us?</legend>
@@ -42,6 +43,7 @@
           <label class="choice"><input type="radio" name="transfer" value="yes"> Yes, I'm interested</label>
           <label class="choice"><input type="radio" name="transfer" value="no"> No</label>
         </div>
+        <p class="small" style="margin-top:8px">Either answer is fine.</p>
       </fieldset>
       <fieldset class="field gate">
         <legend>Which describes you?</legend>
@@ -56,6 +58,7 @@
           <label class="choice"><input type="radio" name="gate" value="yes"> Yes</label>
           <label class="choice"><input type="radio" name="gate" value="no"> No</label>
         </div>
+        <p class="small" style="margin-top:8px">No commitment.</p>
       </fieldset>
       <p class="status" id="fstatus" role="alert" aria-live="assertive"></p>
       <button type="submit" class="btn" id="submit">See if I qualify</button>
@@ -66,8 +69,7 @@
   <section class="card" id="oncall">
     <h2>What happens on the call</h2>
     <ul class="list">
-      <li>Your consultant reviews your A2P setup with you and estimates the hours to do it for you.</li>
-      <li>The done-for-you work is optional, at $55/hour. No pressure to buy on the call.</li>
+      <li>Your consultant reviews your A2P setup with you and estimates the hours to do it for you. No pressure to buy.</li>
       <li>We never ask for passwords, account logins or your EIN letter.</li>
     </ul>
   </section>
@@ -97,11 +99,23 @@ var COUNTRIES = [
   /* The funnel root from this page's own address, so /call and /call/ resolve the same. */
   var ROOT=location.pathname.replace(/call(\/(index\.html)?)?$/,'');
   var R=QUALIFY_RULES, f=document.getElementById('gate'), st=document.getElementById('fstatus'), btn=document.getElementById('submit');
-  var sel=document.getElementById('f-country');
+  var sel=document.getElementById('f-country'), LABEL=btn.textContent;
   sel.innerHTML='<option value="">Choose your country</option>'+COUNTRIES.map(function(c){return '<option value="'+c[0]+'">'+c[1]+'</option>';}).join('');
   function val(name){var el=f.querySelector('[name="'+name+'"]:checked')||f.elements[name];return el&&el.value!=null?String(el.value).trim():'';}
   function country(code){for(var i=0;i<COUNTRIES.length;i++){if(COUNTRIES[i][0]===code)return COUNTRIES[i];}return [code,code,'Other'];}
   document.getElementById('kit').href=ROOT+'buy.html?'+a2pUtm('call-kit').toString();
+  /* Smooth, never a cold no (his words 2026-11-25: "as smooth as possible so people don't start hating us"): a visitor from a
+     country we do not serve learns it the moment they pick it, with the free agent one tap away, not after four answers. */
+  var rn=document.getElementById('region-note');
+  sel.addEventListener('change',function(){
+    var c=sel.value, out=!!c && a2pTier(c)===3;
+    rn.hidden=!out;
+    /* the three other questions cannot change the answer for this visitor, so they are not asked (outside review 2026-11-25) */
+    [].forEach.call(f.querySelectorAll('fieldset.gate'),function(x){ x.style.display=out?'none':''; });
+    btn.textContent=out?'Get the free A2P Approval Agent instead':LABEL;
+    document.getElementById('notfit').style.display=out?'none':'';
+    st.className='status';
+  });
   function need(msg, el){
     [].forEach.call(f.querySelectorAll('[aria-invalid]'),function(x){x.removeAttribute('aria-invalid');x.removeAttribute('aria-describedby');});
     var box=el&&el.closest?el.closest('.field'):null;
@@ -114,6 +128,10 @@ var COUNTRIES = [
   f.addEventListener('submit',function(ev){
     ev.preventDefault();
     if(!val('country')) return need('Choose your country.', sel);
+    if(a2pTier(val('country'))===3){   /* not a served country: straight to the free agent, with the kind line */
+      var qr=a2pUtm('call'); qr.set('source',R.source); qr.set('q_country',val('country')); qr.set('q_continent',country(val('country'))[2]); qr.set('q_tier','3'); qr.set('why','region');
+      a2pEvent('a2p_route',{lane:'diy',why:'region'}); location.href=ROOT+'buy.html?'+qr.toString(); return;
+    }
     if(!val('transfer')) return need('Answer the question, yes or no.', f.querySelector('input[name=transfer]'));
     if(!val('kind')) return need('Choose the one that describes you.', f.querySelector('input[name=kind]'));
     if(!val('gate')) return need('Answer the question, yes or no.', f.querySelector('input[name=gate]'));
