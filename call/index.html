@@ -9,33 +9,78 @@
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../favicon.png">
 <title>Free 30-minute A2P consulting call | Smarter Flow</title>
-<meta name="description" content="See if a free 30-minute A2P consulting call with a Smarter Flow consultant fits. Four quick questions.">
+<meta name="description" content="Book a free 30-minute A2P consulting call with a Smarter Flow consultant, if you qualify. Three quick steps.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css?v=7.0.1">
-<!-- 2026-11-25 (his words: "keep the links and the landing pages super short and super to the point"): the THIRD link
-     of the A2P video description (short link /a2p/call). One job: the four DFY questions, then qualified.html (the
-     booking button) or buy.html (the free agent, with the kind why line). Before this page the link dropped the
-     visitor at the bottom of the long landing page (index.html#dfy, which still works and keeps the same form).
-     The rule lives in ../config.js (QUALIFY_RULES, a2pQualified): never copy it here. The questions and their names
-     must stay equal to the form in ../index.html; review-screens.mjs fails when the two differ. -->
+<style>
+/* THE CALL FUNNEL, capture first (2026-11-25, his words, FB-2302): "let's first capture their data, and then let's
+   qualify them ... a three step form ... if they qualify, they can book if they don't qualify, they can't book, but
+   they get the free assets and they can watch our videos". One step on screen at a time. */
+.cf{max-width:600px;padding-top:26px}
+.cf h1{font-size:30px}
+.cf .sub{margin-bottom:16px}
+.steps{display:flex;gap:8px;list-style:none;margin:0 0 16px;padding:0}
+.steps li{flex:1;font-family:var(--head);font-weight:700;font-size:12.5px;color:var(--muted2);border-top:4px solid var(--line);padding-top:7px;line-height:1.3}
+.steps li.on{color:var(--ink);border-image:var(--grad) 1}
+.steps li.done{color:var(--vio);border-top-color:var(--vio)}
+.cf [data-step]{display:none}
+.cf [data-step].on{display:block}
+.cf .lead-in{font-weight:600;margin:0 0 14px}
+.cf .result h2{margin-bottom:8px}
+.cf .result .btn{margin-top:12px}
+.cf .btn.alt{background:var(--ind)}
+span.wordmark{cursor:default}
+@media(min-width:760px){ .cf h1{font-size:36px} }
+</style>
+<!-- The rule who qualifies lives in ../config.js (QUALIFY_RULES, a2pQualified): never copy it here. The four questions
+     and their field names stay equal to the form in ../index.html (the walk compares them). Step 1 files the lead,
+     step 2 files the answers and sends the free agent by email (worker api/optin), step 3 is qualified.html (the ONE
+     booking button) or the free resources. No name, email or phone is ever put in an address. -->
 </head>
 <body>
-<nav class="top"><div class="wrap"><a class="wordmark" href="https://gosmarterflow.com">Smarter<b>Flow</b></a></div></nav>
-<header class="hero"><div class="wrap">
+<nav class="top"><div class="wrap"><span class="wordmark">Smarter<b>Flow</b></span></div></nav>
+<main><div class="wrap cf">
   <p class="eyebrow">With a Smarter Flow consultant</p>
-  <h1>Free 30-minute A2P consulting call</h1>
-  <p class="sub">For businesses that may want us to do the work, at $55/hour. Four quick questions to see if it fits.</p>
-</div></header>
-<main><div class="wrap">
-  <section class="card primary" id="dfy">
+  <h1>Book your free 30-minute A2P consulting call</h1>
+  <p class="sub">Three quick steps. If it is a fit, you pick your time.</p>
+  <ol class="steps" id="steps" aria-label="Progress">
+    <li class="on" id="s1">1. Your details</li>
+    <li id="s2">2. Four quick questions</li>
+    <li id="s3">3. Pick your time</li>
+  </ol>
+
+  <section class="card primary on" data-step="1" id="step1">
+    <form id="lead" class="qualify" novalidate>
+      <div class="field">
+        <label for="f-first">First name</label>
+        <input id="f-first" name="first_name" type="text" autocomplete="given-name" maxlength="60" required>
+      </div>
+      <div class="field">
+        <label for="f-email">Email</label>
+        <input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="120" required>
+      </div>
+      <div class="field">
+        <label for="f-phone">Phone</label>
+        <input id="f-phone" name="phone" type="text" inputmode="tel" autocomplete="tel" maxlength="32" required>
+        <p class="small">So your consultant can reach you about the call. Outside the US and Canada, start with your country code.</p>
+      </div>
+      <div class="hp" aria-hidden="true"><label for="f-hp">Leave this empty</label><input id="f-hp" name="hp" tabindex="-1" autocomplete="off"></div>
+      <p class="status" id="st1" role="alert" aria-live="assertive"></p>
+      <button type="submit" class="btn" id="next1">Next: four quick questions</button>
+      <p class="formnote"><strong>You also get the free A2P Approval Agent by email.</strong> Unsubscribe any time.</p>
+    </form>
+    <noscript><p class="small" style="margin-top:10px">This form needs JavaScript. The free resources are here: <a href="../agent/">the free A2P Approval Agent</a>.</p></noscript>
+  </section>
+
+  <section class="card primary" data-step="2" id="dfy">
+    <p class="lead-in" id="leadin">The call is for businesses that may want us to do the work, at $55/hour.</p>
     <form id="gate" class="qualify" novalidate>
       <div class="field">
         <label for="f-country">Where is your business based?</label>
         <select id="f-country" name="country" required><option value="">Choose your country</option></select>
-        <p class="small" id="regions">Free calls are open in the US, Canada, the UK, Ireland, the EU, Switzerland, Australia and New Zealand.</p>
-        <p class="okline" id="region-note" role="status" hidden style="margin:10px 0 0">Free calls are not open in your country yet. The free A2P Approval Agent is the same one we use.</p>
+        <p class="okline" id="region-note" role="status" hidden style="margin:10px 0 0">Free calls are not open in your country yet. You still get everything from the video, free.</p>
       </div>
       <fieldset class="field gate">
         <legend>Are you interested in transferring your HighLevel sub-account to us?</legend>
@@ -62,25 +107,24 @@
       </fieldset>
       <p class="status" id="fstatus" role="alert" aria-live="assertive"></p>
       <button type="submit" class="btn" id="submit">See if I qualify</button>
-      <p class="formnote" id="notfit">Not a fit? You can still get the <a id="kit" href="../buy.html">free A2P Approval Agent</a>.</p>
     </form>
-    <noscript><p class="small" style="margin-top:10px">This check needs JavaScript. The do-it-yourself path is here: <a href="../buy.html">the free A2P Approval Agent</a>.</p></noscript>
   </section>
-  <section class="card" id="oncall">
-    <h2>What happens on the call</h2>
-    <ul class="list">
-      <li>Your consultant reviews your A2P setup with you and estimates the hours to do it for you. No pressure to buy.</li>
-      <li>We never ask for passwords, account logins or your EIN letter.</li>
-    </ul>
+
+  <section class="card primary result" data-step="3" id="result" aria-live="polite">
+    <h2 id="r-h">You get everything from the video, free.</h2>
+    <p id="r-why"></p>
+    <p id="r-kit"><strong>Your free A2P Approval Agent is on its way to your inbox.</strong></p>
+    <a class="btn" id="r-deck" href="../a2p-slides-54a820711700/">Open the free slide deck</a>
+    <a class="btn alt" id="r-agent" href="../agent/" hidden>Get the free A2P Approval Agent</a>
+    <a class="btn alt" id="r-yt" href="https://www.youtube.com/@JonnyTheNomad" target="_blank" rel="noopener">Watch more A2P and HighLevel videos</a>
   </section>
 </div></main>
 <footer class="bottom"><div class="wrap">
-  <p>Registry compliance help from carrier-published templates, not legal advice. Nobody can promise a carrier decision or a review time; you click submit.</p>
   <p>&copy; 2026 Smarter Flow. <a href="https://gosmarterflow.com/privacy-policy">Privacy notice</a></p>
 </div></footer>
-<script src="../config.js?v=8.1.0"></script>
+<script src="../config.js?v=8.2.0"></script>
 <script>
-/* Country list: [code, name, continent]. Kept equal to ../index.html (review-screens.mjs compares the two).
+/* Country list: [code, name, continent]. Kept equal to ../index.html (the walk compares the two).
    Tier comes from QUALIFY_RULES in ../config.js, never from this list. */
 var COUNTRIES = [
   ["US","United States","North America"],["CA","Canada","North America"],["GB","United Kingdom","Europe"],["AU","Australia","Oceania"],["NZ","New Zealand","Oceania"],
@@ -98,57 +142,106 @@ var COUNTRIES = [
 (function(){
   /* The funnel root from this page's own address, so /call and /call/ resolve the same. */
   var ROOT=location.pathname.replace(/call(\/(index\.html)?)?$/,'');
-  var R=QUALIFY_RULES, f=document.getElementById('gate'), st=document.getElementById('fstatus'), btn=document.getElementById('submit');
-  var sel=document.getElementById('f-country'), LABEL=btn.textContent;
+  var R=QUALIFY_RULES, C=window.A2P_CALL||{leadEndpoint:'api/slides-optin',leadTimeoutMs:6000,answersTimeoutMs:4000};
+  var f1=document.getElementById('lead'), st1=document.getElementById('st1'), b1=document.getElementById('next1');
+  var f=document.getElementById('gate'), st=document.getElementById('fstatus'), btn=document.getElementById('submit'), LABEL=btn.textContent;
+  var sel=document.getElementById('f-country'), rn=document.getElementById('region-note');
+  var lead=null;   /* {first_name,email}: kept in memory only, for the second post; never in an address, never in an event */
   sel.innerHTML='<option value="">Choose your country</option>'+COUNTRIES.map(function(c){return '<option value="'+c[0]+'">'+c[1]+'</option>';}).join('');
+  function ev(state,props){ var p=props||{}; p.state=state; try{ a2pEvent('a2p_call_step',p); }catch(e){} }
   function val(name){var el=f.querySelector('[name="'+name+'"]:checked')||f.elements[name];return el&&el.value!=null?String(el.value).trim():'';}
   function country(code){for(var i=0;i<COUNTRIES.length;i++){if(COUNTRIES[i][0]===code)return COUNTRIES[i];}return [code,code,'Other'];}
-  document.getElementById('kit').href=ROOT+'buy.html?'+a2pUtm('call-kit').toString();
-  /* Smooth, never a cold no (his words 2026-11-25: "as smooth as possible so people don't start hating us"): a visitor from a
-     country we do not serve learns it the moment they pick it, with the free agent one tap away, not after four answers. */
-  var rn=document.getElementById('region-note');
+  function show(n){
+    [].forEach.call(document.querySelectorAll('[data-step]'),function(x){ x.classList.toggle('on', x.getAttribute('data-step')===String(n)); });
+    ['s1','s2','s3'].forEach(function(id,i){ var li=document.getElementById(id); li.className=(i+1<n)?'done':((i+1===n)?'on':''); });
+    try{ window.scrollTo(0,0); }catch(e){}
+  }
+  function need(form, box0, msg, el, before){
+    [].forEach.call(form.querySelectorAll('[aria-invalid]'),function(x){x.removeAttribute('aria-invalid');x.removeAttribute('aria-describedby');});
+    var box=el&&el.closest?el.closest('.field'):null;
+    if(box) box.appendChild(box0); else form.insertBefore(box0,before);
+    box0.textContent=msg; box0.className='status show';
+    if(el){ el.setAttribute('aria-invalid','true'); el.setAttribute('aria-describedby',box0.id); try{el.focus({preventScroll:true});}catch(e){el.focus();} }
+    try{ (box||box0).scrollIntoView({block:'center'}); }catch(e){}
+    return false;
+  }
+  function post(path, body, ms){
+    var ctl=window.AbortController?new AbortController():null, timer=ctl?setTimeout(function(){ try{ctl.abort();}catch(e){} },ms):null;
+    return fetch(ROOT+path,{method:'POST',credentials:'same-origin',keepalive:true,headers:{'content-type':'application/json'},body:JSON.stringify(body),signal:ctl?ctl.signal:undefined})
+      .then(function(r){ if(timer) clearTimeout(timer); return r.json().then(function(j){ j.status=r.status; return j; },function(){ return {status:r.status}; }); })
+      ['catch'](function(){ if(timer) clearTimeout(timer); return {status:0}; });
+  }
+  /* STEP 1: who they are. The lead is filed first; a worker error or a timeout never strands a human (they go on). */
+  var EMAIL=/^[^\s@<>"',;:()[\]\\]{1,64}@[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)*\.[a-z]{2,24}$/i;
+  var MSG={first_name:'Type your first name (letters only).',email:'That email looks off. Check it and try again.',phone:'Type your phone number, with the country code outside the US and Canada.'};
+  f1.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(b1.disabled) return;
+    var a={first_name:f1.elements.first_name.value.trim(), email:f1.elements.email.value.trim(), phone:f1.elements.phone.value.trim(), hp:f1.elements.hp.value};
+    var n=a.phone.replace(/\D/g,'').length;
+    if(!a.first_name||/https?:|www\.|@/i.test(a.first_name)) return need(f1,st1,MSG.first_name,f1.elements.first_name,b1);
+    if(!EMAIL.test(a.email)) return need(f1,st1,MSG.email,f1.elements.email,b1);
+    if(!/^\+?[0-9 ().-]{7,24}$/.test(a.phone)||n<7||n>15) return need(f1,st1,MSG.phone,f1.elements.phone,b1);
+    st1.className='status'; b1.disabled=true; b1.textContent='One moment...';
+    var u=a2pUtm('call'); u.forEach(function(v,k){ a[k]=v; });
+    post(C.leadEndpoint, a, C.leadTimeoutMs||6000).then(function(j){
+      b1.disabled=false; b1.textContent='Next: four quick questions';
+      if(j.status===400&&MSG[j.field]) return need(f1,st1,MSG[j.field],f1.elements[j.field],b1);
+      lead={first_name:a.first_name,email:a.email};
+      ev('1-done',{}); show(2); ev('2-view',{});
+    });
+  });
+  /* STEP 2: the four questions. A visitor from a country without free calls is told at once and asked nothing more. */
   sel.addEventListener('change',function(){
     var c=sel.value, out=!!c && a2pTier(c)===3;
     rn.hidden=!out;
-    /* the three other questions cannot change the answer for this visitor, so they are not asked (outside review 2026-11-25) */
     [].forEach.call(f.querySelectorAll('fieldset.gate'),function(x){ x.style.display=out?'none':''; });
-    btn.textContent=out?'Get the free A2P Approval Agent instead':LABEL;
-    document.getElementById('notfit').style.display=out?'none':'';
+    btn.textContent=out?'Get my free resources':LABEL;
     st.className='status';
   });
-  function need(msg, el){
-    [].forEach.call(f.querySelectorAll('[aria-invalid]'),function(x){x.removeAttribute('aria-invalid');x.removeAttribute('aria-describedby');});
-    var box=el&&el.closest?el.closest('.field'):null;
-    if(box) box.appendChild(st); else f.insertBefore(st,btn);
-    st.textContent=msg; st.className='status show';
-    if(el){ el.setAttribute('aria-invalid','true'); el.setAttribute('aria-describedby','fstatus'); try{el.focus({preventScroll:true});}catch(e){el.focus();} }
-    try{ (box||st).scrollIntoView({block:'center'}); }catch(e){}
-    return false;
+  function result(why, kitOk){
+    var W={gate:'The free call is for done-for-you work, so the free resources are your best next step. They have everything we use.',
+           region:'Free calls are not open in your country yet. The free resources have everything we use, so you can still get this done.'};
+    document.getElementById('r-why').textContent=W[why]||W.gate;
+    document.getElementById('r-kit').hidden=!kitOk;
+    document.getElementById('r-agent').hidden=!!kitOk;     /* the email did not go out: the agent page is one tap away, never a false "sent" */
+    document.getElementById('r-deck').href=ROOT+'a2p-slides-54a820711700/?'+a2pUtm('call-result').toString();
+    document.getElementById('s3').textContent='3. Your free resources';
+    show(3); ev('result-free',{why:why});
   }
-  f.addEventListener('submit',function(ev){
-    ev.preventDefault();
-    if(!val('country')) return need('Choose your country.', sel);
-    if(a2pTier(val('country'))===3){   /* not a served country: straight to the free agent, with the kind line */
-      var qr=a2pUtm('call'); qr.set('source',R.source); qr.set('q_country',val('country')); qr.set('q_continent',country(val('country'))[2]); qr.set('q_tier','3'); qr.set('why','region');
-      a2pEvent('a2p_route',{lane:'diy',why:'region'}); location.href=ROOT+'buy.html?'+qr.toString(); return;
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(btn.disabled) return;
+    if(!val('country')) return need(f,st,'Choose your country.',sel,btn);
+    var c=val('country'), out=a2pTier(c)===3;
+    if(!out){
+      if(!val('transfer')) return need(f,st,'Answer the question, yes or no.',f.querySelector('input[name=transfer]'),btn);
+      if(!val('kind')) return need(f,st,'Choose the one that describes you.',f.querySelector('input[name=kind]'),btn);
+      if(!val('gate')) return need(f,st,'Answer the question, yes or no.',f.querySelector('input[name=gate]'),btn);
     }
-    if(!val('transfer')) return need('Answer the question, yes or no.', f.querySelector('input[name=transfer]'));
-    if(!val('kind')) return need('Choose the one that describes you.', f.querySelector('input[name=kind]'));
-    if(!val('gate')) return need('Answer the question, yes or no.', f.querySelector('input[name=gate]'));
     st.className='status'; f.insertBefore(st,btn);
-    /* transfer + kind are required and ride along, but never change who qualifies (a2pQualified reads country + gate) */
-    var a={country:val('country'), gate:val('gate')}, tr=val('transfer'), kd=val('kind');
+    var a={country:c, gate:out?'':val('gate')}, tr=val('transfer'), kd=val('kind');
     var q=a2pUtm('call');
-    q.set('source',R.source);
-    q.set('q_country',a.country); q.set('q_continent',country(a.country)[2]); q.set('q_tier',String(a2pTier(a.country))); q.set('q_gate',a.gate);
-    q.set('q_transfer',tr); q.set('q_kind',kd);
-    a2pEvent(a.gate==='yes'?'a2p_gate_yes':'a2p_gate_no',{q_tier:a2pTier(a.country),q_country:a.country,q_gate:a.gate,q_transfer:tr,q_kind:kd});
-    if(a2pQualified(a)){ a2pEvent('a2p_route',{lane:'qualified'}); location.href=ROOT+'qualified.html?'+q.toString(); }
-    else { var why=a.gate!=='yes'?'gate':'region'; q.set('why',why); a2pEvent('a2p_route',{lane:'diy',why:why}); location.href=ROOT+'buy.html?'+q.toString(); }
+    q.set('source',R.source); q.set('q_country',c); q.set('q_continent',country(c)[2]); q.set('q_tier',String(a2pTier(c)));
+    if(!out){ q.set('q_gate',a.gate); q.set('q_transfer',tr); q.set('q_kind',kd); }
+    var ok=!out && a2pQualified(a);
+    a2pEvent(a.gate==='yes'?'a2p_gate_yes':'a2p_gate_no',{q_tier:a2pTier(c),q_country:c,q_gate:a.gate,q_transfer:tr,q_kind:kd});
+    btn.disabled=true; btn.textContent='One moment...';
+    /* the answers are filed with the lead, and the worker emails the free agent once (it decides the lane itself) */
+    var body={first_name:lead?lead.first_name:'', email:lead?lead.email:'', hp:'', country:c};
+    if(!out) body.gate=a.gate;
+    var done=lead?post(R.answersEndpoint||'api/optin', body, C.answersTimeoutMs||4000):Promise.resolve({status:0});
+    done.then(function(j){
+      btn.disabled=false; btn.textContent=LABEL;
+      ev('2-done',{why:ok?'':(out?'region':'gate')});
+      if(ok){ a2pEvent('a2p_route',{lane:'qualified'}); location.href=ROOT+'qualified.html?'+q.toString(); return; }
+      a2pEvent('a2p_route',{lane:'diy',why:out?'region':'gate'});
+      result(out?'region':'gate', !!(j&&j.ok));
+    });
   });
-  /* tiny test hook for the walk (review-screens.mjs); harmless in production */
+  /* tiny test hook for the walk; harmless in production */
   window.__a2pQualify={rules:R, qualified:a2pQualified, tierOf:a2pTier, countries:COUNTRIES};
-  a2pEvent('a2p_page_view',{});
+  a2pEvent('a2p_page_view',{}); ev('1-view',{});
 })();
 </script>
 </body>

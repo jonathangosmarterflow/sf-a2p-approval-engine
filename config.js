@@ -52,6 +52,16 @@ var A2P_SLIDES = {
   timeoutMs: 6000
 };
 
+/* THE CALL FUNNEL, capture first (2026-11-25, his words: "let's first capture their data, and then let's qualify them").
+   call/index.html step 1 POSTs first name, email, phone to leadEndpoint (today the generic lead route that the slide
+   deck opt-in uses: it files the HighLevel contact with the phone and sends nothing), step 2 POSTs the answers to
+   api/optin (lane tags + the free agent by email, once per address). Both relative to the funnel root. */
+var A2P_CALL = {
+  leadEndpoint: "api/slides-optin",
+  leadTimeoutMs: 6000,
+  answersTimeoutMs: 4000
+};
+
 var A2P_WIRING = {
   /* "" = the branch-event beacon is OFF (a labelled stub: events are built in memory, nothing is sent).
      Live needs the cloud worker to accept the a2p_* event names and the get.gosmarterflow.com origin (README.md). */
