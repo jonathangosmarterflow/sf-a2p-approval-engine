@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=7.0.1">
-<link rel="stylesheet" href="sf.css?v=1">
+<link rel="stylesheet" href="sf.css?v=2">
 <!-- 2026-11-25: short form first (one line, the form, then what is inside); the done-for-you card links the short
      call page (call/). agent/index.html is GENERATED from this file by build-agent-page.py: edit here, then rebuild.
      v8 2026-11-17 (his words: "The ai agent for a2p we will give away for free. Not for 1$"): the ONE opt-in page for the
@@ -71,8 +71,8 @@
       </div>
       <div class="hp" aria-hidden="true"><label for="f-hp">Leave this empty</label><input id="f-hp" name="hp" tabindex="-1" autocomplete="off"></div>
       <p class="status" id="fstatus" role="alert" aria-live="assertive"></p>
-      <button type="submit" class="btn cbtn" id="submit">Email me the free agent &#8594;</button>
-      <p class="fine" id="consent"><strong>Free. In your inbox in a few minutes.</strong> You get the agent and 6 short A2P lessons by email. Unsubscribe any time.</p>
+      <button type="submit" class="btn cbtn" id="submit">Email me the free agent &#8594;<small>Free &middot; in your inbox in minutes</small></button>
+      <p class="fine" id="consent">You also get 6 short A2P lessons by email. Unsubscribe any time.</p>
     </form>
     <noscript><p class="small" style="margin-top:10px">This form needs JavaScript. Turn it on and reload this page, or email <a href="mailto:jonathan@gosmarterflow.com">jonathan@gosmarterflow.com</a> and we will send you the kit.</p></noscript>
     </section>
@@ -102,7 +102,7 @@
      goes into a URL or an event. The worker recomputes the lane from the answers; the page only carries them. */
   var O=A2P_OFFER, q=new URLSearchParams(location.search), why=q.get('why');
   var f=document.getElementById('optin'), st=document.getElementById('fstatus'), btn=document.getElementById('submit');
-  var LABEL=btn.textContent, MAIL='<a href="mailto:'+O.supportEmail+'">'+O.supportEmail+'</a>';
+  var LABEL=btn.innerHTML, MAIL='<a href="mailto:'+O.supportEmail+'">'+O.supportEmail+'</a>';
   var wl=document.getElementById('why');
   if(why==='gate'){ wl.textContent='Thanks for answering. The free call is for done-for-you work, so the free A2P Approval Agent is your best next step. It has everything we use. Where should we send it?'; wl.hidden=false; }
   if(why==='region'){ wl.textContent='Free calls are not open in your country yet. The free A2P Approval Agent has everything we use, so you can still get this done. Where should we send it?'; wl.hidden=false; }
@@ -119,7 +119,7 @@
     try{ (box||st).scrollIntoView({block:'center'}); }catch(e){}
     return false;
   }
-  function again(){ btn.disabled=false; btn.textContent=LABEL; }
+  function again(){ btn.disabled=false; btn.innerHTML=LABEL; }
   function post(body){
     var ctl=window.AbortController?new AbortController():null;
     var timer=ctl?setTimeout(function(){ ctl.abort(); },O.optinTimeoutMs):null;
